@@ -1,7 +1,12 @@
 import React, { useEffect, useState } from "react";
 
+import AddQuestions from "../../pages/Professor/AddQuestions/AddQuestions";
+import Evaluations from "../../pages/Professor/Evaluations/Evaluations";
 import Assignments from "../../pages/Professor/Assignments/Assignments";
+import Questions from "../../pages/Professor/Questions/Questions";
 
+import StudentAssignments from "../../pages/Student/Assignments/Assignments";
+// import StudentEvaluations from "../../pages/Student/Assignments/";
 import { useParams } from "react-router-dom";
 
 const MainSection = () => {
@@ -18,13 +23,13 @@ const MainSection = () => {
     }, [id]);
 
     if (user === "student") {
-        if (section === "evals") return <></>;
-        else if (section === "assignments") return <></>;
+        if (section === "evals") return <StudentEvaluations />;
+        else if (section === "assignments") return <StudentAssignments />;
     } else if (user === "professor") {
         if (section === "assignments") return <Assignments />;
         else if (section === "addQuestion") return <></>;
         else if (section === "evals") return <></>;
-        else if (section === "Questions") return <></>;
+        else if (section === "Questions") return <Questions />;
     }
 };
 
