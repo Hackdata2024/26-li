@@ -8,7 +8,7 @@ module.exports = (app) => {
 
         readDB("Colleges", "Registered", { name: req.decoded.institution }, registeredCollegesSchema).then((result) => {
 
-            if(result.length == 0){
+            if (result.length == 0) {
                 return res.json({
                     success: false,
                     message: `No College Found with this ${req.decoded.institution}`
