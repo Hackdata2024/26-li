@@ -15,3 +15,5 @@ app.listen(PORT, () => {
 require("./Auth/jwt")(app);
 require("./other/Colleges")(app);
 require("./professors/Assignments")(app);
+require("./professors/dashboard")(app);
+require("./other/fetch")(app);
