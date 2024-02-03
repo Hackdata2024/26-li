@@ -17,8 +17,8 @@ const MyQuestions = (props) => {
 
     return (
         <div>
+            <QuestionModel show={modalShow} question={question} onHide={() => setModalShow(false)} />
             <div style={{ display: "flex", flexDirection: "column", justifyContent: "center", alignItems: "center" }}>
-                <QuestionModel show={modalShow} question={question} onHide={() => setModalShow(false)} />
                 <ListGroup style={{ color: "black", width: "50%" }}>
                     {props.myQuestions.map((question, index) => {
                         return (

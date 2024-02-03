@@ -4,7 +4,7 @@ import Button from "react-bootstrap/Button";
 import Badge from "react-bootstrap/Badge";
 import ListGroup from "react-bootstrap/ListGroup";
 import ApiCall from "../../../util/ApiCall";
-import CreateEvalModal from "./CreateEvalModal";
+import CreateEvalModal from "./CreateEvaluation/CreateEvalModal";
 import EvaluationsDetailsModal from "./EvaluationsDetailsModal";
 
 function Evaluations() {
@@ -19,8 +19,8 @@ function Evaluations() {
             try {
                 const response = await ApiCall("/professors/myEvaluations", "GET", {});
                 const res = await ApiCall("/getBatches", "GET", {});
-                // console.log(response.data);
-                // console.log(res.data);
+                console.log("/professors/myEvaluations", response.data);
+                console.log("getBatches/", res.data);
                 setBatches(res.data.batches);
                 setEvaluation(response.data.data);
                 console.log(response.data.data);

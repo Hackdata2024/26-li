@@ -2,7 +2,8 @@ import Card from "react-bootstrap/Card";
 
 function Footer() {
     return (
-        <Card class="footer-card"
+        <Card
+            className="footer-card"
             style={{
                 fontFamily: "Open Sans",
                 color: "var(--sec)",
@@ -14,7 +15,7 @@ function Footer() {
                 bottom: "0",
                 backgroundColor: "rgba(227, 243, 246)",
                 marginTop: "35px",
-                padding: "none !important" 
+                padding: "none !important",
             }}
         >
             <Card.Body>
