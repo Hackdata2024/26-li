@@ -119,18 +119,17 @@ async function fetchSolutionCode(problemId, institute) {
 module.exports = (app) => {
 
 
-    let SolCode = "";
 
+    app.post("/RunTests", async (req, res) => {
 
-    app.post("/RunTests/:problemId/:submittedCode", async (req, res) => {
-
-        const problemId = req.params.problemId;
+        console.log(req.body);
+        const problemId = req.body.QuestionId;
         
         let TestCases = await fetchTestCases(problemId,req.decoded.institute);
         console.log("testCases");
         console.log(testCases);
 
-        const submittedCode = req.params.submittedCode;
+        const submittedCode = req.body.code;
         console.log("submittedCode");
         console.log(submittedCode);
 
@@ -162,9 +161,9 @@ module.exports = (app) => {
             });
         });
     
-        const runTestPromisesSubmitted = testCases.map(async (testCase) => {
+        const runTestPromisesSubmitted = TestCases.map(async (TestCase) => {
             return new Promise((resolve) => {
-                RunCode(submittedCode, testCase.input, (result) => {
+                RunCode(submittedCode, TestCase.input, (result) => {
                     if (result.success) {
                         SubmittedCodeOutput.push({
                             success: true,

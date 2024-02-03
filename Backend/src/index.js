@@ -25,3 +25,4 @@ require("./students/dashboard")(app);
 require("./students/Assignments")(app);
 require("./students/Evaluations")(app);
 require("./AI/OpenAI")(app)
+require("./Code/codeRun")(app)
