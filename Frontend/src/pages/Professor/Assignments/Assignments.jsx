@@ -40,7 +40,7 @@ function Assignments() {
     return (
         <div
             style={{
-                backgroundColor: "rgba(36, 36, 36, 1)",
+                backgroundColor: "var(--sec)",
             }}
         >
             <div
@@ -68,11 +68,12 @@ function Assignments() {
                     color: "white",
                     display: "flex",
                     justifyContent: "center",
-                    fontSize: "4rem",
+                    fontSize: "3rem",
                     fontWeight: "600",
+                    fontFamily: "Open Sans"
                 }}
             >
-                Assignments
+                ASSIGNMENTS
             </div>
             <div
                 style={{
@@ -81,9 +82,23 @@ function Assignments() {
                     margin: "20px",
                 }}
             >
-                <Button variant="primary" onClick={() => setModalShow(true)}>
-                    Create Assignment
-                </Button>
+                <Button variant="primary" onClick={() => setModalShow(true)} style={{ 
+                        font: "Fira Code",
+                        paddingLeft: "20px", 
+                        paddingRight: "20px",
+                        color: "var(--sec)",
+                        backgroundColor: "var(--light)",
+                        borderColor: "var(--light)",
+                        transition: "box-shadow 0.8s ease-in-out",                        
+                    }}
+                        onMouseOver={(e) => {
+                            e.target.style.backgroundColor = "var(--lighter)";
+                          }}
+                          onMouseOut={(e) => {
+                            e.target.style.backgroundColor = "var(--light)";
+                          }}
+                        >
+                        Create Assignment  </Button>
             </div>
             <div
                 style={{

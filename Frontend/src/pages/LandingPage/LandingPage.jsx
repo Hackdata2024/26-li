@@ -12,21 +12,30 @@ const LandingPage = () => {
         <>
             <NavBar />
             <div className="home-section" style={{ display: "flex", marginTop: "50px", paddingBottom: "100px" }}>
-                <div className="heading">
-                    <h1
+                <div className="heading d-flex" style={{justifyContent: "space-between"}}>
+                    <div><h1
                         style={{
                             fontFamily: "Open Sans",
                             color: "rgba(227, 243, 246)",
                             fontSize: "60px",
-                            marginTop: "30px",
-                            textAlign: "center",
-                        }}
-                    >
+                            margin: "80px 0 80px 80px",
+                        }}>
                         {" "}
-                        Simplify. Automate.<i> Excel.</i>
+                        Simplify. <br/><br/>Automate.<i><br/><br/> Excel.</i>
                         <br />
                         {/* <br /> */}
-                    </h1>
+                    </h1></div>
+                    <div className="imgland" 
+                        style={{
+                            backgroundImage: 'url("/assets/images/coding_languages.png.webp")', 
+                            width: "50vw", 
+                            height: "50vh", 
+                            backgroundSize:"contain",
+                            position: "center center",
+                            alignSelf: "center",
+                            backgroundRepeat: "no-repeat",
+                            justifyContent: "right"
+                            }}></div>
                 </div>
                 <div className="home-section-1">
                     <LandingPageCard
@@ -58,14 +67,17 @@ const LandingPage = () => {
                         btnLink="/registerCollege"
                     />
                 </div>
-                <div className="info" style={{ backgroundColor: "rgba(134, 184, 193, 0.2)", borderRadius: "10px" }}>
+                <div className="info" style={{ backgroundColor: "rgba(134, 184, 193, 0.2)", marginTop: "60px", alignItems: "center", width: "100vw", alignSelf: "center" }}>
                     <p
                         style={{
-                            fontFamily: "Open Sans",
-                            color: "var(--)",
-                            fontSize: "20px",
-                            marginTop: "60px",
+                            fontFamily: "Fira Code",
+                            color: "var(--lighter)",
+                            fontSize: "23px",
+                            width: "100vw",
                             textAlign: "center",
+                            paddingTop: "40px",
+                            paddingBottom: "40px",
+                            padding: "20px",
                         }}
                     >
                         {" "}
