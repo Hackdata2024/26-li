@@ -3,26 +3,26 @@ import ListGroup from "react-bootstrap/ListGroup";
 import { Link } from "react-router-dom";
 import Button from "react-bootstrap/Button";
 import Card from "react-bootstrap/Card";
-import QuestionModel from "./QuestionModel";
-import { useState } from "react";
 
-const MyQuestions = (props) => {
-    const [modalShow, setModalShow] = React.useState(false);
-    const [question, setQuestion] = useState({});
-
-    function setModalQuestion(value, question) {
-        setModalShow(value);
-        setQuestion(question);
-    }
-
+const Upcoming = (props) => {
     return (
-        <div>
+        <>
             <div style={{ display: "flex", flexDirection: "column", justifyContent: "center", alignItems: "center" }}>
-                <QuestionModel show={modalShow} question={question} onHide={() => setModalShow(false)} />
                 <ListGroup style={{ color: "black", width: "50%" }}>
-                    {props.myQuestions.map((question, index) => {
+                    {props.Evaluations.map((evaluation, index) => {
+                        const date = new Date(evaluation.EndTime);
+                        const year = date.getFullYear();
+                        const month = ("0" + (date.getMonth() + 1)).slice(-2); // Months are zero-based
+                        const day = ("0" + date.getDate()).slice(-2);
+
+                        const hours = ("0" + date.getHours()).slice(-2);
+                        const minutes = ("0" + date.getMinutes()).slice(-2);
+                        const seconds = ("0" + date.getSeconds()).slice(-2);
+                        // console.log(item);
+                        const formattedTime = `${day}-${month}-${year} ${hours}:${minutes}:${seconds} `;
+                        // const formattedDate = ` ${day}-${month}-${year}`;
                         return (
-                            <div key={index} onClick={() => setModalQuestion(true, question)}>
+                            <div key={index}>
                                 <ListGroup.Item
                                     style={{
                                         backgroundColor: "rgba(36,36,36,1)",
@@ -35,16 +35,10 @@ const MyQuestions = (props) => {
                                     }}
                                 >
                                     <div>
-                                        <div style={{ fontSize: "20px", fontWeight: "500" }}>
-                                            {question.QuestionName}
-                                        </div>
-                                        {/* Due Date: <span>{formattedDate}</span> <br />
-                                    Due Time: <span>{formattedTime}</span> */}
+                                        <div style={{ fontSize: "20px", fontWeight: "500" }}>{evaluation.Name}</div>
+                                        {/* Due Date: <span>{formattedDate}</span> <br /> */}
+                                        End Time: <span>{formattedTime}</span>
                                     </div>
-
-                                    {/* <Link to="/">
-                                    <Button style={{ width: "80px" }}>Solve</Button>
-                                </Link> */}
                                 </ListGroup.Item>
                                 <br />
                             </div>
@@ -52,8 +46,8 @@ const MyQuestions = (props) => {
                     })}
                 </ListGroup>
             </div>
-        </div>
+        </>
     );
 };
 
-export default MyQuestions;
+export default Upcoming;

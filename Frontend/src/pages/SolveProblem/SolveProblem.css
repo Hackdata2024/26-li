@@ -1,0 +1,9 @@
+.mainquestionsection {
+    width: 60%;
+}
+
+@media screen and (max-aspect-ratio: 4/3) {
+    .mainquestionsection {
+        width: 98%;
+    }
+}
