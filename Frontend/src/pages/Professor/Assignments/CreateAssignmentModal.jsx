@@ -110,13 +110,13 @@ const CreateAssignmentModal = (props) => {
             return;
         }
 
-        // props.onHide();
         const postAssignment = async () => {
             try {
                 const response = await ApiCall("/professors/addAssignment", "POST", formData);
                 console.log(response.data);
                 if (response.data.success) {
                     toast.success("Assignment created successfully");
+                    props.onHide();
                 } else {
                     toast.error(response.data.message ? response.data.message : "Error adding question");
                 }
