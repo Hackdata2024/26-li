@@ -1,7 +1,14 @@
 import React from "react";
+import Sidenav from "../../components/SideNavbar/SideNavbar";
+import MainSection from "../../components/MainSection/MainSection";
 
 const Student = () => {
-    return <div>Student</div>;
+    return (
+        <>
+            <Sidenav />
+            <MainSection />
+        </>
+    );
 };
 
 export default Student;
