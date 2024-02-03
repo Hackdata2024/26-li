@@ -1,6 +1,8 @@
 import Button from "react-bootstrap/Button";
 import Modal from "react-bootstrap/Modal";
 import React from "react";
+import ApiCall from "../../util/ApiCall";
+import { Spinner } from "react-bootstrap";
 
 function MyVerticallyCenteredModal({ questionData, testCasesRunned, ...props }) {
     return (
@@ -18,7 +20,10 @@ function MyVerticallyCenteredModal({ questionData, testCasesRunned, ...props }) 
                     {questionData.TestCases.map((testCase, index) => (
                         <div key={index} style={{ display: "flex", alignItems: "center" }}>
                             <div style={{ fontSize: "20px", fontWeight: "400" }}>{`Test Case ${index + 1}`}</div>
-                            <div style={{ alignItems: "center" }}>Accepted</div>
+                            <div style={{ alignItems: "center" }}>
+                                {" "}
+                                <Spinnerner animation="border" variant="info" />
+                            </div>
                         </div>
                     ))}
                 </div>
@@ -33,6 +38,7 @@ function MyVerticallyCenteredModal({ questionData, testCasesRunned, ...props }) 
 function ResultModal({ questionData, ...props }) {
     const [modalShow, setModalShow] = React.useState(false);
     const [testCasesRunned, setTestCasesRunned] = React.useState([]);
+    console.log(questionData);
     const handleRunCode = () => {
         const getTestCasesRunned = async () => {
             try {
@@ -41,9 +47,9 @@ function ResultModal({ questionData, ...props }) {
                     QuestionId: questionData._id,
                 };
                 console.log(data);
-                // const response = await ApiCall("/RunTests", "POST", data);
-                // console.log("response", response.data);
-                // setTestCasesRunned(response.data);
+                const response = await ApiCall("/RunTests", "POST", data);
+                console.log("response", response.data);
+                setTestCasesRunned(response.data);
             } catch (err) {
                 console.log(err);
             }

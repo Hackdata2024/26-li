@@ -14,14 +14,14 @@ function OffCanvasExample({ changeQuestionViaIndex, assignmentSolution, ...props
         console.log(assignmentSolution);
         const postAssignment = async () => {
             try {
-                // const response = await ApiCall("./submitAssignment", "POST", assignmentSolution);
-                // console.log(response.data);
-                // if (response.data.success) {
-                //     toast.success("Assignment Submitted Successfully");
-                //     window.location.href = "/submittedPage";
-                // } else {
-                //     toast.success("Assignment Submission Failed");
-                // }
+                const response = await ApiCall("./submitAssignment", "POST", assignmentSolution);
+                console.log(response.data);
+                if (response.data.success) {
+                    toast.success("Assignment Submitted Successfully");
+                    window.location.href = "/submittedPage";
+                } else {
+                    toast.success("Assignment Submission Failed");
+                }
             } catch (e) {
                 console.log(e);
             }
