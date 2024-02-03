@@ -59,13 +59,13 @@ const EvaluationsDetailsModal = (props) => {
                 <p>
                     No. of Questions : {evaluation.Questions.length}
                     <br /> Batches :{" "}
-                    {/* {evaluation.Batches.map((batch, index) => {
+                    {evaluation.Batches.map((batch, index) => {
                         return (
                             <Badge bg="secondary" className="mx-1" key={index}>
                                 {batch}
                             </Badge>
                         );
-                    })} */}
+                    })}
                     <br />
                     Start Date and Time : {evaluation.startTime}
                     <br />
