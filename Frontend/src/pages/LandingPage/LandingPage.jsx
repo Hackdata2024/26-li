@@ -25,17 +25,6 @@ const LandingPage = () => {
                         <br />
                         {/* <br /> */}
                     </h1></div>
-                    <div className="imgland" 
-                        style={{
-                            backgroundImage: 'url("/assets/images/coding_languages.png.webp")', 
-                            width: "50vw", 
-                            height: "50vh", 
-                            backgroundSize:"contain",
-                            position: "center center",
-                            alignSelf: "center",
-                            backgroundRepeat: "no-repeat",
-                            justifyContent: "right"
-                            }}></div>
                 </div>
                 <div className="home-section-1">
                     <LandingPageCard
@@ -68,6 +57,14 @@ const LandingPage = () => {
                     />
                 </div>
                 <div className="info" style={{ backgroundColor: "rgba(134, 184, 193, 0.2)", marginTop: "60px", alignItems: "center", width: "100vw", alignSelf: "center" }}>
+                    <h2 style={{fontFamily: "Open Sans",
+                            color: "var(--light)",
+                            fontSize: "40px",
+                            width: "100vw",
+                            textAlign: "center",
+                            paddingTop: "40px",
+                            paddingBottom: "40px",
+                            padding: "20px",}}>CodeSphere</h2>
                     <p
                         style={{
                             fontFamily: "Fira Code",
@@ -78,6 +75,13 @@ const LandingPage = () => {
                             paddingTop: "40px",
                             paddingBottom: "40px",
                             padding: "20px",
+
+                            '@media (maxWidth: 400px)': {
+                                fontSize: "12px",
+                                padding: '20px !important',
+                                borderRadius: '10px !important',
+                                width: "80vw !important",
+                                }
                         }}
                     >
                         {" "}
