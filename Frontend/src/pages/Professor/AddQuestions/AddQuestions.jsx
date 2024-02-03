@@ -462,7 +462,6 @@ const AddQuestions = () => {
                 <Button
                     style={{
                         margin: "14px",
-                        padding: "10px 20px",
                         width: "100px",
                         font: "Fira Code",
                         padding: "10px !important",
@@ -484,7 +483,6 @@ const AddQuestions = () => {
                 <Button
                     style={{
                         margin: "14px",
-                        padding: "10px 20px",
                         width: "100px",
                         font: "Fira Code",
                         padding: "10px !important",
