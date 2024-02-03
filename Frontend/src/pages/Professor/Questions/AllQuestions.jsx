@@ -18,19 +18,20 @@ const AllQuestions = (props) => {
         <div>
             <QuestionModel show={modalShow} question={question} onHide={() => setModalShow(false)} />
             <div style={{ display: "flex", flexDirection: "column", justifyContent: "center", alignItems: "center" }}>
-                <ListGroup style={{ color: "black", width: "50%" }}>
+                <ListGroup className="QuestionsBulletins">
                     {props.allQuestions.map((question, index) => {
                         return (
                             <div key={index} onClick={() => setModalQuestion(true, question)}>
                                 <ListGroup.Item
                                     style={{
-                                        backgroundColor: "rgba(36,36,36,1)",
-                                        color: "white",
+                                        backgroundColor: "var(--lighter)",
+                                        color: "var(--bg1)",
                                         border: "none",
                                         borderRadius: "10px",
                                         display: "flex",
                                         alignItems: "center",
                                         justifyContent: "space-between",
+                                        cursor: "pointer",
                                     }}
                                 >
                                     <div>

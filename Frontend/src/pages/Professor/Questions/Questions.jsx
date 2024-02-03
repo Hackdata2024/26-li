@@ -9,6 +9,7 @@ import ListGroup from "react-bootstrap/ListGroup";
 import Form from "react-bootstrap/Form";
 import Skeleton, { SkeletonTheme } from "react-loading-skeleton";
 import "react-loading-skeleton/dist/skeleton.css";
+import "./Questions.css";
 
 const Questions = () => {
     const [myQuestions, setMyQuestions] = useState([]);
@@ -38,19 +39,19 @@ const Questions = () => {
 
     return (
         <>
-            <div>
+            <div style={{ background: "var(--sec)" }}>
                 <h1
                     style={{
                         color: "white",
                         textAlign: "center",
                         padding: "20px",
-                        backgroundColor: "rgba(36,36,36,1)",
+                        backgroundColor: "var(--sec)",
                     }}
                 >
                     Questions
                 </h1>
 
-                <div style={{ backgroundColor: "white", marginTop: "-9px" }}>
+                <div style={{ backgroundColor: "var(--bg1)", marginTop: "-9px" }}>
                     <Tabs
                         defaultActiveKey="todo"
                         id="justify-tab-example"

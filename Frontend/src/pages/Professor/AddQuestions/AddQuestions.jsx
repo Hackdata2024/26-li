@@ -320,18 +320,22 @@ const AddQuestions = () => {
                                 >
                                     Remove
                                 </Button>
-                                <Form.Label style={{
-                                    color: "var(--lighter)",
-                                    marginBottom: "20px",
-                                }}>Test Case {index + 1}</Form.Label>
+                                <Form.Label
+                                    style={{
+                                        color: "var(--lighter)",
+                                        marginBottom: "10px",
+                                    }}
+                                >
+                                    Test Case {index + 1}
+                                </Form.Label>
                                 <Form.Check // prettier-ignore
                                     style={{
                                         marginBottom: "10px",
-                                        padding: "0px 10px",
-                                        float: "right",
+                                        // padding: "0px 10px",
+                                        // float: "right",
                                         width: "50vw",
                                         borderRadius: "4px",
-                                        // color: "white",
+                                        color: "white",
                                     }}
                                     onChange={(event) => handleSampleTestCaseData(event, index)}
                                     type="switch"
@@ -379,7 +383,7 @@ const AddQuestions = () => {
     }
 
     return (
-        <div style={{ color: "var(--lighter)", backgroundColor:"var(--bg1)" }}>
+        <div style={{ color: "var(--lighter)", backgroundColor: "var(--bg1)" }}>
             <h1 style={{ textAlign: "center", padding: "20px", backgroundColor: "var(--sec)" }}>ADD QUESTIONS</h1>
 
             <Nav
@@ -434,61 +438,67 @@ const AddQuestions = () => {
                 }}
             >
                 <Button
-                    style={{ 
-                        margin: "14px", padding: "10px 20px", width: "100px",
+                    style={{
+                        margin: "14px",
+                        // padding: "10px 20px",
+                        width: "100px",
                         font: "Fira Code",
-                        padding: "10px !important", 
+                        padding: "10px !important",
                         color: "var(--sec)",
                         backgroundColor: "var(--light)",
                         borderColor: "var(--light)",
-                        transition: "box-shadow 0.8s ease-in-out",                        
+                        transition: "box-shadow 0.8s ease-in-out",
                     }}
-                        onMouseOver={(e) => {
-                            e.target.style.backgroundColor = "var(--lighter)";
-                          }}
-                          onMouseOut={(e) => {
-                            e.target.style.backgroundColor = "var(--light)";
-                          }}
+                    onMouseOver={(e) => {
+                        e.target.style.backgroundColor = "var(--lighter)";
+                    }}
+                    onMouseOut={(e) => {
+                        e.target.style.backgroundColor = "var(--light)";
+                    }}
                     onClick={() => handlePrevNext("Prev")}
                 >
                     Previous
                 </Button>
                 <Button
-                    style={{ 
-                        margin: "14px", padding: "10px 20px", width: "100px",
+                    style={{
+                        margin: "14px",
+                        width: "100px",
                         font: "Fira Code",
-                        padding: "10px !important", 
+                        padding: "10px !important",
                         color: "var(--sec)",
                         backgroundColor: "var(--light)",
                         borderColor: "var(--light)",
-                        transition: "box-shadow 0.8s ease-in-out",                        
+                        transition: "box-shadow 0.8s ease-in-out",
                     }}
-                        onMouseOver={(e) => {
-                            e.target.style.backgroundColor = "var(--lighter)";
-                          }}
-                          onMouseOut={(e) => {
-                            e.target.style.backgroundColor = "var(--light)";
-                          }}
+                    onMouseOver={(e) => {
+                        e.target.style.backgroundColor = "var(--lighter)";
+                    }}
+                    onMouseOut={(e) => {
+                        e.target.style.backgroundColor = "var(--light)";
+                    }}
                     onClick={() => handlePrevNext("Next")}
                 >
                     Next
                 </Button>
-                <Button style={{ 
-                        margin: "14px", padding: "10px 20px", width: "100px",
+                <Button
+                    style={{
+                        margin: "14px",
+                        width: "100px",
                         font: "Fira Code",
-                        padding: "10px !important", 
+                        padding: "10px !important",
                         color: "var(--sec)",
                         backgroundColor: "var(--light)",
                         borderColor: "var(--light)",
-                        transition: "box-shadow 0.8s ease-in-out",                        
+                        transition: "box-shadow 0.8s ease-in-out",
                     }}
-                        onMouseOver={(e) => {
-                            e.target.style.backgroundColor = "var(--lighter)";
-                          }}
-                          onMouseOut={(e) => {
-                            e.target.style.backgroundColor = "var(--light)";
-                          }}
-             onClick={() => handleCreate()}>
+                    onMouseOver={(e) => {
+                        e.target.style.backgroundColor = "var(--lighter)";
+                    }}
+                    onMouseOut={(e) => {
+                        e.target.style.backgroundColor = "var(--light)";
+                    }}
+                    onClick={() => handleCreate()}
+                >
                     Create
                 </Button>
             </div>

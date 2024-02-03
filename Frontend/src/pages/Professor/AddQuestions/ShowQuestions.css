@@ -1,0 +1,9 @@
+.ShowQuestions_MainContainer {
+    width: 60vw !important;
+}
+
+@media screen and (max-width: 550px) {
+    .ShowQuestions_MainContainer {
+        width: 90vw !important;
+    }
+}
