@@ -1,18 +1,20 @@
 import React, { useEffect, useState } from "react";
-import "../Assignments/profAssignments.css";
 import Button from "react-bootstrap/Button";
 import Badge from "react-bootstrap/Badge";
 import ListGroup from "react-bootstrap/ListGroup";
 import ApiCall from "../../../util/ApiCall";
 import CreateEvalModal from "./CreateEvaluation/CreateEvalModal";
 import EvaluationsDetailsModal from "./EvaluationsDetailsModal";
+import Skeleton, { SkeletonTheme } from "react-loading-skeleton";
+import "react-loading-skeleton/dist/skeleton.css";
 
-function Evaluations() {
+const Evaluations = () => {
     const [modalShow, setModalShow] = React.useState(false);
     const [evaluation, setEvaluation] = useState([]);
     const [batches, setBatches] = useState([]);
     const [showEvaluationDetails, setShowEvaluationDetails] = useState(false);
     const [clickEvaluation, setClickEvaluation] = useState({});
+    const [loading, setLoading] = useState(true);
 
     useEffect(() => {
         const fetchData = async () => {
@@ -27,6 +29,8 @@ function Evaluations() {
             } catch (error) {
                 console.log("Error fetching data:", error);
                 // Handle error as needed
+            } finally {
+                setLoading(false);
             }
         };
 
@@ -93,62 +97,79 @@ function Evaluations() {
                 }}
             >
                 <ListGroup className="proflistgroup" as="ol" numbered>
-                    {evaluation.map((item, index) => {
-                        const date = new Date(item.StartTime);
-                        const year = date.getFullYear();
-                        const month = ("0" + (date.getMonth() + 1)).slice(-2); // Months are zero-based
-                        const day = ("0" + date.getDate()).slice(-2);
-
-                        const hours = ("0" + date.getHours()).slice(-2);
-                        const minutes = ("0" + date.getMinutes()).slice(-2);
-                        const seconds = ("0" + date.getSeconds()).slice(-2);
-                        // console.log(item);
-                        const formattedStartDateTime = `${hours}:${minutes}:${seconds} ${day}-${month}-${year}`;
-
-                        const date2 = new Date(item.StartTime);
-                        const year2 = date2.getFullYear();
-                        const month2 = ("0" + (date2.getMonth() + 1)).slice(-2); // Months are zero-based
-                        const day2 = ("0" + date2.getDate()).slice(-2);
-
-                        const hr = ("0" + date2.getHours()).slice(-2);
-                        const min = ("0" + date2.getMinutes()).slice(-2);
-                        const sec = ("0" + date2.getSeconds()).slice(-2);
-                        // console.log(item);
-                        const formattedEndDateTime = `${hr}:${min}:${sec} ${day2}-${month2}-${year2}`;
-
-                        return (
-                            <ListGroup.Item
-                                as="li"
-                                className="d-flex justify-content-between align-items-start "
-                                key={index}
-                                style={{ cursor: "pointer" }}
-                                onClick={() => handleOnClick(item)}
-                            >
-                                <div className="ms-2 me-auto">
-                                    <div className="fw-bold">{item.Name || "hello"}</div>
-                                    Year : {item.Year}
+                    {loading ? (
+                        // Display loading skeleton
+                        <SkeletonTheme color="#e0e0e0" highlightColor="#f5f5f5">
+                            {Array.from({ length: 5 }).map((_, index) => (
+                                <div key={index}>
+                                    <Skeleton height={160} />
+                                    {/* <Skeleton height={30} width={300} />
+                                    <Skeleton height={30} width={200} /> */}
                                     <br />
-                                    No. of Questions : {item.Questions.length}
-                                    <br /> Batches :{" "}
-                                    {item.Batches.map((batch, index) => {
-                                        return (
-                                            <Badge bg="secondary" className="mx-1" key={index}>
-                                                {batch}
-                                            </Badge>
-                                        );
-                                    })}
-                                    <br />
-                                    Start Date and Time : {formattedStartDateTime}
-                                    <br />
-                                    End Date and Time : {formattedEndDateTime}
                                 </div>
-                            </ListGroup.Item>
-                        );
-                    })}
+                            ))}
+                        </SkeletonTheme>
+                    ) : (
+                        // Display actual content when not loading
+                        evaluation.map((item, index) => {
+                            const date = new Date(item.StartTime);
+                            const year = date.getFullYear();
+                            const month = ("0" + (date.getMonth() + 1)).slice(-2); // Months are zero-based
+                            const day = ("0" + date.getDate()).slice(-2);
+
+                            const hours = ("0" + date.getHours()).slice(-2);
+                            const minutes = ("0" + date.getMinutes()).slice(-2);
+                            const seconds = ("0" + date.getSeconds()).slice(-2);
+                            // console.log(item);
+                            const formattedStartDateTime = `${hours}:${minutes}:${seconds} ${day}-${month}-${year}`;
+
+                            const date2 = new Date(item.StartTime);
+                            const year2 = date2.getFullYear();
+                            const month2 = ("0" + (date2.getMonth() + 1)).slice(-2); // Months are zero-based
+                            const day2 = ("0" + date2.getDate()).slice(-2);
+
+                            const hr = ("0" + date2.getHours()).slice(-2);
+                            const min = ("0" + date2.getMinutes()).slice(-2);
+                            const sec = ("0" + date2.getSeconds()).slice(-2);
+                            // console.log(item);
+                            const formattedEndDateTime = `${hr}:${min}:${sec} ${day2}-${month2}-${year2}`;
+
+                            return (
+                                <div key={index}>
+                                    <ListGroup.Item
+                                        as="li"
+                                        className="d-flex justify-content-between align-items-start "
+                                        style={{ cursor: "pointer", borderRadius: "10px" }}
+                                        onClick={() => handleOnClick(item)}
+                                    >
+                                        <div className="ms-2 me-auto">
+                                            <div className="fw-bold">{item.Name || "hello"}</div>
+                                            Year : {item.Year}
+                                            <br />
+                                            No. of Questions : {item.Questions.length}
+                                            <br /> Batches :{" "}
+                                            {item.Batches.map((batch, index) => {
+                                                return (
+                                                    <Badge bg="secondary" className="mx-1" key={index}>
+                                                        {batch}
+                                                    </Badge>
+                                                );
+                                            })}
+                                            <br />
+                                            Start Date and Time : {formattedStartDateTime}
+                                            <br />
+                                            End Date and Time : {formattedEndDateTime}
+                                        </div>
+                                    </ListGroup.Item>
+                                    <br />
+                                </div>
+                            );
+                        })
+                    )}
                 </ListGroup>
             </div>
         </div>
     );
-}
+};
 
 export default Evaluations;
