@@ -6,11 +6,15 @@ import Todo from "./Todo";
 import Missing from "./Missing";
 import Submitted from "./Submitted";
 import ApiCall from "../../../util/ApiCall";
+import { ListGroup } from "react-bootstrap";
+import Skeleton, { SkeletonTheme } from "react-loading-skeleton";
+import "react-loading-skeleton/dist/skeleton.css";
 
 const Assignments = () => {
     const [todoAssignments, setTodoAssignments] = useState([]);
     const [missingAssignments, setMissingAssignments] = useState([]);
     const [submittedAssignments, setSubmittedAssignments] = useState([]);
+    const [loading, setLoading] = useState(true);
 
     useEffect(() => {
         const getAssignments = async () => {
@@ -37,6 +41,8 @@ const Assignments = () => {
                 setSubmittedAssignments(submitted);
             } catch (error) {
                 console.error("Error fetching assignments: ", error);
+            } finally {
+                setLoading(false);
             }
         };
         getAssignments();
@@ -68,7 +74,34 @@ const Assignments = () => {
                             eventKey="todo"
                             title={<span style={{ fontSize: "18px", fontWeight: "500" }}> Pending</span>}
                         >
-                            {todoAssignments.length != 0 ? (
+                            {loading ? (
+                                Array.from({ length: 5 }).map((_, index) => (
+                                    <SkeletonTheme key={index} color="#e0e0e0" highlightColor="#f5f5f5">
+                                        <div
+                                            style={{
+                                                display: "flex",
+                                                flexDirection: "column",
+                                                justifyContent: "center",
+                                                alignItems: "center",
+                                            }}
+                                        >
+                                            <ListGroup style={{ color: "black", width: "50%" }}>
+                                                <ListGroup.Item style={{ height: "100px" }}>
+                                                    <Skeleton width={150} />
+                                                    <Skeleton width={200} />
+                                                    <Skeleton width={220} />
+                                                    <Skeleton
+                                                        width={90}
+                                                        height={40}
+                                                        style={{ float: "right", top: "-60px" }}
+                                                    />
+                                                </ListGroup.Item>
+                                            </ListGroup>
+                                        </div>
+                                        <br />
+                                    </SkeletonTheme>
+                                ))
+                            ) : todoAssignments.length != 0 ? (
                                 <Todo Assignments={todoAssignments} />
                             ) : (
                                 <div style={{ paddingBottom: "10px", fontSize: "20px", textAlign: "center" }}>
@@ -80,7 +113,29 @@ const Assignments = () => {
                             eventKey="missing"
                             title={<span style={{ fontSize: "18px", fontWeight: "500" }}> Missed</span>}
                         >
-                            {missingAssignments.length != 0 ? (
+                            {loading ? (
+                                Array.from({ length: 5 }).map((_, index) => (
+                                    <SkeletonTheme key={index} color="#e0e0e0" highlightColor="#f5f5f5">
+                                        <div
+                                            style={{
+                                                display: "flex",
+                                                flexDirection: "column",
+                                                justifyContent: "center",
+                                                alignItems: "center",
+                                            }}
+                                        >
+                                            <ListGroup style={{ color: "black", width: "50%" }}>
+                                                <ListGroup.Item style={{ height: "100px" }}>
+                                                    <Skeleton width={150} />
+                                                    <Skeleton width={200} />
+                                                    <Skeleton width={220} />
+                                                </ListGroup.Item>
+                                            </ListGroup>
+                                        </div>
+                                        <br />
+                                    </SkeletonTheme>
+                                ))
+                            ) : missingAssignments.length != 0 ? (
                                 <Missing Assignments={missingAssignments} />
                             ) : (
                                 <div style={{ paddingBottom: "10px", fontSize: "20px", textAlign: "center" }}>
@@ -92,7 +147,29 @@ const Assignments = () => {
                             eventKey="submitted"
                             title={<span style={{ fontSize: "18px", fontWeight: "500" }}> Submitted</span>}
                         >
-                            {submittedAssignments.length != 0 ? (
+                            {loading ? (
+                                Array.from({ length: 5 }).map((_, index) => (
+                                    <SkeletonTheme key={index} color="#e0e0e0" highlightColor="#f5f5f5">
+                                        <div
+                                            style={{
+                                                display: "flex",
+                                                flexDirection: "column",
+                                                justifyContent: "center",
+                                                alignItems: "center",
+                                            }}
+                                        >
+                                            <ListGroup style={{ color: "black", width: "50%" }}>
+                                                <ListGroup.Item style={{ height: "100px" }}>
+                                                    <Skeleton width={150} />
+                                                    <Skeleton width={200} />
+                                                    <Skeleton width={220} />
+                                                </ListGroup.Item>
+                                            </ListGroup>
+                                        </div>
+                                        <br />
+                                    </SkeletonTheme>
+                                ))
+                            ) : submittedAssignments.length != 0 ? (
                                 <Submitted Assignments={submittedAssignments} />
                             ) : (
                                 <div style={{ paddingBottom: "10px", fontSize: "20px", textAlign: "center" }}>
