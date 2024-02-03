@@ -60,7 +60,6 @@ module.exports = (app) => {
             thisProfessor = JSON.parse(JSON.stringify(thisProfessor))
 
             if (thisProfessor.length > 0) {
-
                 delete thisProfessor[0].Password;
                 thisAssignment[0].PostedBy = thisProfessor[0];
             }

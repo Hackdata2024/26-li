@@ -10,60 +10,84 @@ const LandingPage = () => {
 
     return (
         <>
-            <NavBar/>
-            <div className="home-section" style={{display:"flex"}}>
-            <div className="heading">
-                <h1 style={{ 
-                    fontFamily: "Open Sans",
-                    color: "rgba(227, 243, 246)",
-                    fontSize: "60px",
-                    marginTop: "30px",
-                    textAlign: "center"
-                }}> Simplify. Automate.<i> Excel.</i><br/><br/></h1></div>
-            <div className="home-section-1">
-                <LandingPageCard
-                    width="44%"
-                    marginTop="28px"
-                    title="CodeSphere for Students"
-                    content="Coding made simple with CodeSphere."
-                    btntext="Login"
-                    btnLink={typeof studentToken != "undefined" ? "/student/assignments" : "/login/students"}
-                />
-                <LandingPageCard
-                    width="44%"
-                    marginTop="28px"
-                    title="CodeSphere for Professors"
-                    content="Streamlining grading with CodeSphere."
-                    backgroundColor="rgba(227, 243, 246)"
-                    btntext="Login"
-                    btnLink={typeof professorToken != "undefined" ? "/professor/assignments" : "/login/professors"}
-                />
+            <NavBar />
+            <div className="home-section" style={{ display: "flex", marginTop: "50px", paddingBottom: "100px" }}>
+                <div className="heading d-flex" style={{justifyContent: "space-between"}}>
+                    <div><h1
+                        style={{
+                            fontFamily: "Open Sans",
+                            color: "rgba(227, 243, 246)",
+                            fontSize: "60px",
+                            margin: "80px 0 80px 80px",
+                        }}>
+                        {" "}
+                        Simplify. <br/><br/>Automate.<i><br/><br/> Excel.</i>
+                        <br />
+                        {/* <br /> */}
+                    </h1></div>
+                    <div className="imgland" 
+                        style={{
+                            backgroundImage: 'url("/assets/images/coding_languages.png.webp")', 
+                            width: "50vw", 
+                            height: "50vh", 
+                            backgroundSize:"contain",
+                            position: "center center",
+                            alignSelf: "center",
+                            backgroundRepeat: "no-repeat",
+                            justifyContent: "right"
+                            }}></div>
+                </div>
+                <div className="home-section-1">
+                    <LandingPageCard
+                        width="44%"
+                        marginTop="28px"
+                        title="CodeSphere for Students"
+                        content="Coding made simple with CodeSphere."
+                        btntext="Login"
+                        btnLink={typeof studentToken != "undefined" ? "/student/assignments" : "/login/students"}
+                    />
+                    <LandingPageCard
+                        width="44%"
+                        marginTop="28px"
+                        title="CodeSphere for Professors"
+                        content="Streamlining grading with CodeSphere."
+                        backgroundColor="rgba(227, 243, 246)"
+                        btntext="Login"
+                        btnLink={typeof professorToken != "undefined" ? "/professor/assignments" : "/login/professors"}
+                    />
+                </div>
+                <div className="home-section-2">
+                    <LandingPageCard
+                        width="44%"
+                        marginTop="0px"
+                        backgroundColor=""
+                        title="REGISTER YOUR COLLEGE"
+                        content="Making your students better coders."
+                        btntext="Register"
+                        btnLink="/registerCollege"
+                    />
+                </div>
+                <div className="info" style={{ backgroundColor: "rgba(134, 184, 193, 0.2)", marginTop: "60px", alignItems: "center", width: "100vw", alignSelf: "center" }}>
+                    <p
+                        style={{
+                            fontFamily: "Fira Code",
+                            color: "var(--lighter)",
+                            fontSize: "23px",
+                            width: "100vw",
+                            textAlign: "center",
+                            paddingTop: "40px",
+                            paddingBottom: "40px",
+                            padding: "20px",
+                        }}
+                    >
+                        {" "}
+                        CodeSphere transforms coding assessments with an automated, user-friendly platform. Simplify
+                        grading for professors, streamline assignments for students, and enhance overall efficiency in
+                        coding education. Elevate the learning experience with CodeSphere's comprehensive solution.
+                    </p>
+                </div>
             </div>
-            <div className="home-section-2">
-                <LandingPageCard
-                    width="44%"
-                    marginTop="0px"
-                    backgroundColor=""
-                    title="REGISTER YOUR COLLEGE"
-                    content="Making your students better coders."
-                    btntext="Register"
-                    btnLink="/registerCollege"
-                />
-            </div>
-            {/* <div className="info" style={{backgroundColor:"rgba(134, 184, 193, 0.2)", borderRadius: "10px"}}>
-                <p style={{ 
-                    fontFamily: "Open Sans",
-                    color: "var(--)",
-                    fontSize: "20px",
-                    marginTop: "60px",
-                    textAlign: "center",
-                }}>  CodeSphere transforms coding assessments 
-                with an automated, user-friendly platform. 
-                Simplify grading for professors, streamline assignments for students, and enhance overall efficiency in coding education.
-                Elevate the learning experience with CodeSphere's comprehensive solution.</p></div> */}
-        </div>
         </>
-        
     );
 };
 

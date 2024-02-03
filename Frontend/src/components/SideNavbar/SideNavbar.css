@@ -6,27 +6,41 @@
     z-index: 4;
     /* top: 60px; */
     left: 0;
-    background-color: rgb(25, 25, 25);
+    background-color: var(--bg1);
     overflow-x: hidden;
     transition: 0.5s;
     padding-top: 60px;
 }
 
 .sidelink {
-    padding: 0px 8px 0px 32px;
+    text-align: center;
     text-decoration: none;
     font-size: 25px;
-    color: #818181;
+    color: var(--lighter);
     display: block;
     transition: 0.3s;
 }
 
 .sidenavvbar {
     height: 50px;
+    background-color: var(--bg1);
 }
 
 .sidelink:hover {
     color: #f1f1f1;
+}
+
+.sidenavbarsections
+{
+    margin: 0px;
+    margin-top: 7px;
+    padding: 16px;
+    transition: 0.3s ease-in-out;
+}
+
+.sidenavbarsections:hover
+{
+    background-color: var(--light);
 }
 
 .sidenav .closebtn {

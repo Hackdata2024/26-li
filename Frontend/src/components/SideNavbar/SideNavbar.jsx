@@ -69,17 +69,17 @@ const Sidenav = () => {
                 <hr style={{ color: "white" }} />
                 {sidenavItems.map((item, index) => {
                     return (
-                        <div key={index}>
+                        <div className="sidenavbarsections" key={index}>
                             <Link className="sidelink" to={item.link}>
                                 {item.name}
                             </Link>
-                            <hr style={{ color: "white" }} />
+                            {/* <hr style={{ color: "white" }} /> */}
                         </div>
                     );
                 })}
             </div>
 
-            <span style={{ fontSize: "30px", cursor: "pointer", padding: "15px" }} onClick={openNav}>
+            <span style={{ fontSize: "30px", cursor: "pointer", padding: "15px", color: "var(--lighter)"}} onClick={openNav}>
                 &#9776;
             </span>
             <Dropdown data-bs-theme="dark">
@@ -93,6 +93,7 @@ const Sidenav = () => {
                         margin: "5px 5px",
                         height: "40px",
                         width: "40px",
+                        color: "var(--lighter) !important"
                     }}
                     id="dropdown-button-dark-example1"
                     variant="secondary"
@@ -101,11 +102,11 @@ const Sidenav = () => {
                     <IoPersonSharp />
                 </Dropdown.Toggle>
                 <Dropdown.Menu>
-                    <div style={{ textAlign: "center", margin: "10px 0px" }}>{profileDetails.Name}</div>
-                    <div style={{ textAlign: "center", margin: "10px 0px" }}>{profileDetails.institution}</div>
+                    <div style={{ textAlign: "center", margin: "10px 0px", color: "var(--lighter)"}}>{profileDetails.Name}</div>
+                    <div style={{ textAlign: "center", margin: "10px 0px", color: "var(--lighter)" }}>{profileDetails.institution}</div>
                     <Dropdown.Divider />
                     <Dropdown.Item style={{ textAlign: "center" }} onClick={handleLogout} href="#/action-4">
-                        Log Out
+                        LOG OUT
                     </Dropdown.Item>
                 </Dropdown.Menu>
             </Dropdown>

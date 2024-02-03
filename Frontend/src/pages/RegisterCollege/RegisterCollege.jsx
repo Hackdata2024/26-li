@@ -54,14 +54,22 @@ function RegisterCollege() {
         >
             <NavBar />
             <Form
-            style={{
-                marginTop: '50px',
-                backgroundColor: "rgba(134, 184, 193, 0.4)",
-                padding: "50px",
-                borderRadius: "20px",
-            }}
-            className="registercollege"
-            onSubmit={handleSubmit}>
+                style={{
+                    marginTop:"50px",
+                    backgroundColor: 'rgba(13, 15, 26, 0.7)',
+                    padding: '50px',
+                    borderRadius: '30px',
+                    width: "65vw",
+
+                    '@media (maxWidth: 400px)': {
+                    padding: '20px !important',
+                    borderRadius: '10px !important',
+                    width: "80vw !important",
+                    },
+                }}
+                className="registercollege"
+                onSubmit={handleSubmit}
+                >
                 <h1 className="text-center mb-4">{`REGISTER YOUR COLLEGE`}</h1>
 
                 <div

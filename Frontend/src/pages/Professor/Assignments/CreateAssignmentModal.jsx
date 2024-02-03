@@ -6,12 +6,11 @@ import Modal from "react-bootstrap/Modal";
 import QuestionTab from "./QuestionTab";
 import ApiCall from "../../../util/ApiCall";
 import { toast } from "react-toastify";
+import Skeleton, { SkeletonTheme } from "react-loading-skeleton";
+import "react-loading-skeleton/dist/skeleton.css";
 
 const CreateAssignmentModal = (props) => {
     const [selectedOption, setSelectedOption] = useState("Description");
-
-    console.log("batches are: ", props);
-
     const [formData, setFormData] = useState({
         Year: "",
         Batches: [],
@@ -19,6 +18,29 @@ const CreateAssignmentModal = (props) => {
         DueTimestamp: "",
         AssignmentName: "",
     });
+    const [loading, setLoading] = useState(true);
+
+    useEffect(() => {
+        const fetchData = async () => {
+            try {
+                // Simulate loading delay
+                await new Promise((resolve) => setTimeout(resolve, 1000));
+
+                const response = await ApiCall("/professors/myQuestions", "GET", {});
+                console.log(response.data.data);
+                setFormData((prevData) => ({
+                    ...prevData,
+                    Questions: response.data.data.map((question) => question._id),
+                }));
+            } catch (error) {
+                console.error("Error during fetching questions:", error);
+            } finally {
+                setLoading(false);
+            }
+        };
+
+        fetchData();
+    }, []);
 
     const handleChange = (e) => {
         const { name, value, type, checked } = e.target;
@@ -103,101 +125,110 @@ const CreateAssignmentModal = (props) => {
         };
         postAssignment();
     };
+
     let content;
 
-    if (selectedOption === "Description") {
+    if (loading) {
         content = (
-            <Form>
-                <p>Assignment Name</p>
-                <Form.Control
-                    type="text"
-                    name="AssignmentName"
-                    id="inputPassword5"
-                    value={formData.AssignmentName}
-                    onChange={handleChange}
-                    aria-describedby="passwordHelpBlock"
-                />
-
-                <br />
-
-                <p htmlFor="datetime">Select a date and time:</p>
-                <input
-                    type="datetime-local"
-                    id="datetime"
-                    value={formData.DueTimestamp}
-                    onChange={handleChange}
-                    name="DueTimestamp"
-                />
-                <br />
-                <br />
-                <p>Select Year:</p>
-                {["radio"].map((type) => (
-                    <div key={`inline-${type}`} className="mb-3">
-                        <Form.Check
-                            inline
-                            label="First Year"
-                            name="Year"
-                            type={type}
-                            id={`inline-${type}-1`}
-                            value="First Year"
-                            checked={formData.Year === "First Year"}
-                            onChange={handleChange}
-                        />
-                        <Form.Check
-                            inline
-                            label="Second Year"
-                            name="Year"
-                            type={type}
-                            id={`inline-${type}-2`}
-                            value="Second Year"
-                            checked={formData.Year === "Second Year"}
-                            onChange={handleChange}
-                        />
-                        <Form.Check
-                            inline
-                            label="Third Year"
-                            type={type}
-                            name="Year"
-                            id={`inline-${type}-3`}
-                            value="Third Year"
-                            checked={formData.Year === "Third Year"}
-                            onChange={handleChange}
-                        />
-                        <Form.Check
-                            inline
-                            label="Fourth Year"
-                            type={type}
-                            name="Year"
-                            id={`inline-${type}-3`}
-                            value="Fourth Year"
-                            checked={formData.Year === "Fourth Year"}
-                            onChange={handleChange}
-                        />
-                    </div>
-                ))}
-                <p>Select Batches</p>
-                {["checkbox"].map((type) => (
-                    <div key={`inline-${type}`} className="mb-3">
-                        {props.batches.map((batch, index) => {
-                            // console.log(batch);
-                            return (
-                                <Form.Check
-                                    key={index}
-                                    inline
-                                    label={batch}
-                                    name={batch}
-                                    type={type}
-                                    id={`inline-${type}-${index}`}
-                                    onChange={handleChange}
-                                />
-                            );
-                        })}
-                    </div>
-                ))}
-            </Form>
+            <SkeletonTheme color="#e0e0e0" highlightColor="#f5f5f5">
+                <Skeleton height={200} />
+            </SkeletonTheme>
         );
     } else {
-        content = <QuestionTab formData={formData} setFormData={setFormData} />;
+        if (selectedOption === "Description") {
+            content = (
+                <Form>
+                    <p>Assignment Name</p>
+                    <Form.Control
+                        type="text"
+                        name="AssignmentName"
+                        id="inputPassword5"
+                        value={formData.AssignmentName}
+                        onChange={handleChange}
+                        aria-describedby="passwordHelpBlock"
+                    />
+
+                    <br />
+
+                    <p htmlFor="datetime">Select a date and time:</p>
+                    <input
+                        type="datetime-local"
+                        id="datetime"
+                        value={formData.DueTimestamp}
+                        onChange={handleChange}
+                        name="DueTimestamp"
+                    />
+                    <br />
+                    <br />
+                    <p>Select Year:</p>
+                    {["radio"].map((type) => (
+                        <div key={`inline-${type}`} className="mb-3">
+                            <Form.Check
+                                inline
+                                label="First Year"
+                                name="Year"
+                                type={type}
+                                id={`inline-${type}-1`}
+                                value="First Year"
+                                checked={formData.Year === "First Year"}
+                                onChange={handleChange}
+                            />
+                            <Form.Check
+                                inline
+                                label="Second Year"
+                                name="Year"
+                                type={type}
+                                id={`inline-${type}-2`}
+                                value="Second Year"
+                                checked={formData.Year === "Second Year"}
+                                onChange={handleChange}
+                            />
+                            <Form.Check
+                                inline
+                                label="Third Year"
+                                type={type}
+                                name="Year"
+                                id={`inline-${type}-3`}
+                                value="Third Year"
+                                checked={formData.Year === "Third Year"}
+                                onChange={handleChange}
+                            />
+                            <Form.Check
+                                inline
+                                label="Fourth Year"
+                                type={type}
+                                name="Year"
+                                id={`inline-${type}-3`}
+                                value="Fourth Year"
+                                checked={formData.Year === "Fourth Year"}
+                                onChange={handleChange}
+                            />
+                        </div>
+                    ))}
+                    <p>Select Batches</p>
+                    {["checkbox"].map((type) => (
+                        <div key={`inline-${type}`} className="mb-3">
+                            {props.batches.map((batch, index) => {
+                                // console.log(batch);
+                                return (
+                                    <Form.Check
+                                        key={index}
+                                        inline
+                                        label={batch}
+                                        name={batch}
+                                        type={type}
+                                        id={`inline-${type}-${index}`}
+                                        onChange={handleChange}
+                                    />
+                                );
+                            })}
+                        </div>
+                    ))}
+                </Form>
+            );
+        } else {
+            content = <QuestionTab formData={formData} setFormData={setFormData} />;
+        }
     }
 
     return (
@@ -228,24 +259,35 @@ const CreateAssignmentModal = (props) => {
             </Modal.Header>
             <Modal.Body>{content}</Modal.Body>
             <Modal.Footer>
-                {selectedOption === "Description" && (
+                {loading ? (
+                    // Display loading skeleton for buttons
                     <>
-                        <Button onClick={() => handlePrevNext("Next")}>Next</Button>
+                        <SkeletonTheme color="#e0e0e0" highlightColor="#f5f5f5">
+                            <Skeleton width={80} height={40} />
+                            <Skeleton width={80} height={40} />
+                        </SkeletonTheme>
+                    </>
+                ) : (
+                    <>
+                        {selectedOption === "Description" && (
+                            <>
+                                <Button onClick={() => handlePrevNext("Next")}>Next</Button>
+                            </>
+                        )}
+                        {selectedOption === "Batch" && (
+                            <>
+                                <Button onClick={() => handlePrevNext("Prev")}>Prev</Button>
+                                <Button onClick={() => handlePrevNext("Next")}>Next</Button>
+                            </>
+                        )}
+                        {selectedOption === "Questions" && (
+                            <>
+                                <Button onClick={() => handlePrevNext("Prev")}>Prev</Button>
+                                <Button onClick={handleCreateAssignment}>Create</Button>
+                            </>
+                        )}
                     </>
                 )}
-                {selectedOption === "Batch" && (
-                    <>
-                        <Button onClick={() => handlePrevNext("Prev")}>Prev</Button>
-                        <Button onClick={() => handlePrevNext("Next")}>Next</Button>
-                    </>
-                )}
-                {selectedOption === "Questions" && (
-                    <>
-                        <Button onClick={() => handlePrevNext("Prev")}>Prev</Button>
-                        <Button onClick={handleCreateAssignment}>Create</Button>
-                    </>
-                )}
-                {/* <Button onClick={props.onHide}>Create</Button> */}
             </Modal.Footer>
         </Modal>
     );
