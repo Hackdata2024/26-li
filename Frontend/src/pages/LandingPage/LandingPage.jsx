@@ -21,7 +21,7 @@ const LandingPage = () => {
                             margin: "80px 0 80px 80px",
                         }}>
                         {" "}
-                        Simplify. <br/><br/>Automate.<i><br/><br/> Excel.</i>
+                        S i m p l i f y. <br/><br/>A u t o m a t e.<i><br/><br/> Excel.</i>
                         <br />
                         {/* <br /> */}
                     </h1></div>
