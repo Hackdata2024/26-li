@@ -123,14 +123,27 @@ const Assignments = () => {
                         ? // Display loading skeleton
 
                           Array.from({ length: 5 }).map((_, index) => (
-                              <div key={index}>
-                                  <SkeletonTheme color="#e0e0e0" highlightColor="#f5f5f5">
-                                      <Skeleton height={100} />
-                                      {/* <Skeleton height={30} width={300} />
-                                    <Skeleton height={30} width={200} /> */}
-                                  </SkeletonTheme>
+                              <SkeletonTheme key={index} color="#e0e0e0" highlightColor="#f5f5f5">
+                                  <div
+                                      style={{
+                                          display: "flex",
+                                          flexDirection: "column",
+                                          justifyContent: "center",
+                                          alignItems: "center",
+                                      }}
+                                  >
+                                      <ListGroup style={{ color: "black", height: "90px", width: "100%" }}>
+                                          <ListGroup.Item>
+                                              <Skeleton width={150} />
+                                              <Skeleton width={200} />
+                                              <Skeleton width={220} />
+                                              <Skeleton width={300} />
+                                          </ListGroup.Item>
+                                      </ListGroup>
+                                  </div>
                                   <br />
-                              </div>
+                                  <br />
+                              </SkeletonTheme>
                           ))
                         : // Display actual content when not loading
                           assignment.map((item, index) => {
