@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 
 import Assignments from "../../pages/Professor/Assignments/Assignments";
+import Questions from "../../pages/Professor/Questions/Questions";
 
 import { useParams } from "react-router-dom";
 
@@ -24,7 +25,7 @@ const MainSection = () => {
         if (section === "assignments") return <Assignments />;
         else if (section === "addQuestion") return <></>;
         else if (section === "evals") return <></>;
-        else if (section === "Questions") return <></>;
+        else if (section === "Questions") return <Questions />;
     }
 };
 
