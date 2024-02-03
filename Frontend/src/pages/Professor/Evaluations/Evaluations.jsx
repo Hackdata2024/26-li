@@ -45,7 +45,8 @@ const Evaluations = () => {
     return (
         <div
             style={{
-                backgroundColor: "rgba(36, 36, 36, 1)",
+                backgroundColor: "var(--sec)",
+                fontFamily: "Open Sans",
             }}
         >
             <div
@@ -75,7 +76,7 @@ const Evaluations = () => {
                     fontWeight: "600",
                 }}
             >
-                Evaluations
+                EVALUATIONS
             </div>
             <div
                 style={{
@@ -84,7 +85,22 @@ const Evaluations = () => {
                     margin: "20px",
                 }}
             >
-                <Button variant="primary" onClick={() => setModalShow(true)}>
+                <Button variant="primary" onClick={() => setModalShow(true)}
+                 style={{ 
+                        font: "Fira Code",
+                        padding: "10px !important", 
+                        color: "var(--sec)",
+                        backgroundColor: "var(--light)",
+                        borderColor: "var(--light)",
+                        transition: "box-shadow 0.8s ease-in-out",                        
+                    }}
+                        onMouseOver={(e) => {
+                            e.target.style.backgroundColor = "var(--lighter)";
+                          }}
+                          onMouseOut={(e) => {
+                            e.target.style.backgroundColor = "var(--light)";
+                          }}
+                >
                     Create Evaluation
                 </Button>
             </div>

@@ -331,7 +331,7 @@ const AddQuestions = () => {
                                         float: "right",
                                         width: "50vw",
                                         borderRadius: "4px",
-                                        color: "white",
+                                        // color: "white",
                                     }}
                                     onChange={(event) => handleSampleTestCaseData(event, index)}
                                     type="switch"
