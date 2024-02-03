@@ -6,7 +6,7 @@ const { registeredCollegesSchema } = require("../db/schema");
 module.exports = (app) => {
     app.get("/getBatches", hasAccess, (req, res) => {
 
-        readDB("Colleges", "Registered", { name: req.decoded.institution }, registeredCollegesSchema).then((result) => {
+        readDB("Colleges", "Registered", { Name: req.decoded.institution }, registeredCollegesSchema).then((result) => {
 
             if (result.length == 0) {
                 return res.json({

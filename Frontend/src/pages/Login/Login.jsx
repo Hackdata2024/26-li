@@ -89,7 +89,7 @@ function Login() {
             <Form 
             style={{
                 marginTop: '50px',
-                backgroundColor: "rgba(134, 184, 193, 0.4)",
+                backgroundColor: "rgba(13, 15, 26, 0.7)",
                 padding: "50px",
                 borderRadius: "20px",
                 
@@ -153,7 +153,7 @@ function Login() {
                             e.target.style.boxShadow = "0 0 10px rgba(134, 184, 193, 1)";
                           }}
                           onMouseOut={(e) => {
-                            e.target.style.boxShadow = "0 0 10px rgba(134, 184, 193, 0.6)";
+                            e.target.style.boxShadow = "0 0 10px rgba(134, 184, 193, 0.3)";
                           }}
                         >
                         Submit                    </Button>

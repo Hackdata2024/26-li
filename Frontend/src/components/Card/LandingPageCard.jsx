@@ -21,6 +21,8 @@ const LandingPageCard = ({ width, marginTop, title, content, btntext, btnLink })
     const cardStyle = {
         width: isWideScreen ? width : "90%",
         marginTop: marginTop,
+        backgroundColor: "rgba(227, 243, 246)",
+        padding: "20px",
     };
     return (
         <Card className="text-center" style={cardStyle}>
@@ -29,9 +31,23 @@ const LandingPageCard = ({ width, marginTop, title, content, btntext, btnLink })
                 <Card.Title>{title}</Card.Title>
                 <Card.Text>{content}</Card.Text>
                 <Link to={btnLink}>
-                    <Button style={{ padding: "8px 40px", border: "none", borderRadius: "4px" }} variant="primary">
-                        {btntext}
-                    </Button>
+                <Button variant="primary" style={{ 
+                        font: "Fira Code",
+                        paddingLeft: "20px", 
+                        paddingRight: "20px",
+                        color: "var(--sec)",
+                        backgroundColor: "var(--light)",
+                        borderColor: "var(--light)",
+                        transition: "box-shadow 0.3s ease-in-out",                        
+                    }}
+                        onMouseOver={(e) => {
+                            e.target.style.boxShadow = "0 0 10px rgba(134, 184, 193, 1)";
+                          }}
+                          onMouseOut={(e) => {
+                            e.target.style.boxShadow = "0 0 10px rgba(134, 184, 193, 0.3)";
+                          }}
+                        >
+                        {btntext}                   </Button>
                 </Link>
             </Card.Body>
             <Card.Footer className="text-muted"></Card.Footer>

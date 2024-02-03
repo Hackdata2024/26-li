@@ -12,17 +12,20 @@ const LandingPage = () => {
         <div className="home-section">
             <NavBar />
             <div className="home-section-1">
-                <LandingPageCard className="card" style={{backgroundColor:"var(--sec)"}}
+                <LandingPageCard
                     width="44%"
                     marginTop="28px"
                     title="CodeSphere for Students"
+                    content="Coding made simple with CodeSphere."
                     btntext="Login"
+                    
                     btnLink={typeof studentToken != "undefined" ? "/student/assignments" : "/login/students"}
                 />
                 <LandingPageCard
                     width="44%"
                     marginTop="28px"
                     title="CodeSphere for Professors"
+                    content="Streamlining grading with CodeSphere."
                     backgroundColor="rgba(227, 243, 246)"
                     btntext="Login"
                     btnLink={typeof professorToken != "undefined" ? "/professor/assignments" : "/login/professors"}
@@ -30,11 +33,11 @@ const LandingPage = () => {
             </div>
             <div className="home-section-2">
                 <LandingPageCard
-                    width="80%"
+                    width="44%"
                     marginTop="0px"
                     backgroundColor=""
                     title="REGISTER YOUR COLLEGE"
-                    content="Enhance your college coding culture. Make your students better coders."
+                    content="Making your students better coders."
                     btntext="Register"
                     btnLink="/registerCollege"
                 />
