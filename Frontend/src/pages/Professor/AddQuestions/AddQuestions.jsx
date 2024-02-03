@@ -434,7 +434,7 @@ const AddQuestions = () => {
                     marginBottom: "60px",
                     backgroundColor: "var(--sec)",
                     display: "flex",
-                    justifyContent: "end",
+                    justifyContent: "center",
                 }}
             >
                 <Button

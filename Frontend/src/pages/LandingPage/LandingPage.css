@@ -51,12 +51,11 @@ h1 {
         width: 80vw !important;
     }
 
-    h2 
-    {
-       font-size: 30px !important; 
+    h2 {
+        font-size: 30px !important;
     }
-    p{
+    p {
         font-size: 18px !important;
         padding: 20px;
-    };
+    }
 }
