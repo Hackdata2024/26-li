@@ -7,20 +7,6 @@ import Card from "react-bootstrap/Card";
 const Ongoing = (props) => {
     return (
         <>
-            {/* {props.Evaluations.map((evaluation, index) => {
-                return (
-                    <div key={index} className="card" style={{ margin: "20px" }}>
-                        <div className="card-body d-flex justify-content-between align-items-center ">
-                            <h5 className="card-title">{evaluation.Name}</h5>
-                            <p className="card-text">End Time : {evaluation.EndTime}</p>
-                            <a href={`/problemSolve/evaluations/${evaluation._id}`} className="btn btn-primary">
-                                View
-                            </a>
-                        </div>
-                    </div>
-                );
-            })} */}
-
             <div style={{ display: "flex", flexDirection: "column", justifyContent: "center", alignItems: "center" }}>
                 <ListGroup style={{ color: "black", width: "50%" }}>
                     {props.Evaluations.map((evaluation, index) => {
@@ -54,7 +40,7 @@ const Ongoing = (props) => {
                                         End Time: <span>{formattedTime}</span>
                                     </div>
 
-                                    <Link to={`/solveProblem/assignment/${evaluation._id}`}>
+                                    <Link to={`/solveProblem/evaluation/${evaluation._id}`}>
                                         <Button style={{ width: "80px" }}>Solve</Button>
                                     </Link>
                                 </ListGroup.Item>

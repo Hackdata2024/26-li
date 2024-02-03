@@ -34,9 +34,23 @@ function ResultModal({ questionData, ...props }) {
     const [modalShow, setModalShow] = React.useState(false);
     const [testCasesRunned, setTestCasesRunned] = React.useState([]);
     const handleRunCode = () => {
+        const getTestCasesRunned = async () => {
+            try {
+                const data = {
+                    code: questionData.Code,
+                    QuestionId: questionData._id,
+                };
+                console.log(data);
+                // const response = await ApiCall("/RunTests", "POST", data);
+                // console.log("response", response.data);
+                // setTestCasesRunned(response.data);
+            } catch (err) {
+                console.log(err);
+            }
+        };
         setModalShow(true);
+        getTestCasesRunned();
     };
-
     return (
         <>
             <Button variant="primary" onClick={() => handleRunCode()}>

@@ -62,8 +62,8 @@ const SolveProblem = () => {
     const getQuestions = async (url, type) => {
         try {
             const response = await ApiCall(url, "GET");
-            // console.log(response.data);
-            // console.log(response.data.data.Questions);
+            console.log("response", response.data);
+            console.log("response", response.data.data.Questions);
             setQuestions(response.data.data.Questions);
             setQuestionData(response.data.data.Questions[currIndex]);
         } catch (error) {
