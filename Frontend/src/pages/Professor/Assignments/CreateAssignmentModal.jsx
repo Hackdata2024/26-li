@@ -5,6 +5,7 @@ import Button from "react-bootstrap/Button";
 import Modal from "react-bootstrap/Modal";
 import QuestionTab from "./QuestionTab";
 import ApiCall from "../../../util/ApiCall";
+import ListGroup from "react-bootstrap/ListGroup";
 import { toast } from "react-toastify";
 import Skeleton, { SkeletonTheme } from "react-loading-skeleton";
 import "react-loading-skeleton/dist/skeleton.css";
@@ -131,7 +132,34 @@ const CreateAssignmentModal = (props) => {
     if (loading) {
         content = (
             <SkeletonTheme color="#e0e0e0" highlightColor="#f5f5f5">
-                <Skeleton height={200} />
+                <div
+                    style={{
+                        display: "flex",
+                        flexDirection: "column",
+                        justifyContent: "center",
+                        alignItems: "center",
+                        marginBottom: "100px",
+                    }}
+                >
+                    <ListGroup style={{ color: "black", height: "90px", width: "100%", border: "none" }}>
+                        <ListGroup.Item>
+                            <Skeleton width={150} height={20} />
+                            <Skeleton width="100%" height={30} />
+                            <br />
+                            <Skeleton width={150} height={20} />
+                            <Skeleton width={250} height={25} />
+                            <br />
+                            <Skeleton width={150} height={20} />
+                            <Skeleton width="70%" height={20} />
+                            <Skeleton width={300} height={20} />
+                            <Skeleton width="80%" height={20} />
+                        </ListGroup.Item>
+                    </ListGroup>
+                </div>
+                <br />
+                <br />
+                <br />
+                <br />
             </SkeletonTheme>
         );
     } else {
