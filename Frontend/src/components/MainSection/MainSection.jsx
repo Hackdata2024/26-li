@@ -3,6 +3,7 @@ import React, { useEffect, useState } from "react";
 import AddQuestions from "../../pages/Professor/AddQuestions/AddQuestions";
 import Evaluations from "../../pages/Professor/Evaluations/Evaluations";
 import Assignments from "../../pages/Professor/Assignments/Assignments";
+import Questions from "../../pages/Professor/Questions/Questions";
 
 import StudentAssignments from "../../pages/Student/Assignments/Assignments";
 import StudentEvaluations from "../../pages/Student/Evaluations/Evaluations";
@@ -28,6 +29,7 @@ const MainSection = () => {
         if (section === "assignments") return <Assignments />;
         else if (section === "addQuestion") return <AddQuestions />;
         else if (section === "evals") return <Evaluations />;
+        else if (section === "Questions") return <Questions />;
     }
 };
 
