@@ -1,31 +1,27 @@
-@import url('https://fonts.googleapis.com/css2?family=Fira+Code:wght@300&family=Open+Sans&family=Roboto:wght@300;700&display=swap');
-:root
-{
-    --high: #37DEA8;
-    --bg: #1F1F1F;
-    --sec: #131F38;
-    --tert: #3D6973;
+@import url("https://fonts.googleapis.com/css2?family=Fira+Code:wght@300&family=Open+Sans&family=Roboto:wght@300;700&display=swap");
+:root {
+    --high: #37dea8;
+    --bg: #1f1f1f;
+    --sec: #131f38;
+    --tert: #3d6973;
     --light: rgb(134, 184, 193);
-    --gradient: linear-gradient( 
-        --sec,
-        --tert,
-        --light
-    );
+    --gradient: linear-gradient(--sec, --tert, --light);
 }
 
-h1
-{
-    font-family: 'Open Sans', sans-serif;
+h1 {
+    font-family: "Open Sans", sans-serif;
 }
 
-.form-label
-{
-    font-family: 'Fira Code', monospace;
+.form-label {
+    font-family: "Fira Code", monospace;
 }
 
-.form-control, .form-select
-{
-    font-family: 'Fira Code', sans-serif;
+.form-control,
+.form-select {
+    font-family: "Fira Code", sans-serif;
     color: var(--light);
 }
 
+.div.fade.modal.show {
+    /* padding-left: 0; */
+}

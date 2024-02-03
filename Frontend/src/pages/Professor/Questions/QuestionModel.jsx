@@ -1,5 +1,7 @@
 import Button from "react-bootstrap/Button";
 import Modal from "react-bootstrap/Modal";
+import { useState } from "react";
+import ShowQuestionPreview from "./ShowQuestionPreview";
 
 const QuestionModel = (props) => {
     console.log(props);
@@ -7,14 +9,13 @@ const QuestionModel = (props) => {
     return (
         <Modal {...props} size="lg" aria-labelledby="contained-modal-title-vcenter" centered>
             <Modal.Header closeButton>
-                <Modal.Title id="contained-modal-title-vcenter">Modal heading</Modal.Title>
+                {/* <Modal.Title id="contained-modal-title-vcenter" style={{ textAlign: "center", backgroundColor: "red" }}> */}
+                {/* Question Preview */}
+                <h3 style={{ width: "100%", textAlign: "center" }}>Question Preview</h3>
+                {/* </Modal.Title> */}
             </Modal.Header>
             <Modal.Body>
-                <h4>Centered Modal</h4>
-                <p>
-                    Cras mattis consectetur purus sit amet fermentum. Cras justo odio, dapibus ac facilisis in, egestas
-                    eget quam. Morbi leo risus, porta ac consectetur ac, vestibulum at eros.
-                </p>
+                <ShowQuestionPreview question={props.question} />
             </Modal.Body>
             <Modal.Footer>
                 <Button onClick={props.onHide}>Close</Button>
