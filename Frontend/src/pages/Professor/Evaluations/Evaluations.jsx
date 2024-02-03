@@ -19,7 +19,7 @@ function Evaluations() {
             try {
                 const response = await ApiCall("/professors/myEvaluations", "GET", {});
                 const res = await ApiCall("/getBatches", "GET", {});
-                // console.log(response.data);
+                console.log("/professors/myEvaluations", response.data);
                 console.log("getBatches/", res.data);
                 setBatches(res.data.batches);
                 setEvaluation(response.data.data);
