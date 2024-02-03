@@ -3,7 +3,7 @@ import Cookies from "js-cookie";
 
 async function ApiCall(url, httpMethod, data) {
     const token = Cookies.get("studentsToken") || Cookies.get("professorsToken");
-    console.log("Inside Apicall");
+    console.log("Inside Apicall for ", url);
     try {
         if (httpMethod === "GET") {
             const config = {
