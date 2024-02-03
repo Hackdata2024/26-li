@@ -4,7 +4,7 @@
     display: flex;
     flex-direction: column;
     justify-content: center;
-    background-color:  #0D0F1A;
+    background-color:  rgb(13, 15, 26);
     font-family: "Open Sans";
 }
 
@@ -13,21 +13,8 @@
     display: none !important;
 }
 
-.card
-{
-    background-color:  rgba(227, 243, 246) !important;
-    padding: 20px;
-}
-
-.btn
-{
-    font-family: "Fira Code"!important;
-    padding-left: "20px"!important;
-    padding-right: "20px"!important;
-    color: var(--sec) !important;
-    background-color: var(--light) !important;
-    border-color: "var(--light)"!important;
-    transition: "box-shadow 0.3s ease-in-out"!important;
+.btn:hover {
+    box-shadow: 0 0 10px rgba(1, 41, 48, 0.5); /* Adjust the shadow values as needed */
 }
 
 .home-section-1 {
