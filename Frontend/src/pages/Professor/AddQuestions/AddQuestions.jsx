@@ -218,7 +218,7 @@ const AddQuestions = () => {
     if (selectedOption === "description") {
         content = (
             <>
-                <Form style={{ color: "var(--lighter)" }}>
+                <Form style={{ color: "var(--lighter)", width: "65vw" }}>
                     <Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
                         <Form.Label>Problem Name</Form.Label>
                         <Form.Control
