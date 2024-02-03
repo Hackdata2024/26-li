@@ -44,7 +44,7 @@ function RegisterCollege() {
                 display: "flex",
                 alignItems: "center",
                 justifyContent: "center",
-                height: "92.7vh",
+                height: "95vh",
                 color: "white",
                 backgroundImage: "url('/assets/images/CodeSpherebg.png')",
                 backgroundSize: "cover",
@@ -62,7 +62,7 @@ function RegisterCollege() {
             }}
             className="registercollege"
             onSubmit={handleSubmit}>
-                <h1 className="text-center mb-4">{`Register Your College`}</h1>
+                <h1 className="text-center mb-4">{`REGISTER YOUR COLLEGE`}</h1>
 
                 <div
                 // style={{
@@ -73,7 +73,7 @@ function RegisterCollege() {
                     <Form.Label>College Name</Form.Label>
                     <Form.Control
                         type="text"
-                        placeholder="Enter your College Name"
+                        placeholder="Enter your college name here"
                         name="collegeName"
                         onChange={handleChange}
                         required
@@ -84,7 +84,7 @@ function RegisterCollege() {
                     <Form.Label>Name</Form.Label>
                     <Form.Control
                         type="text"
-                        placeholder="Enter Your Name"
+                        placeholder="Enter your name here"
                         name="name"
                         onChange={handleChange}
                         required
@@ -94,7 +94,7 @@ function RegisterCollege() {
                     <Form.Label>Email</Form.Label>
                     <Form.Control
                         type="text"
-                        placeholder="Enter Your Email"
+                        placeholder="Enter your email here"
                         name="email"
                         onChange={handleChange}
                         required
@@ -105,7 +105,7 @@ function RegisterCollege() {
                     <Form.Label>Phone Number</Form.Label>
                     <Form.Control
                         type="tel"
-                        placeholder="Enter Your Phone Number"
+                        placeholder="Enter your phone number here"
                         name="phoneNo"
                         onChange={handleChange}
                         required
