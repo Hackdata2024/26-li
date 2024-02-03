@@ -1,17 +1,18 @@
 const OpenAI = require('openai');
-const path = require('path');
-const fs = require('fs').promises;
-const client = new OpenAI({ apiKey: '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' });
+require('dotenv').config();
+const client = new OpenAI({ apiKey: process.env.OPENAI_API_KEY });
 
 module.exports = (app) => {
 
     app.get("/getAPI", async (req, res) => {
 
-        const problemStatement = await fs.readFile(path.join(__dirname,'read_problem.txt'), 'utf-8');
+        console.log(`recieved GPT Assistance Request. CODE : ${req.body.code} PROBLEM : ${req.body.problem}`)
+
+        const problemStatement = req.body.problem
         console.log(problemStatement);
 
         // Read code from file
-        const code = await fs.readFile(path.join(__dirname,"read_code.txt"), 'utf-8');
+        const code = req.body.code
         console.log(code);
 
         const messages = [
