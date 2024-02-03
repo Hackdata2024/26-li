@@ -60,7 +60,7 @@ module.exports = (app) => {
                         else {
                             res.send({
                                 success: false,
-                                message: "Error in Submitted Code!",
+                                message: submittedCodeResponse.message,
                                 error: submittedCodeResponse.error
                             })
                         }
