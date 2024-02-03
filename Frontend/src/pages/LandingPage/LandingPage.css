@@ -1,6 +1,4 @@
-
 .home-section {
-    height: 95vh !important;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -8,14 +6,13 @@
     font-family: "Open Sans";
 }
 
-h1
-{
-    font-family: 'Open Sans', sans-serif;
+h1 {
+    font-family: "Open Sans", sans-serif;
     justify-content: center;
 }
 
-.card-header, .card-footer
-{
+.card-header,
+.card-footer {
     display: none !important;
 }
 
@@ -24,13 +21,12 @@ h1
 }
 
 .home-section-1 {
-    display: flex; 
+    display: flex;
     justify-content: space-evenly;
     border-style: none;
     font-family: "Open Sans";
-
 }
- 
+
 .home-section-2 {
     display: flex;
     margin-top: 22px;

@@ -3,6 +3,7 @@ const { spawn } = require("child_process");
 const path = require("path");
 const { readDB } = require("../db/mongoOperations");
 const { QuestionSchema } = require("../db/schema");
+const { hasAccess, isStudent } = require("../Middleware/Auth");
 
 function EraseScriptFile(executablePath) {
     // Erase the executable file
@@ -120,20 +121,21 @@ module.exports = (app) => {
 
 
 
-    app.post("/RunTests", async (req, res) => {
+    app.post("/RunTests",hasAccess,isStudent, async (req, res) => {
 
         console.log(req.body);
         const problemId = req.body.QuestionId;
+        console.log(req.decoded)
         
-        let TestCases = await fetchTestCases(problemId,req.decoded.institute);
+        let TestCases = await fetchTestCases(problemId,req.decoded.institution);
         console.log("testCases");
-        console.log(testCases);
+        console.log(TestCases);
 
         const submittedCode = req.body.code;
         console.log("submittedCode");
         console.log(submittedCode);
 
-        let SolCode = await fetchSolutionCode(problemId,req.decoded.institute);
+        let SolCode = await fetchSolutionCode(problemId,req.decoded.institution);
         console.log("SolCode");
         console.log(SolCode);
 
