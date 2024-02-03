@@ -4,6 +4,8 @@ import Button from "react-bootstrap/Button";
 import Badge from "react-bootstrap/Badge";
 import ListGroup from "react-bootstrap/ListGroup";
 import ApiCall from "../../../util/ApiCall";
+import AssignmentDetailsModal from "./AssignmentDetailsModal";
+import CreateAssignmentModal from "./CreateAssignmentModal";
 
 function Assignments() {
     const [modalShow, setModalShow] = React.useState(false);
@@ -18,7 +20,7 @@ function Assignments() {
                 const response = await ApiCall("/professors/myAssignments", "GET", {});
                 const res = await ApiCall("/getBatches", "GET", { message: "Hello" });
                 console.log("Response from /professors/myAssignments", response.data);
-                console.log(res.data);
+                console.log("response data in assignment is: ", res.data);
                 setBatches(res.data.batches);
                 setAssignment(response.data.data);
             } catch (error) {
@@ -51,8 +53,16 @@ function Assignments() {
             >
                 <div></div>
             </div>
-            {modalShow && <></>}
-            {showAssignmentDetails && <></>}
+            {modalShow && (
+                <CreateAssignmentModal batches={batches} show={modalShow} onHide={() => setModalShow(false)} />
+            )}
+            {showAssignmentDetails && (
+                <AssignmentDetailsModal
+                    show={showAssignmentDetails}
+                    assignment={clickAssignment}
+                    onHide={() => setShowAssignmentDetails(false)}
+                />
+            )}
             <div
                 style={{
                     color: "white",

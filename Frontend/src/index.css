@@ -6,8 +6,13 @@
     --light: rgb(134, 184, 193);
     --bg1: rgb(13, 15, 26);
     --gradient: linear-gradient(--sec, --tert, --light);
+    --lighter: rgba(227, 243, 246);
 }
 
+.body
+{
+    background-color: var(--sec);
+}
 h1 {
     font-family: "Open Sans", sans-serif;
 }

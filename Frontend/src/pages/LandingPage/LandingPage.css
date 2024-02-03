@@ -1,15 +1,18 @@
-
 .home-section {
-    height: 95vh !important;
     display: flex;
     flex-direction: column;
     justify-content: center;
-    background-color:  rgb(13, 15, 26);
+    background-color: var(--sec);
     font-family: "Open Sans";
 }
 
-.card-header, .card-footer
-{
+h1 {
+    font-family: "Open Sans", sans-serif;
+    justify-content: center;
+}
+
+.card-header,
+.card-footer {
     display: none !important;
 }
 
@@ -18,13 +21,12 @@
 }
 
 .home-section-1 {
-    display: flex; 
+    display: flex;
     justify-content: space-evenly;
     border-style: none;
     font-family: "Open Sans";
-
 }
- 
+
 .home-section-2 {
     display: flex;
     margin-top: 22px;
