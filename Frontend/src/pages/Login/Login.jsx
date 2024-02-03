@@ -77,14 +77,25 @@ function Login() {
                 display: "flex",
                 alignItems: "center",
                 justifyContent: "center",
-                height: "100vh",
-                backgroundColor: "rgba(36, 36, 36, 1)",
+                height: "92.7vh",
                 color: "white",
+                backgroundImage: "url('/assets/images/CodeSpherebg.png')",
+                backgroundSize: "cover",
+                backgroundPosition: "center center",
+                backgroundRepeat: "no-repeat",
             }}
         >
             <NavBar />
-            <Form onSubmit={handleSubmit}>
-                <h1 className="text-center mb-4">{`${id.charAt(0).toUpperCase() + id.slice(1)} Login`}</h1>
+            <Form 
+            style={{
+                marginTop: '50px',
+                backgroundColor: "rgba(134, 184, 193, 0.4)",
+                padding: "50px",
+                borderRadius: "20px",
+                
+            }}
+             onSubmit={handleSubmit}>
+                <h1 className="text-center mb-4">{`${id.toUpperCase()} LOGIN`}</h1>
 
                 <Form.Group className="mb-3" controlId="formGridState">
                     <Form.Label>Institution</Form.Label>
@@ -104,7 +115,7 @@ function Login() {
                     <Form.Label>Username</Form.Label>
                     <Form.Control
                         type="text"
-                        placeholder="Enter username"
+                        placeholder="Enter username here"
                         name="Username"
                         onChange={handleChange}
                         required
@@ -115,7 +126,7 @@ function Login() {
                     <Form.Label>Password</Form.Label>
                     <Form.Control
                         type="password"
-                        placeholder="Password"
+                        placeholder="Enter password here"
                         name="Password"
                         onChange={handleChange}
                         required
@@ -129,9 +140,23 @@ function Login() {
                         paddingTop: "15px",
                     }}
                 >
-                    <Button variant="primary" style={{ paddingLeft: "20px", paddingRight: "20px" }} type="submit">
-                        Submit
-                    </Button>
+                    <Button variant="primary" style={{ 
+                        font: "Fira Code",
+                        paddingLeft: "20px", 
+                        paddingRight: "20px",
+                        color: "var(--light)",
+                        backgroundColor: "var(--sec)",
+                        borderColor: "var(--light)",
+                        transition: "box-shadow 0.3s ease-in-out",                        
+                    }} type="submit"
+                        onMouseOver={(e) => {
+                            e.target.style.boxShadow = "0 0 10px rgba(134, 184, 193, 1)";
+                          }}
+                          onMouseOut={(e) => {
+                            e.target.style.boxShadow = "0 0 10px rgba(134, 184, 193, 0.6)";
+                          }}
+                        >
+                        Submit                    </Button>
                 </div>
             </Form>
         </div>

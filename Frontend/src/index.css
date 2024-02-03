@@ -1,14 +1,30 @@
+@import url('https://fonts.googleapis.com/css2?family=Fira+Code:wght@300&family=Open+Sans&family=Roboto:wght@300;700&display=swap');
 :root
 {
-    background-image: url("Frontend/public/assets/images/CodeSpherebg.png");
     --high: #37DEA8;
     --bg: #1F1F1F;
     --sec: #131F38;
     --tert: #3D6973;
-    --light: #86B8C1;
+    --light: rgb(134, 184, 193);
     --gradient: linear-gradient( 
         --sec,
         --tert,
         --light
     );
+}
+
+h1
+{
+    font-family: 'Open Sans', sans-serif;
+}
+
+.form-label
+{
+    font-family: 'Fira Code', monospace;
+}
+
+.form-control, .form-select
+{
+    font-family: 'Fira Code', sans-serif;
+    color: var(--light);
 }
