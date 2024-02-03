@@ -18,7 +18,7 @@ function NavBar() {
                     CodeSphere
                 </Navbar.Brand>
             </Container>
-        </Navbar>
+      </Navbar>
     );
 }
 

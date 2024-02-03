@@ -18,8 +18,9 @@ const LandingPage = () => {
                     color: "rgba(227, 243, 246)",
                     fontSize: "60px",
                     marginTop: "30px",
+                    paddingTop: "80px",
                     textAlign: "center"
-                }}> Simplify. Automate.<i> Excel.</i><br/><br/></h1></div>
+                }}> Simplify. Automate.<i> Excel.</i></h1></div>
             <div className="home-section-1">
                 <LandingPageCard
                     width="44%"
