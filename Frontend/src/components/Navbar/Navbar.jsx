@@ -3,7 +3,9 @@ import Navbar from "react-bootstrap/Navbar";
 
 function NavBar() {
     return (
-        <Navbar expand="lg" className="" fixed="top" style={{ backgroundColor: "rgba(227, 243, 246)" }}>
+        <Navbar expand="lg" className="" fixed="top" 
+        style={{ 
+            backgroundColor: "var(--bg1)"}}>
             <Container 
             style={{
                 maxWidth: "100%" }}>
@@ -11,7 +13,8 @@ function NavBar() {
                 style={{ 
                     fontSize: "2rem",
                     fontFamily: "Fira Code",
-                    color: "var(--sec)",}}>
+                    color: "var(--lighter)",
+                    }}>
                     CodeSphere
                 </Navbar.Brand>
             </Container>
