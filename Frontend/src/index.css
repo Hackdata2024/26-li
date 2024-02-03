@@ -1,0 +1,14 @@
+:root
+{
+    background-image: url("Frontend/public/assets/images/CodeSpherebg.png");
+    --high: #37DEA8;
+    --bg: #1F1F1F;
+    --sec: #131F38;
+    --tert: #3D6973;
+    --light: #86B8C1;
+    --gradient: linear-gradient( 
+        --sec,
+        --tert,
+        --light
+    );
+}

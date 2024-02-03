@@ -1,0 +1,13 @@
+.proflistgroup {
+    width: 60%;
+}
+
+.modelnavtab {
+    /* background-color: aqua; */
+}
+
+@media screen and (max-width: 550px) {
+    .proflistgroup {
+        width: 80%;
+    }
+}
