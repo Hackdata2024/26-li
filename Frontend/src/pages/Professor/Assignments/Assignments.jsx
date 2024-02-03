@@ -75,7 +75,7 @@ const Assignments = () => {
                     justifyContent: "center",
                     fontSize: "3rem",
                     fontWeight: "600",
-                    fontFamily: "Open Sans"
+                    fontFamily: "Open Sans",
                 }}
             >
                 ASSIGNMENTS
@@ -87,23 +87,27 @@ const Assignments = () => {
                     margin: "20px",
                 }}
             >
-                <Button variant="primary" onClick={() => setModalShow(true)} style={{ 
+                <Button
+                    variant="primary"
+                    onClick={() => setModalShow(true)}
+                    style={{
                         font: "Fira Code",
-                        paddingLeft: "20px", 
+                        paddingLeft: "20px",
                         paddingRight: "20px",
                         color: "var(--sec)",
                         backgroundColor: "var(--light)",
                         borderColor: "var(--light)",
-                        transition: "box-shadow 0.8s ease-in-out",                        
+                        transition: "box-shadow 0.8s ease-in-out",
                     }}
-                        onMouseOver={(e) => {
-                            e.target.style.backgroundColor = "var(--lighter)";
-                          }}
-                          onMouseOut={(e) => {
-                            e.target.style.backgroundColor = "var(--light)";
-                          }}
-                        >
-                        Create Assignment  </Button>
+                    onMouseOver={(e) => {
+                        e.target.style.backgroundColor = "var(--lighter)";
+                    }}
+                    onMouseOut={(e) => {
+                        e.target.style.backgroundColor = "var(--light)";
+                    }}
+                >
+                    Create Assignment{" "}
+                </Button>
             </div>
             <div
                 style={{
@@ -115,59 +119,58 @@ const Assignments = () => {
                 }}
             >
                 <ListGroup className="proflistgroup" as="ol" numbered>
-                    {loading ? (
-                        // Display loading skeleton
-                        <SkeletonTheme color="#e0e0e0" highlightColor="#f5f5f5">
-                            {Array.from({ length: 5 }).map((_, index) => (
-                                <div key={index}>
-                                    <Skeleton height={100} />
-                                    {/* <Skeleton height={30} width={300} />
+                    {loading
+                        ? // Display loading skeleton
+
+                          Array.from({ length: 5 }).map((_, index) => (
+                              <div key={index}>
+                                  <SkeletonTheme color="#e0e0e0" highlightColor="#f5f5f5">
+                                      <Skeleton height={100} />
+                                      {/* <Skeleton height={30} width={300} />
                                     <Skeleton height={30} width={200} /> */}
-                                    <br />
-                                </div>
-                            ))}
-                        </SkeletonTheme>
-                    ) : (
-                        // Display actual content when not loading
-                        assignment.map((item, index) => {
-                            const date = new Date(item.DueTimestamp);
-                            const year = date.getFullYear();
-                            const month = ("0" + (date.getMonth() + 1)).slice(-2); // Months are zero-based
-                            const day = ("0" + date.getDate()).slice(-2);
+                                  </SkeletonTheme>
+                                  <br />
+                              </div>
+                          ))
+                        : // Display actual content when not loading
+                          assignment.map((item, index) => {
+                              const date = new Date(item.DueTimestamp);
+                              const year = date.getFullYear();
+                              const month = ("0" + (date.getMonth() + 1)).slice(-2); // Months are zero-based
+                              const day = ("0" + date.getDate()).slice(-2);
 
-                            const hours = ("0" + date.getHours()).slice(-2);
-                            const minutes = ("0" + date.getMinutes()).slice(-2);
-                            const seconds = ("0" + date.getSeconds()).slice(-2);
+                              const hours = ("0" + date.getHours()).slice(-2);
+                              const minutes = ("0" + date.getMinutes()).slice(-2);
+                              const seconds = ("0" + date.getSeconds()).slice(-2);
 
-                            const formattedDateTime = `${hours}:${minutes}:${seconds} ${day}-${month}-${year}`;
-                            return (
-                                <div key={index}>
-                                    <ListGroup.Item
-                                        as="li"
-                                        className="d-flex justify-content-between align-items-start "
-                                        style={{ cursor: "pointer", borderRadius: "10px" }}
-                                        onClick={() => handleOnClick(item)}
-                                    >
-                                        <div className="ms-2 me-auto">
-                                            <div className="fw-bold">{item.AssignmentName}</div>
-                                            No. of Questions : {item.Questions.length}
-                                            <br /> Batches :{" "}
-                                            {item.Batches.map((batch, index) => {
-                                                return (
-                                                    <Badge bg="secondary" className="mx-1" key={index}>
-                                                        {batch}
-                                                    </Badge>
-                                                );
-                                            })}
-                                            <br />
-                                            Due Date : {formattedDateTime}
-                                        </div>
-                                    </ListGroup.Item>
-                                    <br />
-                                </div>
-                            );
-                        })
-                    )}
+                              const formattedDateTime = `${hours}:${minutes}:${seconds} ${day}-${month}-${year}`;
+                              return (
+                                  <div key={index}>
+                                      <ListGroup.Item
+                                          as="li"
+                                          className="d-flex justify-content-between align-items-start "
+                                          style={{ cursor: "pointer", borderRadius: "10px" }}
+                                          onClick={() => handleOnClick(item)}
+                                      >
+                                          <div className="ms-2 me-auto">
+                                              <div className="fw-bold">{item.AssignmentName}</div>
+                                              No. of Questions : {item.Questions.length}
+                                              <br /> Batches :{" "}
+                                              {item.Batches.map((batch, index) => {
+                                                  return (
+                                                      <Badge bg="secondary" className="mx-1" key={index}>
+                                                          {batch}
+                                                      </Badge>
+                                                  );
+                                              })}
+                                              <br />
+                                              Due Date : {formattedDateTime}
+                                          </div>
+                                      </ListGroup.Item>
+                                      <br />
+                                  </div>
+                              );
+                          })}
                 </ListGroup>
             </div>
         </div>

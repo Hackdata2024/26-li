@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import Nav from "react-bootstrap/Nav";
-import "./addquestions.css";
+import "./AddQuestions.css";
 import Button from "react-bootstrap/Button";
 import Card from "react-bootstrap/Card";
 
