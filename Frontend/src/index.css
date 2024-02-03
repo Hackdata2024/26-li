@@ -9,9 +9,8 @@
     --lighter: rgba(227, 243, 246);
 }
 
-.body
-{
-    background-color: var(--sec);
+body {
+    background: var(--sec) !important;
 }
 h1 {
     font-family: "Open Sans", sans-serif;
