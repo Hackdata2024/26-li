@@ -1,14 +1,18 @@
-import { useEffect } from "react";
+import React from "react";
 import Tab from "react-bootstrap/Tab";
 import Tabs from "react-bootstrap/Tabs";
 import ApiCall from "../../../util/ApiCall";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import Form from "react-bootstrap/Form";
 import ListGroup from "react-bootstrap/ListGroup";
+import Skeleton, { SkeletonTheme } from "react-loading-skeleton";
+import "react-loading-skeleton/dist/skeleton.css";
 
 const QuestionTab = (props) => {
     const [myQuestions, setMyQuestions] = useState([]);
     const [allQuestions, setAllQuestions] = useState([]);
+    const [loading, setLoading] = useState(true);
+
     useEffect(() => {
         const fetchData = async () => {
             try {
@@ -21,6 +25,8 @@ const QuestionTab = (props) => {
                 setAllQuestions(response2.data.data);
             } catch (error) {
                 console.error("Error during fetching questions:", error);
+            } finally {
+                setLoading(false);
             }
         };
 
@@ -70,84 +76,81 @@ const QuestionTab = (props) => {
         }
         console.log(props.formData.Questions);
     };
+
     return (
         <Tabs defaultActiveKey="My Questions" id="uncontrolled-tab-example" className="mb-3">
             <Tab eventKey="My Questions" title="My Questions">
                 <ListGroup>
-                    {myQuestions.map((question, index) => {
-                        var check = false;
-                        if (props.formData.Questions.includes(question._id)) {
-                            check = true;
-                        } else {
-                            check = false;
-                        }
-                        return (
-                            <div
-                                key={index}
-                                style={{
-                                    display: "flex",
-                                }}
-                            >
-                                <ListGroup.Item className="w-100 d-flex my-1">
-                                    <Form>
-                                        <div
-                                            className="mb-3"
-                                            style={{
-                                                marginRight: "15px",
-                                            }}
-                                        >
-                                            <Form.Check
-                                                type="checkbox"
-                                                checked={check}
-                                                onChange={(event) => handleChange(event, index, "myQuestions")}
-                                            />
-                                        </div>
-                                    </Form>
-
-                                    <p>{question.QuestionName}</p>
-                                </ListGroup.Item>
-                            </div>
-                        );
-                    })}
+                    {loading
+                        ? // Display skeletons while data is being fetched
+                          Array.from({ length: 5 }).map((_, index) => (
+                              <SkeletonTheme key={index} color="#e0e0e0" highlightColor="#f5f5f5">
+                                  <ListGroup.Item className="w-100 d-flex my-1">
+                                      <Form>
+                                          <div className="mb-3" style={{ marginRight: "15px" }}>
+                                              <Skeleton width={20} height={20} />
+                                          </div>
+                                      </Form>
+                                      <p>
+                                          <Skeleton width={200} />
+                                      </p>
+                                  </ListGroup.Item>
+                              </SkeletonTheme>
+                          ))
+                        : // Render actual data once it's fetched
+                          myQuestions.map((question, index) => (
+                              <div key={index} style={{ display: "flex" }}>
+                                  <ListGroup.Item className="w-100 d-flex my-1">
+                                      <Form>
+                                          <div className="mb-3" style={{ marginRight: "15px" }}>
+                                              <Form.Check
+                                                  type="checkbox"
+                                                  checked={props.formData.Questions.includes(question._id)}
+                                                  onChange={(event) => handleChange(event, index, "myQuestions")}
+                                              />
+                                          </div>
+                                      </Form>
+                                      <p>{question.QuestionName}</p>
+                                  </ListGroup.Item>
+                              </div>
+                          ))}
                 </ListGroup>
             </Tab>
             <Tab eventKey="All Questions" title="All Questions">
                 <ListGroup>
-                    {allQuestions.map((question, index) => {
-                        var check = false;
-                        if (props.formData.Questions.includes(question._id)) {
-                            check = true;
-                        } else {
-                            check = false;
-                        }
-                        return (
-                            <div
-                                key={index}
-                                style={{
-                                    display: "flex",
-                                }}
-                            >
-                                <ListGroup.Item className="w-100 d-flex my-1">
-                                    <Form>
-                                        <div
-                                            className="mb-3"
-                                            style={{
-                                                marginRight: "15px",
-                                            }}
-                                        >
-                                            <Form.Check
-                                                type="checkbox"
-                                                checked={check}
-                                                onChange={(event) => handleChange(event, index, "allQuestions")}
-                                            />
-                                        </div>
-                                    </Form>
-
-                                    <p>{question.QuestionName}</p>
-                                </ListGroup.Item>
-                            </div>
-                        );
-                    })}
+                    {loading
+                        ? // Display skeletons while data is being fetched
+                          Array.from({ length: 5 }).map((_, index) => (
+                              <SkeletonTheme key={index} color="#e0e0e0" highlightColor="#f5f5f5">
+                                  <ListGroup.Item className="w-100 d-flex my-1">
+                                      <Form>
+                                          <div className="mb-3" style={{ marginRight: "15px" }}>
+                                              <Skeleton width={20} height={20} />
+                                          </div>
+                                      </Form>
+                                      <p>
+                                          <Skeleton width={200} />
+                                      </p>
+                                  </ListGroup.Item>
+                              </SkeletonTheme>
+                          ))
+                        : // Render actual data once it's fetched
+                          allQuestions.map((question, index) => (
+                              <div key={index} style={{ display: "flex" }}>
+                                  <ListGroup.Item className="w-100 d-flex my-1">
+                                      <Form>
+                                          <div className="mb-3" style={{ marginRight: "15px" }}>
+                                              <Form.Check
+                                                  type="checkbox"
+                                                  checked={props.formData.Questions.includes(question._id)}
+                                                  onChange={(event) => handleChange(event, index, "allQuestions")}
+                                              />
+                                          </div>
+                                      </Form>
+                                      <p>{question.QuestionName}</p>
+                                  </ListGroup.Item>
+                              </div>
+                          ))}
                 </ListGroup>
             </Tab>
         </Tabs>
