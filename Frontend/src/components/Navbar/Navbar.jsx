@@ -3,7 +3,7 @@ import Navbar from "react-bootstrap/Navbar";
 
 function NavBar() {
     return (
-        <Navbar expand="lg" className="" fixed="top" style={{ backgroundColor: "rgba(227, 243, 246, 0.7)" }}>
+        <Navbar expand="lg" className="" fixed="top" style={{ backgroundColor: "rgba(227, 243, 246)" }}>
             <Container 
             style={{
                 maxWidth: "100%" }}>
