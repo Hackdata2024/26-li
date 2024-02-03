@@ -67,7 +67,7 @@ module.exports = (app) => {
 
             for(let i=0;i<thisStudentEvaluation[0].Questions.length;i++){
                 let questionDetails = await fetchQuestionDetails(thisStudentEvaluation[0].Questions[i].QuestionId,req.decoded.institution);
-                thisStudentEvaluation[0].Questions[i].QuestionId = questionDetails;
+                thisStudentEvaluation[0].Questions[i] = questionDetails;
             }
 
             //remove the unnecessary fields from the response
