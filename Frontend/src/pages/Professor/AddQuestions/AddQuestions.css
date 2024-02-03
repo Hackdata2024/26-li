@@ -1,0 +1,24 @@
+.addquesnavlink {
+    /* color: #0d6efd; */
+    color: white;
+    font-size: 20px;
+}
+
+.profaddquestion_mid-section {
+    /* width: 70%; */
+}
+
+.placeholder-color::placeholder {
+    color: rgb(163, 163, 163);
+}
+
+.placeholder-color {
+    background-color: rgba(138, 145, 153, 0.1);
+    color: rgba(0, 0, 0, 0.712);
+}
+
+@media screen and (max-width: 550px) {
+    .profaddquestion_mid-section {
+        /* width: 80%; */
+    }
+}
