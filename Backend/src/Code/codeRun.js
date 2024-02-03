@@ -17,8 +17,6 @@ function EraseScriptFile(executablePath) {
 }
 
 function RunCode(Code, input, callback) {
-    console.log(Code);
-
     const scriptName = "script.cpp";
     const executableName = "script.exe";
     const scriptPath = path.join(__dirname, '..', '..', 'public', scriptName);
@@ -31,7 +29,7 @@ function RunCode(Code, input, callback) {
             if (!callbackExecuted) {
                 callback({
                     success: false,
-                    message: "Compilation Error !",
+                    message: "Error While Writing!",
                     error: err
                 });
                 callbackExecuted = true;
@@ -51,21 +49,25 @@ function RunCode(Code, input, callback) {
             if (!callbackExecuted) {
                 callback({
                     success: false,
-                    message: "Execution Timeout !",
+                    message: "Execution Timeout!",
                     error: "The script took too long to execute."
                 });
                 callbackExecuted = true;
             }
         }, executionTimeout);
 
-        scriptProcess = spawn('sh', ['-c', compileAndRunCommand], { input });
+        scriptProcess = spawn('sh', ['-c', compileAndRunCommand], { stdio: ['pipe', 'pipe', 'pipe'] });
+
+        scriptProcess.stdin.write(input); // Write input to stdin
+
+        scriptProcess.stdin.end(); // Close stdin to signal the end of input
 
         scriptProcess.stdout.on('data', (data) => {
             clearTimeout(timeoutId);
             if (!callbackExecuted) {
                 callback({
                     success: true,
-                    message: "Script executed successfully !",
+                    message: "Script executed successfully!",
                     output: `${data}`
                 });
                 callbackExecuted = true;
@@ -77,7 +79,7 @@ function RunCode(Code, input, callback) {
             if (!callbackExecuted) {
                 callback({
                     success: false,
-                    message: "Compilation Error !",
+                    message: "Compilation Error!",
                     error: `${data}`
                 });
                 callbackExecuted = true;
@@ -90,7 +92,7 @@ function RunCode(Code, input, callback) {
             if (!callbackExecuted) {
                 callback({
                     success: true,
-                    message: "Script executed successfully !",
+                    message: "Script executed successfully!",
                     output: ``
                 });
                 callbackExecuted = true;
@@ -101,8 +103,7 @@ function RunCode(Code, input, callback) {
 
 async function fetchTestCases(problemId, institute) {
     let QuestionResponse = await readDB("QuestionBank", institute, { _id: problemId }, QuestionSchema);
-    console.log("fetchTestCases : ");
-    if(QuestionResponse.length > 0){
+    if (QuestionResponse.length > 0) {
         return QuestionResponse[0].TestCases;
     }
     else
@@ -111,7 +112,7 @@ async function fetchTestCases(problemId, institute) {
 
 async function fetchSolutionCode(problemId, institute) {
     let QuestionResponse = await readDB("QuestionBank", institute, { _id: problemId }, QuestionSchema);
-    if(QuestionResponse.length > 0)
+    if (QuestionResponse.length > 0)
         return QuestionResponse[0].SolutionCode;
     else
         return "";
@@ -121,13 +122,13 @@ module.exports = (app) => {
 
 
 
-    app.post("/RunTests",hasAccess,isStudent, async (req, res) => {
+    app.post("/RunTests", hasAccess, isStudent, async (req, res) => {
 
         console.log(req.body);
         const problemId = req.body.QuestionId;
         console.log(req.decoded)
-        
-        let TestCases = await fetchTestCases(problemId,req.decoded.institution);
+
+        let TestCases = await fetchTestCases(problemId, req.decoded.institution);
         console.log("testCases");
         console.log(TestCases);
 
@@ -135,69 +136,58 @@ module.exports = (app) => {
         console.log("submittedCode");
         console.log(submittedCode);
 
-        let SolCode = await fetchSolutionCode(problemId,req.decoded.institution);
+        let SolCode = await fetchSolutionCode(problemId, req.decoded.institution);
         console.log("SolCode");
         console.log(SolCode);
 
-        let SolutionCodeOutput = [];
-        let SubmittedCodeOutput = [];
-    
-        // Assuming testCases is an array of test cases
-        const runTestPromisesSolution = TestCases.map(async (TestCase) => {
-            return new Promise((resolve) => {
-                RunCode(SolCode, TestCase.input, (result) => {
-                    if (result.success) {
-                        SolutionCodeOutput.push({
-                            success: true,
-                            output: result.output,
-                        });
-                    } else {
-                        SolutionCodeOutput.push({
-                            success: false,
-                            output: result.error,
-                        });
-                    }
-    
-                    resolve();
-                });
+        if (req.body.TestCaseIndex < TestCases.length) {
+            RunCode(SolCode, TestCases[req.body.TestCaseIndex].input, (SolCodeResponse) => {
+                if (SolCodeResponse.success) {
+                    RunCode(submittedCode, TestCases[req.body.TestCaseIndex].input, (submittedCodeResponse) => {
+
+                        if (submittedCodeResponse.success) {
+                            if (submittedCodeResponse.output === SolCodeResponse.output) {
+                                res.send({
+                                    success: true,
+                                    message: "Test Passed!",
+                                    output: submittedCodeResponse.output
+                                });
+                            }
+                            else {
+                                res.send({
+                                    success: false,
+                                    message: "Test Failed!",
+                                    YourOutput : submittedCodeResponse.output,
+                                    ExpectedOutput : SolCodeResponse.output
+                                });
+                            }
+                        }
+                        else {
+                            res.send({
+                                success: false,
+                                message: "Error in Submitted Code!",
+                                error: submittedCodeResponse.error
+                            })
+                        }
+                    });
+                }
+                else {
+                    res.send({
+                        success: false,
+                        message: "Error in Solution Code!",
+                        error: SolCodeResponse.error
+                    })
+                }
             });
-        });
-    
-        const runTestPromisesSubmitted = TestCases.map(async (TestCase) => {
-            return new Promise((resolve) => {
-                RunCode(submittedCode, TestCase.input, (result) => {
-                    if (result.success) {
-                        SubmittedCodeOutput.push({
-                            success: true,
-                            output: result.output,
-                        });
-                    } else {
-                        SubmittedCodeOutput.push({
-                            success: false,
-                            output: result.error,
-                        });
-                    }
-    
-                    resolve();
-                });
+        }
+        else {
+            res.send({
+                success: false,
+                message: "Invalid Test Case Index!"
             });
-        });
-    
-        // Wait for all test cases for Solution Code to complete
-        await Promise.all(runTestPromisesSolution);
-        console.log("SolutionCodeOutput");
-        console.log(SolutionCodeOutput);
-    
-        // Wait for all test cases for Submitted Code to complete
-        await Promise.all(runTestPromisesSubmitted);
-        console.log("SubmittedCodeOutput");
-        console.log(SubmittedCodeOutput);
-    
-        // Send the response after processing all test cases for both Solution and Submitted Code
-        res.json({
-            SolutionCodeOutput,
-            SubmittedCodeOutput
-        });
+        }
+
+
     });
 
 }
