@@ -119,9 +119,23 @@ function RegisterCollege() {
                         paddingTop: "15px",
                     }}
                 >
-                    <Button variant="primary" style={{ paddingLeft: "20px", paddingRight: "20px" }} type="submit">
-                        Submit
-                    </Button>
+                    <Button variant="primary" style={{ 
+                        font: "Fira Code",
+                        paddingLeft: "20px", 
+                        paddingRight: "20px",
+                        color: "var(--light)",
+                        backgroundColor: "var(--sec)",
+                        borderColor: "var(--light)",
+                        transition: "box-shadow 0.3s ease-in-out",                        
+                    }} type="submit"
+                        onMouseOver={(e) => {
+                            e.target.style.boxShadow = "0 0 10px rgba(134, 184, 193, 1)";
+                          }}
+                          onMouseOut={(e) => {
+                            e.target.style.boxShadow = "0 0 10px rgba(134, 184, 193, 0.6)";
+                          }}
+                        >
+                        Submit                    </Button>
                 </div>
                 </div>
             </Form>
