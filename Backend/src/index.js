@@ -18,3 +18,4 @@ require("./professors/Assignments")(app);
 require("./professors/dashboard")(app);
 require("./other/fetch")(app);
 require("./students/dashboard")(app);
+require("./professors/Questions")(app);
