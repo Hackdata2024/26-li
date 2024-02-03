@@ -62,10 +62,9 @@ const SolveProblem = () => {
     const getQuestions = async (url, type) => {
         try {
             const response = await ApiCall(url, "GET");
-            // console.log(response.data);
-            // console.log(response.data.data.Questions);
-            setQuestions(response.data.data.Questions);
-            setQuestionData(response.data.data.Questions[currIndex]);
+            console.log("response", response.data); // this wil give an array in which every element has Marks and QuestionId
+            setQuestions(response.data.data.Questions); // assigning array to the questions
+            setQuestionData(response.data.data.Questions[currIndex]); // assigning first question to the questionData
         } catch (error) {
             toast.error("Error in getting questions");
         }
@@ -77,6 +76,7 @@ const SolveProblem = () => {
     };
 
     const handleCodeMirrorData = (name, event) => {
+        //
         setQuestionData({ ...questionData, [name]: event });
         console.log(questionData);
     };

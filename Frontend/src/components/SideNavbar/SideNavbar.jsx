@@ -69,11 +69,11 @@ const Sidenav = () => {
                 <hr style={{ color: "white" }} />
                 {sidenavItems.map((item, index) => {
                     return (
-                        <div key={index}>
+                        <div className="sidenavbarsections" key={index}>
                             <Link className="sidelink" to={item.link}>
                                 {item.name}
                             </Link>
-                            <hr style={{ color: "white" }} />
+                            {/* <hr style={{ color: "white" }} /> */}
                         </div>
                     );
                 })}

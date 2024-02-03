@@ -6,11 +6,15 @@ import Upcoming from "./Upcoming.jsx";
 import Ongoing from "./Ongoing";
 import Finished from "./Finished";
 import ApiCall from "../../../util/ApiCall";
+import { ListGroup } from "react-bootstrap";
+import Skeleton, { SkeletonTheme } from "react-loading-skeleton";
+import "react-loading-skeleton/dist/skeleton.css";
 
 const Evaluations = () => {
     const [upcomingEvaluations, setUpcomingEvaluations] = useState([]);
     const [ongoingEvaluations, setOngoingEvaluations] = useState([]);
     const [finishedEvaluations, setFinishedEvaluations] = useState([]);
+    const [loading, setLoading] = useState(true);
 
     useEffect(() => {
         const getEvaluations = async () => {
@@ -39,6 +43,8 @@ const Evaluations = () => {
                 setFinishedEvaluations(finished);
             } catch (error) {
                 console.error("Error fetching Evaluations: ", error);
+            } finally {
+                setLoading(false);
             }
         };
         getEvaluations();
@@ -70,7 +76,28 @@ const Evaluations = () => {
                             eventKey="upcoming"
                             title={<span style={{ fontSize: "18px", fontWeight: "500" }}>Upcoming</span>}
                         >
-                            {upcomingEvaluations.length != 0 ? (
+                            {loading ? (
+                                Array.from({ length: 5 }).map((_, index) => (
+                                    <SkeletonTheme key={index} color="#e0e0e0" highlightColor="#f5f5f5">
+                                        <div
+                                            style={{
+                                                display: "flex",
+                                                flexDirection: "column",
+                                                justifyContent: "center",
+                                                alignItems: "center",
+                                            }}
+                                        >
+                                            <ListGroup style={{ color: "black", width: "50%" }}>
+                                                <ListGroup.Item style={{ height: "70px" }}>
+                                                    <Skeleton width={150} />
+                                                    <Skeleton width={200} />
+                                                </ListGroup.Item>
+                                            </ListGroup>
+                                        </div>
+                                        <br />
+                                    </SkeletonTheme>
+                                ))
+                            ) : upcomingEvaluations.length != 0 ? (
                                 <Upcoming Evaluations={upcomingEvaluations} />
                             ) : (
                                 <div style={{ paddingBottom: "10px", fontSize: "20px", textAlign: "center" }}>
@@ -82,7 +109,34 @@ const Evaluations = () => {
                             eventKey="ongoing"
                             title={<span style={{ fontSize: "18px", fontWeight: "500" }}>Ongoing</span>}
                         >
-                            {ongoingEvaluations.length != 0 ? (
+                            {loading ? (
+                                Array.from({ length: 5 }).map((_, index) => (
+                                    <SkeletonTheme key={index} color="#e0e0e0" highlightColor="#f5f5f5">
+                                        <div
+                                            style={{
+                                                display: "flex",
+                                                flexDirection: "column",
+                                                justifyContent: "center",
+                                                alignItems: "center",
+                                            }}
+                                        >
+                                            <ListGroup style={{ color: "black", width: "50%" }}>
+                                                <ListGroup.Item style={{ height: "70px" }}>
+                                                    <Skeleton width={150} />
+                                                    <Skeleton width={200} />
+
+                                                    <Skeleton
+                                                        width={90}
+                                                        height={40}
+                                                        style={{ float: "right", top: "-40px" }}
+                                                    />
+                                                </ListGroup.Item>
+                                            </ListGroup>
+                                        </div>
+                                        <br />
+                                    </SkeletonTheme>
+                                ))
+                            ) : ongoingEvaluations.length != 0 ? (
                                 <Ongoing Evaluations={ongoingEvaluations} />
                             ) : (
                                 <div style={{ paddingBottom: "10px", fontSize: "20px", textAlign: "center" }}>
@@ -94,7 +148,28 @@ const Evaluations = () => {
                             eventKey="finished"
                             title={<span style={{ fontSize: "18px", fontWeight: "500" }}> Finished</span>}
                         >
-                            {finishedEvaluations.length != 0 ? (
+                            {loading ? (
+                                Array.from({ length: 5 }).map((_, index) => (
+                                    <SkeletonTheme key={index} color="#e0e0e0" highlightColor="#f5f5f5">
+                                        <div
+                                            style={{
+                                                display: "flex",
+                                                flexDirection: "column",
+                                                justifyContent: "center",
+                                                alignItems: "center",
+                                            }}
+                                        >
+                                            <ListGroup style={{ color: "black", width: "50%" }}>
+                                                <ListGroup.Item style={{ height: "70px" }}>
+                                                    <Skeleton width={150} />
+                                                    <Skeleton width={200} />
+                                                </ListGroup.Item>
+                                            </ListGroup>
+                                        </div>
+                                        <br />
+                                    </SkeletonTheme>
+                                ))
+                            ) : finishedEvaluations.length != 0 ? (
                                 <Finished Evaluations={finishedEvaluations} />
                             ) : (
                                 <div style={{ paddingBottom: "10px", fontSize: "20px", textAlign: "center" }}>

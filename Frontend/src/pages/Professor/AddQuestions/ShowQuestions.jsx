@@ -3,6 +3,7 @@ import Card from "react-bootstrap/Card";
 import ListGroup from "react-bootstrap/ListGroup";
 import CodeMirror from "@uiw/react-codemirror";
 import { cpp } from "@codemirror/lang-cpp";
+import "./ShowQuestions.css";
 
 const ShowQuestions = (props) => {
     const { questionData } = props;
@@ -10,12 +11,15 @@ const ShowQuestions = (props) => {
 
     return (
         <div
+            className="ShowQuestions_MainContainer"
             style={{
                 // display: "flex",
                 // justifyContent: "space-around",
                 // flexDirection: "column",
                 // alignItems: "center",
+
                 minHeight: "45.7vh",
+                // width: "75%",
             }}
         >
             <Card style={{ border: "none" }}>

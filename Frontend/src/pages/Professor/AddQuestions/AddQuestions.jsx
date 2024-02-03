@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import Nav from "react-bootstrap/Nav";
-import "./addquestions.css";
+import "./AddQuestions.css";
 import Button from "react-bootstrap/Button";
 import Card from "react-bootstrap/Card";
 
@@ -21,7 +21,7 @@ import ApiCall from "../../../util/ApiCall";
 const myTheme = createTheme({
     theme: "light",
     settings: {
-        background: "#ffffff",
+        background: "var(--lighter)",
         backgroundImage: "",
         foreground: "#75baff",
         caret: "#5d00ff",
@@ -218,7 +218,7 @@ const AddQuestions = () => {
     if (selectedOption === "description") {
         content = (
             <>
-                <Form style={{ color: "black" }}>
+                <Form style={{ color: "var(--lighter)", width: "65vw" }}>
                     <Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
                         <Form.Label>Problem Name</Form.Label>
                         <Form.Control
@@ -318,21 +318,30 @@ const AddQuestions = () => {
                                     variant="secondary"
                                     onClick={(event) => handleTestCasesdelete(event, index)}
                                 >
-                                    remove
+                                    Remove
                                 </Button>
-                                <Form.Label>Test Case {index + 1}</Form.Label>
+                                <Form.Label
+                                    style={{
+                                        color: "var(--lighter)",
+                                        marginBottom: "10px",
+                                    }}
+                                >
+                                    Test Case {index + 1}
+                                </Form.Label>
                                 <Form.Check // prettier-ignore
                                     style={{
                                         marginBottom: "10px",
-                                        padding: "0px 10px",
-                                        float: "right",
+                                        // padding: "0px 10px",
+                                        // float: "right",
+                                        width: "50vw",
                                         borderRadius: "4px",
+                                        color: "white",
                                     }}
                                     onChange={(event) => handleSampleTestCaseData(event, index)}
                                     type="switch"
                                     id="custom-switch"
                                     checked={questionData.TestCases[index].sampleTestCase}
-                                    label="Sample TestCase"
+                                    label="Sample Test Case"
                                 />
                                 <Form.Control
                                     as="textarea"
@@ -374,13 +383,13 @@ const AddQuestions = () => {
     }
 
     return (
-        <div style={{ color: "white", backgroundColor: "white" }}>
-            <h1 style={{ textAlign: "center", padding: "20px", backgroundColor: "rgba(36,36,36,1)" }}>Add Questions</h1>
+        <div style={{ color: "var(--lighter)", backgroundColor: "var(--bg1)" }}>
+            <h1 style={{ textAlign: "center", padding: "20px", backgroundColor: "var(--sec)" }}>ADD QUESTIONS</h1>
 
             <Nav
                 justify
                 variant="tabs"
-                style={{ marginTop: "-8px", paddingTop: "8px", backgroundColor: "rgba(36,36,36,1)" }}
+                style={{ marginTop: "-8px", paddingTop: "8px", backgroundColor: "var(--sec)" }}
                 defaultActiveKey="#"
             >
                 <Nav.Item>
@@ -423,24 +432,73 @@ const AddQuestions = () => {
                 style={{
                     padding: "20px",
                     marginBottom: "60px",
-                    backgroundColor: "rgba(36,36,36,1",
+                    backgroundColor: "var(--sec)",
                     display: "flex",
                     justifyContent: "end",
                 }}
             >
                 <Button
-                    style={{ margin: "14px", padding: "10px 20px", width: "100px" }}
+                    style={{
+                        margin: "14px",
+                        // padding: "10px 20px",
+                        width: "100px",
+                        font: "Fira Code",
+                        padding: "10px !important",
+                        color: "var(--sec)",
+                        backgroundColor: "var(--light)",
+                        borderColor: "var(--light)",
+                        transition: "box-shadow 0.8s ease-in-out",
+                    }}
+                    onMouseOver={(e) => {
+                        e.target.style.backgroundColor = "var(--lighter)";
+                    }}
+                    onMouseOut={(e) => {
+                        e.target.style.backgroundColor = "var(--light)";
+                    }}
                     onClick={() => handlePrevNext("Prev")}
                 >
-                    Prev
+                    Previous
                 </Button>
                 <Button
-                    style={{ margin: "14px", padding: "10px 20px", width: "100px" }}
+                    style={{
+                        margin: "14px",
+                        width: "100px",
+                        font: "Fira Code",
+                        padding: "10px !important",
+                        color: "var(--sec)",
+                        backgroundColor: "var(--light)",
+                        borderColor: "var(--light)",
+                        transition: "box-shadow 0.8s ease-in-out",
+                    }}
+                    onMouseOver={(e) => {
+                        e.target.style.backgroundColor = "var(--lighter)";
+                    }}
+                    onMouseOut={(e) => {
+                        e.target.style.backgroundColor = "var(--light)";
+                    }}
                     onClick={() => handlePrevNext("Next")}
                 >
                     Next
                 </Button>
-                <Button style={{ margin: "14px", padding: "10px 20px", width: "100px" }} onClick={() => handleCreate()}>
+                <Button
+                    style={{
+                        margin: "14px",
+                        width: "100px",
+                        font: "Fira Code",
+                        padding: "10px !important",
+                        color: "var(--sec)",
+                        backgroundColor: "var(--light)",
+                        borderColor: "var(--light)",
+                        transition: "box-shadow 0.8s ease-in-out",
+                    }}
+                    onMouseOver={(e) => {
+                        e.target.style.backgroundColor = "var(--lighter)";
+                    }}
+                    onMouseOut={(e) => {
+                        e.target.style.backgroundColor = "var(--light)";
+                    }}
+                    onClick={() => handleCreate()}
+                >
                     Create
                 </Button>
             </div>

@@ -1,0 +1,20 @@
+.nav-fill .nav-item .nav-link,
+.nav-justified .nav-item .nav-link {
+    background-color: var(--sec) !important;
+}
+.nav-fill .nav-item .nav-link,
+.nav-justified .nav-item .nav-link.active {
+    background-color: var(--bg1) !important;
+    color: var(--lighter) !important;
+}
+
+.QuestionsBulletins {
+    color: black;
+    width: 40%;
+}
+
+@media screen and (max-width: 550px) {
+    .QuestionsBulletins {
+        width: 90%;
+    }
+}

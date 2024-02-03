@@ -13,7 +13,7 @@
 }
 
 .sidelink {
-    padding: 0px 8px 0px 32px;
+    text-align: center;
     text-decoration: none;
     font-size: 25px;
     color: var(--lighter);
@@ -28,6 +28,19 @@
 
 .sidelink:hover {
     color: #f1f1f1;
+}
+
+.sidenavbarsections
+{
+    margin: 0px;
+    margin-top: 7px;
+    padding: 16px;
+    transition: 0.3s ease-in-out;
+}
+
+.sidenavbarsections:hover
+{
+    background-color: var(--light);
 }
 
 .sidenav .closebtn {
