@@ -27,3 +27,4 @@ require("./students/Evaluations")(app);
 require("./AI/OpenAI")(app)
 
 require("./Code/codeRun")(app)
+require("./Code/RandomTestCase")(app)

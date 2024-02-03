@@ -93,7 +93,7 @@ module.exports = (app) => {
                         res.send({
                             success: false,
                             message: `Error while running the submitted code!`,
-                            error: SolCodeResponse.error
+                            error: submittedCodeResponse.error
                         });
                     }
 
