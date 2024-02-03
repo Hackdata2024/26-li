@@ -18,7 +18,7 @@ function Assignments() {
                 const response = await ApiCall("/professors/myAssignments", "GET", {});
                 const res = await ApiCall("/getBatches", "GET", { message: "Hello" });
                 console.log("Response from /professors/myAssignments", response.data);
-                // console.log(res.data);
+                console.log(res.data);
                 setBatches(res.data.batches);
                 setAssignment(response.data.data);
             } catch (error) {
@@ -81,6 +81,7 @@ function Assignments() {
                     justifyContent: "center",
                     alignItems: "center",
                     marginTop: "30px",
+                    paddingBottom: "70px",
                 }}
             >
                 <ListGroup className="proflistgroup" as="ol" numbered>
@@ -96,28 +97,30 @@ function Assignments() {
 
                         const formattedDateTime = `${hours}:${minutes}:${seconds} ${day}-${month}-${year}`;
                         return (
-                            <ListGroup.Item
-                                as="li"
-                                className="d-flex justify-content-between align-items-start "
-                                key={index}
-                                style={{ cursor: "pointer" }}
-                                onClick={() => handleOnClick(item)}
-                            >
-                                <div className="ms-2 me-auto">
-                                    <div className="fw-bold">{item.AssignmentName}</div>
-                                    No. of Questions : {item.Questions.length}
-                                    <br /> Batches :{" "}
-                                    {item.Batches.map((batch, index) => {
-                                        return (
-                                            <Badge bg="secondary" className="mx-1" key={index}>
-                                                {batch}
-                                            </Badge>
-                                        );
-                                    })}
-                                    <br />
-                                    Due Date : {formattedDateTime}
-                                </div>
-                            </ListGroup.Item>
+                            <div key={index}>
+                                <ListGroup.Item
+                                    as="li"
+                                    className="d-flex justify-content-between align-items-start "
+                                    style={{ cursor: "pointer", borderRadius: "10px" }}
+                                    onClick={() => handleOnClick(item)}
+                                >
+                                    <div className="ms-2 me-auto">
+                                        <div className="fw-bold">{item.AssignmentName}</div>
+                                        No. of Questions : {item.Questions.length}
+                                        <br /> Batches :{" "}
+                                        {item.Batches.map((batch, index) => {
+                                            return (
+                                                <Badge bg="secondary" className="mx-1" key={index}>
+                                                    {batch}
+                                                </Badge>
+                                            );
+                                        })}
+                                        <br />
+                                        Due Date : {formattedDateTime}
+                                    </div>
+                                </ListGroup.Item>
+                                <br />
+                            </div>
                         );
                     })}
                 </ListGroup>
