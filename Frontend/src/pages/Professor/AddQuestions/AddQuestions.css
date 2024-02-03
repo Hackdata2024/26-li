@@ -1,9 +1,25 @@
+.body
+{
+    background-color: var(--sec);
+}
 .addquesnavlink {
     /* color: #0d6efd; */
-    color: white;
+    background-color: var(--bg1);
     font-size: 20px;
+    color: var(--lighter);
 }
 
+.nav-fill .nav-item .nav-link, .nav-justified .nav-item .nav-link.active
+{
+    color: var(--lighter);
+    background-color: var(--bg1);
+    border: none;
+}
+
+.nav-fill .nav-item .nav-link, .nav-justified .nav-item .nav-link
+{
+    color: var(--light)
+}
 .profaddquestion_mid-section {
     /* width: 70%; */
 }
