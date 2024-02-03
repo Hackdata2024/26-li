@@ -124,6 +124,7 @@ const CreateAssignmentModal = (props) => {
                 toast.error(error);
             }
         };
+        console.log("data going: ", formData);
         postAssignment();
     };
 
