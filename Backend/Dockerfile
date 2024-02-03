@@ -17,10 +17,6 @@ RUN npm install
 # Copy the rest of the application code
 COPY . .
 
-# Install Python and required packages
-RUN apt-get install -y python3 python3-pip && \
-    pip3 install openai
-
 # Expose the port your app runs on
 EXPOSE 8080
 
