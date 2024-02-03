@@ -225,7 +225,7 @@ const CreateEvalModal = (props) => {
                 <p>Select Batches</p>
                 {["checkbox"].map((type) => (
                     <div key={`inline-${type}`} className="mb-3">
-                        {props.Batches.map((batch, index) => {
+                        {props.batches.map((batch, index) => {
                             // console.log(batch);
                             return (
                                 <Form.Check
