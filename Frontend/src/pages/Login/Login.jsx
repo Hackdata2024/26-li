@@ -77,7 +77,7 @@ function Login() {
                 display: "flex",
                 alignItems: "center",
                 justifyContent: "center",
-                height: "92.7vh",
+                height: "95vh",
                 color: "white",
                 backgroundImage: "url('/assets/images/CodeSpherebg.png')",
                 backgroundSize: "cover",
