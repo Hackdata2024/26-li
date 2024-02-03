@@ -12,6 +12,36 @@ const Assignments = () => {
     const [missingAssignments, setMissingAssignments] = useState([]);
     const [submittedAssignments, setSubmittedAssignments] = useState([]);
 
+    useEffect(() => {
+        const getAssignments = async () => {
+            try {
+                const response = await ApiCall("/students/myAssignments", "GET", null);
+                const temp = response.data.data;
+                console.log("temp", temp);
+                const currentTime = new Date();
+                const todo = [];
+                const missing = [];
+                const submitted = [];
+                temp.forEach((assignment) => {
+                    const dueDateTime = new Date(assignment.DueTimestamp);
+                    if (assignment.Submitted) {
+                        submitted.push(assignment);
+                    } else if (dueDateTime < currentTime) {
+                        missing.push(assignment);
+                    } else {
+                        todo.push(assignment);
+                    }
+                });
+                setTodoAssignments(todo);
+                setMissingAssignments(missing);
+                setSubmittedAssignments(submitted);
+            } catch (error) {
+                console.error("Error fetching assignments: ", error);
+            }
+        };
+        getAssignments();
+    }, []);
+
     return (
         <>
             <div>
@@ -37,15 +67,39 @@ const Assignments = () => {
                         <Tab
                             eventKey="todo"
                             title={<span style={{ fontSize: "18px", fontWeight: "500" }}> Pending</span>}
-                        ></Tab>
+                        >
+                            {todoAssignments.length != 0 ? (
+                                <Todo Assignments={todoAssignments} />
+                            ) : (
+                                <div style={{ paddingBottom: "10px", fontSize: "20px", textAlign: "center" }}>
+                                    No Pending assignments
+                                </div>
+                            )}
+                        </Tab>
                         <Tab
                             eventKey="missing"
                             title={<span style={{ fontSize: "18px", fontWeight: "500" }}> Missed</span>}
-                        ></Tab>
+                        >
+                            {missingAssignments.length != 0 ? (
+                                <Missing Assignments={missingAssignments} />
+                            ) : (
+                                <div style={{ paddingBottom: "10px", fontSize: "20px", textAlign: "center" }}>
+                                    No missed assignments
+                                </div>
+                            )}
+                        </Tab>
                         <Tab
                             eventKey="submitted"
                             title={<span style={{ fontSize: "18px", fontWeight: "500" }}> Submitted</span>}
-                        ></Tab>
+                        >
+                            {submittedAssignments.length != 0 ? (
+                                <Submitted Assignments={submittedAssignments} />
+                            ) : (
+                                <div style={{ paddingBottom: "10px", fontSize: "20px", textAlign: "center" }}>
+                                    No submitted assignments
+                                </div>
+                            )}
+                        </Tab>
                     </Tabs>
                 </div>
             </div>
