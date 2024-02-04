@@ -2,9 +2,10 @@ module.exports = (app) => {
 
     const urlToPing = process.env.Host + "/ping";
     const axios = require('axios');
-
+    
     async function pingUrl() {
         try {
+            console.log(`Pinging ${urlToPing}`)
             const response = await axios.get(urlToPing, {
                 headers: {
                     'pingedBy': 'Keep-Alive-Bot', // Custom header
