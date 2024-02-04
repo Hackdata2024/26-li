@@ -20,7 +20,7 @@ function Footer() {
         >
             <Card.Body>
                 &copy; {new Date().getFullYear()} Copyright:{" "}
-                <a className="text-dark" href="#">
+                <a className="text-dark" href="/">
                     CodeSphere
                 </a>
             </Card.Body>

@@ -61,10 +61,10 @@ function OffCanvasExample({ changeQuestionViaIndex, assignmentSolution, ...props
                         style={{
                             fontSize: "20px",
                             fontWeight: "bold",
-                            backgroundColor: "var(--light)",
+                            backgroundColor: "var(--sec)",
                             border: "none",
                             marginLeft: "2%",
-                            color: "var(--bg1)",
+                            color: "var(--lighter)",
                         }}
                     >
                         &#9776;
