@@ -199,7 +199,7 @@ const SolveProblem = () => {
                                             testcases.sampleTestCase ? (
                                                 <div key={index}>
                                                     Sample Test Case {index}
-                                                    <Card>
+                                                    <Card style={{maxWidth:"20vw"}}>
                                                         <ListGroup variant="flush" className="px-1">
                                                             <ListGroup.Item>
                                                                 <pre>{testcases.input}</pre>
@@ -226,6 +226,7 @@ const SolveProblem = () => {
                     </div>
                     <div
                         style={{
+                            marginTop: "10px",
                             backgroundColor: "var(--lighter)",
                             borderTopLeftRadius: "10px",
                             borderTopRightRadius: "10px",
@@ -262,10 +263,28 @@ const SolveProblem = () => {
                         }}
                     ></div>
                     <div style={{ textAlign: "center", marginTop: "2%" }}>
-                        {/* <Button style={{ width: "100px" }}>Run Code</Button> */}
+                        {/* <Button style={{ fontSize: "20px",
+                            fontWeight: "bold",
+                            backgroundColor: "var(--light)",
+                            border: "none",
+                            marginLeft: "2%",
+                            color: "var(--bg1)", }}>Run Code</Button> */}
                         <ResultModal questionData={questionData} />
                         &nbsp;&nbsp;&nbsp;&nbsp;
-                        <Button style={{ width: "100px" }} onClick={handleSubmit}>
+                        <Button style={{
+                            fontSize: "20px",
+                            fontWeight: "bold",
+                            backgroundColor: "var(--light)",
+                            border: "none",
+                            marginLeft: "2%",
+                            color: "var(--bg1)",}} 
+                            
+                            onMouseOver={(e) => {
+                                e.target.style.color = "var(--bg1)";
+                            }}
+                            onMouseOut={(e) => {
+                                e.target.style.color = "var(--sec)";
+                            }} onClick={handleSubmit}>
                             Submit
                         </Button>
                     </div>

@@ -180,7 +180,12 @@ function ResultModal({ questionData, ...props }) {
     };
     return (
         <>
-            <Button variant="primary" onClick={() => handleRunCode()}>
+            <Button variant="primary" style ={{fontSize: "20px",
+                            fontWeight: "bold",
+                            backgroundColor: "var(--light)",
+                            border: "none",
+                            marginLeft: "2%",
+                            color: "var(--bg1)"}}onClick={() => handleRunCode()}>
                 Run Code
             </Button>
 
