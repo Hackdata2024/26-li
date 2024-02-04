@@ -12,35 +12,56 @@ const LandingPage = () => {
         <>
             <NavBar />
             <div className="home-section" style={{ display: "flex", marginTop: "50px", paddingBottom: "100px" }}>
-            <div className="divlanding" style={{ display: "flex", flexDirection: "row", flexWrap: "wrap"}}>
-                <div className="headingLand" style={{ flex: 1, padding: "0 20px" }}>
-                    <h1
-                    style={{
-                        fontFamily: "Open Sans",
-                        color: "rgba(227, 243, 246)",
-                        fontSize: "60px",
-                        margin: "80px 80px 80px 80px",
-                    }}
+                <div className="divlanding">
+                    {/* <div className="headingLand"> */}
+                    <div
+                        className="headingLand"
+                        style={{
+                            fontFamily: "Open Sans",
+
+                            color: "rgba(227, 243, 246)",
+                            fontSize: "80px",
+                            margin: "80px 80px 80px 80px",
+                        }}
                     >
-                    S i m p l i f y. <br />
-                    <br />
-                    A u t o m a t e.<i>
-                        <br />
-                        <br /> Excel.
-                    </i>
-                    <br />
-                    </h1>
+                        <i>
+                            S i m p l i f y.
+                            {/* <br /> */}
+                            <br />A u t o m a t e.
+                            {/* <i> */}
+                            {/* <br /> */}
+                            <br /> E x c e l.
+                            {/* </i> */}
+                            <br />
+                        </i>
+                    </div>
+                    <div
+                        className="headingLand2"
+                        style={{
+                            fontFamily: "Open Sans",
+                            fontSize: "2rem",
+                            width: "100%",
+                            color: "rgba(227, 243, 246)",
+                        }}
+                    >
+                        S i m p l i f y.
+                        <br />A u t o m a t e. <br />E x c e l.
+                    </div>
+                    {/* </div> */}
+                    <div
+                        className="imageLand"
+                        style={{
+                            // flex: 1,
+                            backgroundImage: "url('/assets/images/LOGO2.png')",
+                            backgroundSize: "contain",
+                            backgroundPosition: "center center",
+                            // maxWidth: "1200px",
+                            // margin: "0 auto",
+                            marginTop: "30px",
+                            backgroundRepeat: "no-repeat",
+                        }}
+                    ></div>
                 </div>
-                <div className="imageLand" 
-                style={{ flex: 1, 
-                backgroundImage: "url('/assets/images/LOGO.png')", 
-                backgroundSize: "contain", 
-                backgroundPosition: "center center", 
-                maxWidth: "1200px", 
-                margin: "0 auto",
-                marginTop: "30px",
-                backgroundRepeat: "no-repeat"}}></div>
-            </div>
 
                 <div className="home-section-1">
                     <LandingPageCard

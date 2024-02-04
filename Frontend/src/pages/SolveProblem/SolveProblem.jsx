@@ -145,10 +145,10 @@ const SolveProblem = () => {
                                             {questionData.QuestionName}
                                         </Card.Title>
                                         <Card.Subtitle style={{ textAlign: "center", fontFamily:"Fira Code"}} className="mb-2 text-muted">
-                                            <i>time limit per test : 1 second</i>
+                                            time limit per test : 1 second
                                         </Card.Subtitle>
                                         <Card.Subtitle style={{ textAlign: "center", fontFamily:"Fira Code" }} className="mb-2 text-muted">
-                                            <i>memory limit per test : 256 megabytes</i>
+                                            memory limit per test : 256 megabytes
                                         </Card.Subtitle>
                                         <hr/>
                                     </div>
