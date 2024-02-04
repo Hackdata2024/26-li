@@ -5,6 +5,7 @@ import { useState, useEffect } from "react";
 import { Button } from "react-bootstrap";
 import ApiCall from "../../util/ApiCall";
 import { toast } from "react-toastify";
+import "./ProblemSidenav.css"
 
 function OffCanvasExample({ changeQuestionViaIndex, assignmentSolution, ...props }) {
     const [show, setShow] = useState(false);
@@ -42,36 +43,50 @@ function OffCanvasExample({ changeQuestionViaIndex, assignmentSolution, ...props
                         style={{
                             fontSize: "20px",
                             fontWeight: "bold",
-                            backgroundColor: "white",
+                            backgroundColor: "var(--light)",
                             border: "none",
                             marginLeft: "2%",
-                            color: "black",
+                            color: "var(--bg1)",
                         }}
                     >
                         &#9776;
                     </Button>
                 </div>
                 <div style={{ width: "50%" }}>
-                    <Button style={{ float: "right", marginRight: "4%" }} onClick={handleSubmitAssignment}>
+                    <Button style={{ float: "right", marginRight: "4%",
+                                    font: "Fira Code",
+                                    paddingLeft: "20px", 
+                                    paddingRight: "20px",
+                                    color: "var(--sec)",
+                                    backgroundColor: "var(--light)",
+                                    borderColor: "var(--light)",
+                                    transition: "box-shadow 0.3s ease-in-out",                        
+                                }}
+                                    onMouseOver={(e) => {
+                                        e.target.style.color = "var(--bg1)";
+                                    }}
+                                    onMouseOut={(e) => {
+                                        e.target.style.boxShadow = "var(--light)";
+                                    }}
+                                     onClick={handleSubmitAssignment}>
                         Submit Assignment
                     </Button>
                 </div>
             </div>
             <Offcanvas show={show} onHide={handleClose} {...props}>
-                <Offcanvas.Header closeButton>
-                    <Offcanvas.Title>Questions</Offcanvas.Title>
+                <Offcanvas.Header style={{backgroundColor:"var(--lighter)"}}closeButton>
+                    <Offcanvas.Title style={{color:"var(--bg1)"}}>Questions</Offcanvas.Title>
                 </Offcanvas.Header>
-                <Offcanvas.Body>
+                <Offcanvas.Body className="solveNav" style={{backgroundColor:"var(--bg1)", color:"var(--lighter)"}}>
                     {props.questions.map((question, index) => (
                         <div
                             key={index}
                             onClick={(event) => {
                                 changeQuestionViaIndex(index);
                                 handleClose();
-                            }}
-                            style={{ cursor: "pointer" }}
+                            }} className="solveNavSections"
                         >
-                            <hr />
+                            
                             <p>
                                 <span>{`Q${index + 1}. `}</span>
                                 {question.QuestionName}

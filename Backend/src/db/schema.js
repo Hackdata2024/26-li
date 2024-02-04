@@ -108,7 +108,15 @@ const EvaluationSchema = new mongoose.Schema({
     }],
 });
 
-
+const SubmitAssignmentsSchema = new mongoose.Schema({
+    AssignmentId: { type: mongoose.Schema.Types.ObjectId, required: true },
+    StudentId: { type: mongoose.Schema.Types.ObjectId, required: true },
+    Submission: [{
+        SubmittedCode: { type: String, required: true },
+        QuestionId: { type: mongoose.Schema.Types.ObjectId, required: true },
+    }],
+    SubmittedOn: { type: Date, required: true },
+});
 
 module.exports = {
     assignmentSchema,
@@ -117,5 +125,6 @@ module.exports = {
     professorsSchema,
     QuestionSchema,
     StudentsSchema,
-    EvaluationSchema
+    EvaluationSchema,
+    SubmitAssignmentsSchema
 };

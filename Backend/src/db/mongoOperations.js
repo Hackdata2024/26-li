@@ -4,7 +4,7 @@ let connections = {};
 async function connectDB() {
     try {
 
-        const databaseNames = ['Assignments', 'Colleges', 'Professors', 'QuestionBank', 'Students', 'Evaluations'];
+        const databaseNames = ['Assignments', 'Colleges', 'Professors', 'QuestionBank', 'Students', 'Evaluations', "AssignmentSubmissions"];
 
         for (let i = 0; i < databaseNames.length; i++) {
             const DBconnectionString = `mongodb+srv://${process.env.DB_USERNAME}:${process.env.DB_PASSWORD}@cluster0.lf3bitf.mongodb.net/${databaseNames[i]}?retryWrites=true&w=majority`;
