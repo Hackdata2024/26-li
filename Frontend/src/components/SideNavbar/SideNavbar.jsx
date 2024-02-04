@@ -32,7 +32,7 @@ const Sidenav = () => {
         if (currentURL === "student") {
             setSidenavItems([
                 { name: "Assignments", link: `/${currentURL}/assignments` },
-                { name: "Evals", link: `/${currentURL}/evals` },
+                { name: "Evaluations", link: `/${currentURL}/evals` },
             ]);
             getProfileDetails("students/profile");
         } else {
