@@ -25,8 +25,8 @@ const Missing = (props) => {
                         <div key={index}>
                             <ListGroup.Item
                                 style={{
-                                    backgroundColor: "rgba(36,36,36,1)",
-                                    color: "white",
+                                    backgroundColor: "var(--lighter)",
+                                    color: "var(--bg1)",
                                     border: "none",
                                     borderRadius: "10px",
                                     display: "flex",

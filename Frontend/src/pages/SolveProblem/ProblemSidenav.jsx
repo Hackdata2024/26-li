@@ -38,17 +38,32 @@ function OffCanvasExample({ changeQuestionViaIndex, assignmentSolution, ...props
                         style={{
                             fontSize: "20px",
                             fontWeight: "bold",
-                            backgroundColor: "white",
+                            backgroundColor: "var(--light)",
                             border: "none",
                             marginLeft: "2%",
-                            color: "black",
+                            color: "var(--bg1)",
                         }}
                     >
                         &#9776;
                     </Button>
                 </div>
                 <div style={{ width: "50%" }}>
-                    <Button style={{ float: "right", marginRight: "4%" }} onClick={handleSubmitAssignment}>
+                    <Button style={{ float: "right", marginRight: "4%",
+                                    font: "Fira Code",
+                                    paddingLeft: "20px", 
+                                    paddingRight: "20px",
+                                    color: "var(--sec)",
+                                    backgroundColor: "var(--light)",
+                                    borderColor: "var(--light)",
+                                    transition: "box-shadow 0.3s ease-in-out",                        
+                                }}
+                                    onMouseOver={(e) => {
+                                        e.target.style.color = "var(--bg1)";
+                                    }}
+                                    onMouseOut={(e) => {
+                                        e.target.style.boxShadow = "var(--light)";
+                                    }}
+                                     onClick={handleSubmitAssignment}>
                         Submit Assignment
                     </Button>
                 </div>
