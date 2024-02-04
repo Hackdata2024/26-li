@@ -4,6 +4,9 @@ import React, { useState } from "react";
 import ApiCall from "../../util/ApiCall";
 import Badge from "react-bootstrap/Badge";
 import { toast } from "react-toastify";
+import Tab from "react-bootstrap/Tab";
+import Tabs from "react-bootstrap/Tabs";
+import AiSuggestion from "./AiSuggestion";
 
 function MyVerticallyCenteredModal({ result, questionData, testCasesStatus, ...props }) {
     return (
@@ -12,34 +15,42 @@ function MyVerticallyCenteredModal({ result, questionData, testCasesStatus, ...p
                 <Modal.Title id="contained-modal-title-vcenter">Results &nbsp;&nbsp; {result}</Modal.Title>
             </Modal.Header>
             <Modal.Body>
-                <div
-                    style={{
-                        display: "flex",
-                        flexDirection: "column",
-                    }}
-                >
-                    {testCasesStatus.map((testCase, index) => {
-                        let content;
-                        if (testCase === "AC") content = <Badge bg="success">AC</Badge>;
-                        else if (testCase === "WA") {
-                            content = <Badge bg="danger">WA</Badge>;
-                        } else if (testCase === "CE") {
-                            content = <Badge bg="danger">CE</Badge>;
-                        } else if (testCase === "TLE") {
-                            content = <Badge bg="danger">TLE</Badge>;
-                        } else if (testCase === "Error in Solution Code!") {
-                            content = <Badge bg="danger">Error in Solution Code!</Badge>;
-                        }
-                        return (
-                            <div key={index} style={{ display: "flex", alignItems: "center" }}>
-                                <div className="mx-4" style={{ fontSize: "20px", fontWeight: "400" }}>{`Test Case ${
-                                    index + 1
-                                }`}</div>
-                                {content}
-                            </div>
-                        );
-                    })}
-                </div>
+                <Tabs defaultActiveKey="Testcases" id="justify-tab-example" className="mb-3" justify>
+                    <Tab eventKey="Testcases" title="Testcases">
+                        <div
+                            style={{
+                                display: "flex",
+                                flexDirection: "column",
+                            }}
+                        >
+                            {testCasesStatus.map((testCase, index) => {
+                                let content;
+                                if (testCase === "AC") content = <Badge bg="success">AC</Badge>;
+                                else if (testCase === "WA") {
+                                    content = <Badge bg="danger">WA</Badge>;
+                                } else if (testCase === "CE") {
+                                    content = <Badge bg="danger">CE</Badge>;
+                                } else if (testCase === "TLE") {
+                                    content = <Badge bg="danger">TLE</Badge>;
+                                } else if (testCase === "Error in Solution Code!") {
+                                    content = <Badge bg="danger">Error in Solution Code!</Badge>;
+                                }
+                                return (
+                                    <div key={index} style={{ display: "flex", alignItems: "center" }}>
+                                        <div
+                                            className="mx-4"
+                                            style={{ fontSize: "20px", fontWeight: "400" }}
+                                        >{`Test Case ${index + 1}`}</div>
+                                        {content}
+                                    </div>
+                                );
+                            })}
+                        </div>
+                    </Tab>
+                    <Tab eventKey="aiSuggestion" title="AI Suggestion">
+                        <AiSuggestion result={result} questionData={questionData} />
+                    </Tab>
+                </Tabs>
             </Modal.Body>
             <Modal.Footer>
                 <Button onClick={props.onHide}>Close</Button>

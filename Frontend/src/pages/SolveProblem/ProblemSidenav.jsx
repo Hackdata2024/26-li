@@ -61,7 +61,10 @@ function OffCanvasExample({ changeQuestionViaIndex, assignmentSolution, ...props
                     {props.questions.map((question, index) => (
                         <div
                             key={index}
-                            onClick={(event) => changeQuestionViaIndex(index)}
+                            onClick={(event) => {
+                                changeQuestionViaIndex(index);
+                                handleClose();
+                            }}
                             style={{ cursor: "pointer" }}
                         >
                             <hr />
