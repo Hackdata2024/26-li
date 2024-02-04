@@ -13,6 +13,7 @@ import ResultModal from "./ResultsModal";
 import { useParams } from "react-router-dom";
 import ApiCall from "../../util/ApiCall";
 import OffCanvasExample from "./ProblemSidenav";
+import Cookies from "js-cookie";
 
 const myTheme = createTheme({
     theme: "light",
@@ -69,30 +70,6 @@ const SolveProblem = () => {
             toast.error("Error in getting questions");
         }
     };
-
-    const [isInputFocused, setIsInputFocused] = useState(false);
-
-    const handleVisibilityChange = () => {
-        if (document.hidden && !isInputFocused) {
-            alert("Tab switched! You will be logged out in 5 seconds");
-        }
-    };
-
-    const handleInputFocus = () => {
-        setIsInputFocused(true);
-    };
-
-    const handleInputBlur = () => {
-        setIsInputFocused(false);
-    };
-
-    useEffect(() => {
-        document.addEventListener("visibilitychange", handleVisibilityChange);
-
-        return () => {
-            document.removeEventListener("visibilitychange", handleVisibilityChange);
-        };
-    }, [isInputFocused]);
 
     const changeQuestionViaIndex = (index) => {
         setCurrIndex(index);
@@ -295,8 +272,6 @@ const SolveProblem = () => {
                         value={questionData.Code}
                         height="200px"
                         // x
-                        onFocus={handleInputFocus}
-                        onBlur={handleInputBlur}
                         width="96%"
                         theme={myTheme}
                         extensions={[cpp()]}
