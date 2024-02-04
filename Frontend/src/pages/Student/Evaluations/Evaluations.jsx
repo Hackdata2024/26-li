@@ -36,7 +36,7 @@ const Evaluations = () => {
                     } else if (StartTime < currentTime && EndTime > currentTime) {
                         ongoing.push(assignment);
                     } else {
-                        finished.push(assignment);
+                        upcoming.push(assignment);
                     }
                 });
                 setUpcomingEvaluations(upcoming);
