@@ -3,18 +3,18 @@
 
 ### Team
 
-- **[Saksham Sehgal]**
+- **Saksham Sehgal**
     - Role: Team Leader
     - Contributions: Backend development and integration, overall project coordination.
-- **[Harsh Sharma]**
+- **Harsh Sharma**
     - Role: Frontend Developer
     - Contributions: Frontend development, implementing functionalities
 
-- **[Rajat Bhati]**
+- **Rajat Bhati**
     - Role: Frontend Developer
     - Contributions: Frontend development, design, and implementing features
 
-- **[Paakhi Maheshwari]**
+- **Paakhi Maheshwari**
     - Role: Backend Functionalities and Frontend Design
     - Contributions: UI and functionalities design
 
@@ -67,17 +67,17 @@ CodeSphere offers a straightforward interface with separate portals for students
 
 ## Team Mates Details
 
-- **[Saksham Sehgal]**
+- **[Saksham Sehgal](https://www.linkedin.com/in/)**
     - Skills: Website Development, Competitive Programming
     - Background: Backend development and integration, overall project coordination.
-- **[Harsh Sharma]**
+- **[Harsh Sharma](https://www.linkedin.com/in/harshsharma20503)**
     - Skills: Website Development, Competitive Programming
     - Background: Frontend development, implementing functionalities
 
-- **[Rajat Bhati]**
+- **[Rajat Bhati](https://www.linkedin.com/in/rajat-bhati-6a2114216)**
     - Skills: Frontend Development
     - Background: Frontend development, design, and implementing features
 
-- **[Paakhi Maheshwari]**
+- **[Paakhi Maheshwari](https://www.linkedin.com/in/paakhim10)**
     - Skills: Data Science and ML, Frontend development
     - Background: UI and functionalities design

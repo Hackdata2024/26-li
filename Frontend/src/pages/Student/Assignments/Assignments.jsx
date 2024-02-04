@@ -75,7 +75,7 @@ const Assignments = () => {
                     <Tabs
                         defaultActiveKey="todo"
                         id="justify-tab-example"
-                        style={{ backgroundColor: "rgba(36,36,36,1)" }}
+                        style={{ backgroundColor: "var(--sec)" }}
                         className="mb-4"
                         justify
                     >
