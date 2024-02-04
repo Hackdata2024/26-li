@@ -55,16 +55,17 @@ const Evaluations = () => {
             <div>
                 <h1
                     style={{
-                        color: "white",
+                        color: "var(--lighter)",
                         textAlign: "center",
                         padding: "20px",
-                        backgroundColor: "rgba(36,36,36,1)",
+                        backgroundColor: "var(--sec)",
+                        fontFamily: "Open Sans"
                     }}
                 >
-                    Evaluations
+                    EVALUATIONS
                 </h1>
 
-                <div style={{ backgroundColor: "white", marginTop: "-9px" }}>
+                <div style={{ backgroundColor: "var(--bg1)", marginTop: "-9px" }}>
                     <Tabs
                         defaultActiveKey="upcoming"
                         id="justify-tab-example"
@@ -100,7 +101,7 @@ const Evaluations = () => {
                             ) : upcomingEvaluations.length != 0 ? (
                                 <Upcoming Evaluations={upcomingEvaluations} />
                             ) : (
-                                <div style={{ paddingBottom: "10px", fontSize: "20px", textAlign: "center" }}>
+                                <div style={{ paddingBottom: "10px", fontSize: "20px", textAlign: "center", color: "var(--lighter)" }}>
                                     No Upcoming Evaluations
                                 </div>
                             )}
@@ -139,7 +140,7 @@ const Evaluations = () => {
                             ) : ongoingEvaluations.length != 0 ? (
                                 <Ongoing Evaluations={ongoingEvaluations} />
                             ) : (
-                                <div style={{ paddingBottom: "10px", fontSize: "20px", textAlign: "center" }}>
+                                <div style={{ paddingBottom: "10px", fontSize: "20px", textAlign: "center", color: "var(--lighter)" }}>
                                     No Ongoing Evaluations
                                 </div>
                             )}
@@ -172,7 +173,7 @@ const Evaluations = () => {
                             ) : finishedEvaluations.length != 0 ? (
                                 <Finished Evaluations={finishedEvaluations} />
                             ) : (
-                                <div style={{ paddingBottom: "10px", fontSize: "20px", textAlign: "center" }}>
+                                <div style={{ paddingBottom: "10px", fontSize: "20px", textAlign: "center", color: "var(--lighter)" }}>
                                     No Finished Evaluations
                                 </div>
                             )}
