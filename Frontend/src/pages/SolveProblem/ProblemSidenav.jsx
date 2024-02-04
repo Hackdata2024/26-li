@@ -17,14 +17,20 @@ function OffCanvasExample({ changeQuestionViaIndex, assignmentSolution, ...props
             try {
                 const filterarray = assignmentSolution.map(({ _id, Code }) => ({ _id, Code }));
                 const transformedArray = filterarray.map(({ _id, Code }) => ({ QuestionId: _id, SubmittedCode: Code }));
-                const response = await ApiCall("./submitAssignment/", "POST", {
-                    AssigmentID: props.id,
+
+                const url = type === "Assignment" ? "/submitAssignment/" : "/submitEvaluation/";
+                const response = await ApiCall(url, "POST", {
+                    [props.type === "Assignment" ? "AssigmentID" : "EvaluationID"]: props.id,
                     Questions: transformedArray,
                 });
                 console.log(response.data);
                 if (response.data.success) {
                     toast.success("Assignment Submitted Successfully");
-                    window.location.href = "/student/assignments";
+                    if (type === "Assignment") {
+                        window.location.href = `/student/assignments`;
+                    } else {
+                        window.location.href = `/student/assignments`;
+                    }
                 } else {
                     toast.error("Assignment Submission Failed");
                 }
