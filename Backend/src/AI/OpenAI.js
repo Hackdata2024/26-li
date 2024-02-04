@@ -21,7 +21,7 @@ module.exports = (app) => {
                 content: `Code Analysis. You will be given a code along with its problem statement. Use concise language that is suitable for students.
                             Questions:
                             1. Identify any syntax errors or logical issues in the code.
-                            2. Suggestions/Instructions on how to correct the errors and run the code successfully.`,
+                            2. Instructions on how to correct the errors and run the code successfully.`,
             },
             {
                 role: 'user',
