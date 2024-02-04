@@ -67,7 +67,7 @@ CodeSphere offers a straightforward interface with separate portals for students
 
 ## Team Mates Details
 
-- **[Saksham Sehgal](https://www.linkedin.com/in/)**
+- **[Saksham Sahgal](https://www.linkedin.com/in/saksham-sahgal-aaa23b164/)**
     - Skills: Website Development, Competitive Programming
     - Background: Backend development and integration, overall project coordination.
 - **[Harsh Sharma](https://www.linkedin.com/in/harshsharma20503)**
