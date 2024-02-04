@@ -28,3 +28,5 @@ require("./AI/OpenAI")(app)
 
 require("./Code/codeRun")(app)
 require("./Code/RandomTestCase")(app)
+
+require("./professors/Submit")(app)

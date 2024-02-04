@@ -64,7 +64,7 @@ module.exports = (app) => {
                                 if (submittedCodeResponse.output === SolCodeResponse.output) {
                                     res.send({
                                         success: true,
-                                        message: "Test Passed!",
+                                        message: "Random Test Case Passed!",
                                         output: submittedCodeResponse.output,
                                         CustomImputGenerated: CustomImputGenerated
                                     });
