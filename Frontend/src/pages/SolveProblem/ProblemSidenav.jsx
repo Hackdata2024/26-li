@@ -14,14 +14,15 @@ function OffCanvasExample({ changeQuestionViaIndex, assignmentSolution, ...props
         const postAssignment = async () => {
             try {
                 const filterarray = assignmentSolution.map(({ _id, Code }) => ({ _id, Code }));
+                const transformedArray = filterarray.map(({ _id, Code }) => ({ QuestionId: _id, SubmittedCode: Code }));
                 const response = await ApiCall("./submitAssignment/", "POST", {
                     AssigmentID: props.id,
-                    Questions: filterarray,
+                    Questions: transformedArray,
                 });
                 console.log(response.data);
                 if (response.data.success) {
                     toast.success("Assignment Submitted Successfully");
-                    window.location.href = "/submittedPage";
+                    window.location.href = "/student/assignments";
                 } else {
                     toast.error("Assignment Submission Failed");
                 }
