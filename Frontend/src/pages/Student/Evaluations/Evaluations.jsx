@@ -31,7 +31,10 @@ const Evaluations = () => {
                 temp.forEach((assignment) => {
                     const StartTime = new Date(assignment.StartTime);
                     const EndTime = new Date(assignment.EndTime);
-                    if (assignment.Submitted) {
+                    console.log("StartTime", StartTime);
+                    console.log("EndTime", EndTime);
+                    console.log("currentTime", currentTime);
+                    if (assignment.Submitted || EndTime < currentTime) {
                         finished.push(assignment);
                     } else if (StartTime < currentTime && EndTime > currentTime) {
                         ongoing.push(assignment);
@@ -39,6 +42,7 @@ const Evaluations = () => {
                         upcoming.push(assignment);
                     }
                 });
+                console.log(ongoing);
                 setUpcomingEvaluations(upcoming);
                 setOngoingEvaluations(ongoing);
                 setFinishedEvaluations(finished);
