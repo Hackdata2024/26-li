@@ -5,7 +5,7 @@ const Submitted = (props) => {
     return (
         // <div>
         <div style={{ display: "flex", flexDirection: "column", justifyContent: "center", alignItems: "center" }}>
-            <ListGroup style={{ color: "black", width: "50%" }}>
+            <ListGroup className="student-card-responsiveness" style={{ color: "black" }}>
                 {props.Assignments.map((assignment, index) => {
                     const date = new Date(assignment.DueTimestamp);
                     const year = date.getFullYear();

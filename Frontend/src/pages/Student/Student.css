@@ -1,0 +1,9 @@
+.student-card-responsiveness {
+    width: 50%;
+}
+
+@media screen and (max-aspect-ratio: 4/3) {
+    .student-card-responsiveness {
+        width: 80%;
+    }
+}
