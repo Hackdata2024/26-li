@@ -9,6 +9,7 @@ import ApiCall from "../../../util/ApiCall";
 import { ListGroup } from "react-bootstrap";
 import Skeleton, { SkeletonTheme } from "react-loading-skeleton";
 import "react-loading-skeleton/dist/skeleton.css";
+import "../Student.css";
 
 const Evaluations = () => {
     const [upcomingEvaluations, setUpcomingEvaluations] = useState([]);
@@ -59,13 +60,20 @@ const Evaluations = () => {
                         textAlign: "center",
                         padding: "20px",
                         backgroundColor: "var(--sec)",
-                        fontFamily: "Open Sans"
+                        fontFamily: "Open Sans",
                     }}
                 >
                     EVALUATIONS
                 </h1>
 
-                <div style={{ backgroundColor: "var(--bg1)", marginTop: "-9px" }}>
+                <div
+                    style={{
+                        backgroundColor: "var(--bg1)",
+                        marginTop: "-9px",
+                        paddingBottom: "54px",
+                        minHeight: "80vh",
+                    }}
+                >
                     <Tabs
                         defaultActiveKey="upcoming"
                         id="justify-tab-example"
@@ -101,7 +109,14 @@ const Evaluations = () => {
                             ) : upcomingEvaluations.length != 0 ? (
                                 <Upcoming Evaluations={upcomingEvaluations} />
                             ) : (
-                                <div style={{ paddingBottom: "10px", fontSize: "20px", textAlign: "center", color: "var(--lighter)" }}>
+                                <div
+                                    style={{
+                                        paddingBottom: "10px",
+                                        fontSize: "20px",
+                                        textAlign: "center",
+                                        color: "var(--lighter)",
+                                    }}
+                                >
                                     No Upcoming Evaluations
                                 </div>
                             )}
@@ -140,7 +155,14 @@ const Evaluations = () => {
                             ) : ongoingEvaluations.length != 0 ? (
                                 <Ongoing Evaluations={ongoingEvaluations} />
                             ) : (
-                                <div style={{ paddingBottom: "10px", fontSize: "20px", textAlign: "center", color: "var(--lighter)" }}>
+                                <div
+                                    style={{
+                                        paddingBottom: "10px",
+                                        fontSize: "20px",
+                                        textAlign: "center",
+                                        color: "var(--lighter)",
+                                    }}
+                                >
                                     No Ongoing Evaluations
                                 </div>
                             )}
@@ -173,7 +195,14 @@ const Evaluations = () => {
                             ) : finishedEvaluations.length != 0 ? (
                                 <Finished Evaluations={finishedEvaluations} />
                             ) : (
-                                <div style={{ paddingBottom: "10px", fontSize: "20px", textAlign: "center", color: "var(--lighter)" }}>
+                                <div
+                                    style={{
+                                        paddingBottom: "10px",
+                                        fontSize: "20px",
+                                        textAlign: "center",
+                                        color: "var(--lighter)",
+                                    }}
+                                >
                                     No Finished Evaluations
                                 </div>
                             )}

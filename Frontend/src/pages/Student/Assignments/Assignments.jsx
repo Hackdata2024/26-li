@@ -9,6 +9,7 @@ import ApiCall from "../../../util/ApiCall";
 import { ListGroup } from "react-bootstrap";
 import Skeleton, { SkeletonTheme } from "react-loading-skeleton";
 import "react-loading-skeleton/dist/skeleton.css";
+import "../Student.css";
 
 const Assignments = () => {
     const [todoAssignments, setTodoAssignments] = useState([]);
@@ -57,13 +58,20 @@ const Assignments = () => {
                         textAlign: "center",
                         padding: "20px",
                         backgroundColor: "var(--sec)",
-                        fontFamily: "Open Sans"
+                        fontFamily: "Open Sans",
                     }}
                 >
                     ASSIGNMENTS
                 </h1>
 
-                <div style={{ backgroundColor: "var(--bg1)", marginTop: "-9px", minHeight: "1000px" }}>
+                <div
+                    style={{
+                        backgroundColor: "var(--bg1)",
+                        marginTop: "-9px",
+                        paddingBottom: "54px",
+                        minHeight: "80vh",
+                    }}
+                >
                     <Tabs
                         defaultActiveKey="todo"
                         id="justify-tab-example"
@@ -105,7 +113,14 @@ const Assignments = () => {
                             ) : todoAssignments.length != 0 ? (
                                 <Todo Assignments={todoAssignments} />
                             ) : (
-                                <div style={{ paddingBottom: "10px", fontSize: "20px", textAlign: "center", color: "var(--lighter)"}}>
+                                <div
+                                    style={{
+                                        paddingBottom: "10px",
+                                        fontSize: "20px",
+                                        textAlign: "center",
+                                        color: "var(--lighter)",
+                                    }}
+                                >
                                     No Pending assignments
                                 </div>
                             )}
@@ -139,7 +154,14 @@ const Assignments = () => {
                             ) : missingAssignments.length != 0 ? (
                                 <Missing Assignments={missingAssignments} />
                             ) : (
-                                <div style={{ paddingBottom: "10px", fontSize: "20px", textAlign: "center", color: "var(--lighter)" }}>
+                                <div
+                                    style={{
+                                        paddingBottom: "10px",
+                                        fontSize: "20px",
+                                        textAlign: "center",
+                                        color: "var(--lighter)",
+                                    }}
+                                >
                                     No missed assignments
                                 </div>
                             )}
@@ -173,7 +195,14 @@ const Assignments = () => {
                             ) : submittedAssignments.length != 0 ? (
                                 <Submitted Assignments={submittedAssignments} />
                             ) : (
-                                <div style={{ paddingBottom: "10px", fontSize: "20px", textAlign: "center",color: "var(--lighter)" }}>
+                                <div
+                                    style={{
+                                        paddingBottom: "10px",
+                                        fontSize: "20px",
+                                        textAlign: "center",
+                                        color: "var(--lighter)",
+                                    }}
+                                >
                                     No submitted assignments
                                 </div>
                             )}

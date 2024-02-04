@@ -112,6 +112,7 @@ const SolveProblem = () => {
             {["start"].map((placement, idx) => (
                 <OffCanvasExample
                     key={idx}
+                    id={id}
                     changeQuestionViaIndex={changeQuestionViaIndex}
                     assignmentSolution={assignmentSolution}
                     questions={questions}
