@@ -112,6 +112,7 @@ const SolveProblem = () => {
             {["start"].map((placement, idx) => (
                 <OffCanvasExample
                     key={idx}
+                    id={id}
                     changeQuestionViaIndex={changeQuestionViaIndex}
                     assignmentSolution={assignmentSolution}
                     questions={questions}
@@ -122,52 +123,52 @@ const SolveProblem = () => {
 
             <div
                 style={{
-                    backgroundColor: "rgba(36,36,36,1)",
+                    backgroundColor: "var(--sec)",
                     display: "flex",
                     alignItems: "center",
                     justifyContent: "center",
                 }}
             >
-                <div className="mainquestionsection" style={{ marginBottom: "80px" }}>
+                <div className="mainquestionsection" style={{ marginBottom: "80px", fontFamily:"Open Sans"}}>
                     <div
                         style={{
                             padding: "2% 2%",
                         }}
                     >
-                        <Card style={{ border: "none", borderRadius: "10px" }}>
+                        <Card style={{ border: "none", borderRadius: "10px", backgroundColor: "xs"}}>
                             <Card.Body>
                                 {questionData.QuestionName != "" ? (
                                     <div>
                                         <Card.Title
-                                            style={{ textAlign: "center", fontSize: "30px", fontWeight: "500" }}
+                                            style={{ textAlign: "center", fontSize: "40px", fontWeight: "800", fontFamily:"Open Sans"}}
                                         >
                                             {questionData.QuestionName}
                                         </Card.Title>
-                                        <Card.Subtitle style={{ textAlign: "center" }} className="mb-2 text-muted">
-                                            time limit per test : 1 second
+                                        <Card.Subtitle style={{ textAlign: "center", fontFamily:"Fira Code"}} className="mb-2 text-muted">
+                                            <i>time limit per test : 1 second</i>
                                         </Card.Subtitle>
-                                        <Card.Subtitle style={{ textAlign: "center" }} className="mb-2 text-muted">
-                                            memory limit per test : 256 megabytes
+                                        <Card.Subtitle style={{ textAlign: "center", fontFamily:"Fira Code" }} className="mb-2 text-muted">
+                                            <i>memory limit per test : 256 megabytes</i>
                                         </Card.Subtitle>
-                                        <hr />
+                                        <hr/>
                                     </div>
                                 ) : (
                                     <div>
-                                        <Card.Title style={{ textAlign: "center", fontSize: "40px" }}>
+                                        <Card.Title style={{ textAlign: "center", fontSize: "40px", fontFamily:"Open Sans" }}>
                                             No Question Name provided
                                         </Card.Title>
-                                        <Card.Subtitle style={{ textAlign: "center" }} className="mb-2 text-muted">
-                                            time limit per test : 1 second
+                                        <Card.Subtitle style={{ textAlign: "center", fontFamily:"Fira Code" }} className="mb-2 text-muted">
+                                           <i> time limit per test : 1 second</i>
                                         </Card.Subtitle>
-                                        <Card.Subtitle style={{ textAlign: "center" }} className="mb-2 text-muted">
-                                            memory limit per test : 256 megabytes
+                                        <Card.Subtitle style={{ textAlign: "center", fontFamily:"Fira Code" }} className="mb-2 text-muted">
+                                            <i>memory limit per test : 256 megabytes</i>
                                         </Card.Subtitle>
                                         <hr />
                                     </div>
                                 )}
                                 {questionData.ProblemStatement != "" ? (
                                     <pre
-                                        style={{ whiteSpace: "pre-wrap", wordWrap: "break-word", textAlign: "justify" }}
+                                        style={{ whiteSpace: "pre-wrap", wordWrap: "break-word", textAlign: "justify", fontSize: "18px"}}
                                     >
                                         {questionData.ProblemStatement}
                                     </pre>
@@ -178,7 +179,7 @@ const SolveProblem = () => {
                                 {questionData.Constraints != "" ? (
                                     <div>
                                         {/* <br /> */}
-                                        <Card.Title>Constraints</Card.Title>
+                                        <Card.Title style={{fontSize:"18px"}}><b>Constraints</b></Card.Title>
                                         <pre>{questionData.Constraints}</pre>
                                     </div>
                                 ) : (
@@ -192,7 +193,7 @@ const SolveProblem = () => {
 
                                 {questionData.TestCases.length != 0 && questionData.TestCases[0].input != "" ? (
                                     <div>
-                                        <Card.Title>Sample Test Cases</Card.Title>
+                                        <Card.Title style={{fontSize:"18px"}}><b>Sample Test Cases</b></Card.Title>
 
                                         {questionData.TestCases.map((testcases, index) =>
                                             testcases.sampleTestCase ? (
@@ -225,7 +226,7 @@ const SolveProblem = () => {
                     </div>
                     <div
                         style={{
-                            backgroundColor: "white",
+                            backgroundColor: "var(--lighter)",
                             borderTopLeftRadius: "10px",
                             borderTopRightRadius: "10px",
                             fontSize: "20px",
@@ -235,7 +236,7 @@ const SolveProblem = () => {
                             margin: "0% 2%",
                         }}
                     >
-                        &lt;/ Write Your Code &gt;
+                        &lt; Write Your Code /&gt;
                     </div>
                     <CodeMirror
                         value={questionData.Code}
@@ -249,7 +250,7 @@ const SolveProblem = () => {
                     />
                     <div
                         style={{
-                            backgroundColor: "white",
+                            backgroundColor: "var(--lighter)",
                             borderBottomLeftRadius: "10px",
                             borderBottomRightRadius: "10px",
                             fontSize: "20px",

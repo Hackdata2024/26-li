@@ -11,16 +11,19 @@ function OffCanvasExample({ changeQuestionViaIndex, assignmentSolution, ...props
     const handleClose = () => setShow(false);
     const handleShow = () => setShow(true);
     const handleSubmitAssignment = () => {
-        console.log(assignmentSolution);
         const postAssignment = async () => {
             try {
-                const response = await ApiCall("./submitAssignment", "POST", assignmentSolution);
+                const filterarray = assignmentSolution.map(({ _id, Code }) => ({ _id, Code }));
+                const response = await ApiCall("./submitAssignment/", "POST", {
+                    AssigmentID: props.id,
+                    Questions: filterarray,
+                });
                 console.log(response.data);
                 if (response.data.success) {
                     toast.success("Assignment Submitted Successfully");
                     window.location.href = "/submittedPage";
                 } else {
-                    toast.success("Assignment Submission Failed");
+                    toast.error("Assignment Submission Failed");
                 }
             } catch (e) {
                 console.log(e);
@@ -38,17 +41,32 @@ function OffCanvasExample({ changeQuestionViaIndex, assignmentSolution, ...props
                         style={{
                             fontSize: "20px",
                             fontWeight: "bold",
-                            backgroundColor: "white",
+                            backgroundColor: "var(--light)",
                             border: "none",
                             marginLeft: "2%",
-                            color: "black",
+                            color: "var(--bg1)",
                         }}
                     >
                         &#9776;
                     </Button>
                 </div>
                 <div style={{ width: "50%" }}>
-                    <Button style={{ float: "right", marginRight: "4%" }} onClick={handleSubmitAssignment}>
+                    <Button style={{ float: "right", marginRight: "4%",
+                                    font: "Fira Code",
+                                    paddingLeft: "20px", 
+                                    paddingRight: "20px",
+                                    color: "var(--sec)",
+                                    backgroundColor: "var(--light)",
+                                    borderColor: "var(--light)",
+                                    transition: "box-shadow 0.3s ease-in-out",                        
+                                }}
+                                    onMouseOver={(e) => {
+                                        e.target.style.color = "var(--bg1)";
+                                    }}
+                                    onMouseOut={(e) => {
+                                        e.target.style.boxShadow = "var(--light)";
+                                    }}
+                                     onClick={handleSubmitAssignment}>
                         Submit Assignment
                     </Button>
                 </div>

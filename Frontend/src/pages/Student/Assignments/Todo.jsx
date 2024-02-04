@@ -9,7 +9,7 @@ const Todo = (props) => {
     return (
         // <div>
         <div style={{ display: "flex", flexDirection: "column", justifyContent: "center", alignItems: "center" }}>
-            <ListGroup style={{ color: "black", width: "50%" }}>
+            <ListGroup className="student-card-responsiveness" style={{ color: "black" }}>
                 {props.Assignments.map((assignment, index) => {
                     const date = new Date(assignment.DueTimestamp);
                     const year = date.getFullYear();
@@ -26,8 +26,8 @@ const Todo = (props) => {
                         <div key={index}>
                             <ListGroup.Item
                                 style={{
-                                    backgroundColor: "rgba(36,36,36,1)",
-                                    color: "white",
+                                    backgroundColor: "var(--lighter)",
+                                    color: "var(--bg1)",
                                     border: "none",
                                     borderRadius: "10px",
                                     display: "flex",
@@ -44,7 +44,23 @@ const Todo = (props) => {
                                 </div>
 
                                 <Link to={`/solveProblem/assignment/${assignment._id}`}>
-                                    <Button style={{ width: "80px" }}>Solve</Button>
+                                <Button variant="primary" style={{ 
+                                    font: "Fira Code",
+                                    paddingLeft: "20px", 
+                                    paddingRight: "20px",
+                                    color: "var(--sec)",
+                                    backgroundColor: "var(--light)",
+                                    borderColor: "var(--light)",
+                                    transition: "box-shadow 0.3s ease-in-out",                        
+                                }}
+                                    onMouseOver={(e) => {
+                                        e.target.style.color = "var(--bg1)";
+                                    }}
+                                    onMouseOut={(e) => {
+                                        e.target.style.boxShadow = "var(--light)";
+                                    }}
+                                    >
+                                    Solve                    </Button>
                                 </Link>
                             </ListGroup.Item>
                             <br />
