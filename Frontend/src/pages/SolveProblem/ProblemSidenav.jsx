@@ -75,9 +75,9 @@ function OffCanvasExample({ changeQuestionViaIndex, assignmentSolution, ...props
                                     font: "Fira Code",
                                     paddingLeft: "20px", 
                                     paddingRight: "20px",
-                                    color: "white",
+                                    color: "var(--sec)",
                                     fontSize: "20px",
-                                    backgroundColor: "#41ab45",
+                                    backgroundColor: "var(--high)",
                                     borderColor: "var(--light)",
                                     transition: "box-shadow 0.3s ease-in-out",                        
                                 }}
