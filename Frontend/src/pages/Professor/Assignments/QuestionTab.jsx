@@ -12,6 +12,7 @@ const QuestionTab = (props) => {
     const [myQuestions, setMyQuestions] = useState([]);
     const [allQuestions, setAllQuestions] = useState([]);
     const [loading, setLoading] = useState(true);
+    // console.log("initial", props.formData);
 
     useEffect(() => {
         const fetchData = async () => {
@@ -99,13 +100,14 @@ const QuestionTab = (props) => {
                           ))
                         : // Render actual data once it's fetched
                           myQuestions.map((question, index) => {
-                              var check = false;
+                              let check = false;
+                              console.log("question", check);
                               if (props.formData.Questions.includes(question._id)) {
                                   check = true;
                               } else {
                                   check = false;
                               }
-
+                              console.log("question", check);
                               return (
                                   <div
                                       key={index}
@@ -156,7 +158,8 @@ const QuestionTab = (props) => {
                           ))
                         : // Render actual data once it's fetched
                           allQuestions.map((question, index) => {
-                              var check = false;
+                              let check = false;
+                              console.log("question", props.formData.Questions);
                               if (props.formData.Questions.includes(question._id)) {
                                   check = true;
                               } else {
