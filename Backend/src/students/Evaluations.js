@@ -17,7 +17,7 @@ module.exports = (app) => {
             for (let i = 0; i < thisStudentEvaluations.length; i++) {
                 thisStudentEvaluations[i].Submitted = false;
                 for (let j = 0; j < thisStudentEvaluations[i].SubmittedBy.length; j++) {
-                    if (thisStudentEvaluations[i].SubmittedBy[j].StudentId == req.decoded._id) {
+                    if (thisStudentEvaluations[i].SubmittedBy[j] == req.decoded._id) {
                         thisStudentEvaluations[i].Submitted = true;
                         break;
                     }
@@ -59,7 +59,7 @@ module.exports = (app) => {
             thisStudentEvaluation[0].Submitted = false;
 
             for (let j = 0; j < thisStudentEvaluation[0].SubmittedBy.length; j++) {
-                if (thisStudentEvaluation[0].SubmittedBy[j].StudentId == req.decoded._id) {
+                if (thisStudentEvaluation[0].SubmittedBy[j] == req.decoded._id) {
                     thisStudentEvaluation[0].Submitted = true;
                     break;
                 }

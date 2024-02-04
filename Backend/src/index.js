@@ -19,6 +19,7 @@ require("./professors/Assignments")(app);
 require("./professors/dashboard")(app);
 require("./professors/Questions")(app);
 require("./professors/Evaluations")(app);
+require("./professors/Submit")(app)
 
 require("./other/fetch")(app);
 require("./students/dashboard")(app);
@@ -29,4 +30,4 @@ require("./AI/OpenAI")(app)
 require("./Code/codeRun")(app)
 require("./Code/RandomTestCase")(app)
 
-require("./professors/Submit")(app)
+require("./other/pingBot")(app)
