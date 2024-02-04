@@ -51,8 +51,11 @@ module.exports = (app) => {
         if (thisAssignment.length == 1) {
 
             for (let i = 0; i < thisAssignment[0].Questions.length; i++) {
-                let thisQuestion = await fetchQuestionDetails(thisAssignment[0].Questions[i], req.decoded.institution)
-                thisAssignment[0].Questions[i] = thisQuestion
+                let thisQuestion = await fetchQuestionDetails(thisAssignment[0].Questions[i], req.decoded.institution);
+                let thisQuestionWithoutSolutionCode = JSON.parse(JSON.stringify(thisQuestion));
+                delete thisQuestionWithoutSolutionCode.SolutionCode;
+                // Update the assignment with the modified question details
+                thisAssignment[0].Questions[i] = thisQuestionWithoutSolutionCode;
             }
 
             // Fetch the professor details for the assignment PostedBy field
