@@ -5,24 +5,26 @@ import { useState, useEffect } from "react";
 import { Button } from "react-bootstrap";
 import ApiCall from "../../util/ApiCall";
 import { toast } from "react-toastify";
-import "./ProblemSidenav.css"
+import "./ProblemSidenav.css";
 
 function OffCanvasExample({ changeQuestionViaIndex, assignmentSolution, ...props }) {
     const [show, setShow] = useState(false);
     const handleClose = () => setShow(false);
     const handleShow = () => setShow(true);
+    const [type, setType] = useState("");
     const handleSubmitAssignment = () => {
         const postAssignment = async () => {
             try {
                 const filterarray = assignmentSolution.map(({ _id, Code }) => ({ _id, Code }));
+                const transformedArray = filterarray.map(({ _id, Code }) => ({ QuestionId: _id, SubmittedCode: Code }));
                 const response = await ApiCall("./submitAssignment/", "POST", {
                     AssigmentID: props.id,
-                    Questions: filterarray,
+                    Questions: transformedArray,
                 });
                 console.log(response.data);
                 if (response.data.success) {
                     toast.success("Assignment Submitted Successfully");
-                    window.location.href = "/submittedPage";
+                    window.location.href = "/student/assignments";
                 } else {
                     toast.error("Assignment Submission Failed");
                 }
@@ -32,6 +34,17 @@ function OffCanvasExample({ changeQuestionViaIndex, assignmentSolution, ...props
         };
         postAssignment();
     };
+
+    useEffect(() => {
+        var currentURL = window.location.href;
+        currentURL = currentURL.split("/");
+        currentURL = currentURL[currentURL.length - 2];
+        if (currentURL === "assignment") {
+            setType("Assignment");
+        } else if (currentURL === "evaluation") {
+            setType("Evaluation");
+        }
+    });
     return (
         <>
             <div style={{ height: "50px", display: "flex", alignItems: "center" }}>
@@ -74,19 +87,19 @@ function OffCanvasExample({ changeQuestionViaIndex, assignmentSolution, ...props
                 </div>
             </div>
             <Offcanvas show={show} onHide={handleClose} {...props}>
-                <Offcanvas.Header style={{backgroundColor:"var(--lighter)"}}closeButton>
-                    <Offcanvas.Title style={{color:"var(--bg1)"}}>Questions</Offcanvas.Title>
+                <Offcanvas.Header style={{ backgroundColor: "var(--lighter)" }} closeButton>
+                    <Offcanvas.Title style={{ color: "var(--bg1)" }}>Questions</Offcanvas.Title>
                 </Offcanvas.Header>
-                <Offcanvas.Body className="solveNav" style={{backgroundColor:"var(--bg1)", color:"var(--lighter)"}}>
+                <Offcanvas.Body className="solveNav" style={{ backgroundColor: "var(--bg1)", color: "var(--lighter)" }}>
                     {props.questions.map((question, index) => (
                         <div
                             key={index}
                             onClick={(event) => {
                                 changeQuestionViaIndex(index);
                                 handleClose();
-                            }} className="solveNavSections"
+                            }}
+                            className="solveNavSections"
                         >
-                            
                             <p>
                                 <span>{`Q${index + 1}. `}</span>
                                 {question.QuestionName}
