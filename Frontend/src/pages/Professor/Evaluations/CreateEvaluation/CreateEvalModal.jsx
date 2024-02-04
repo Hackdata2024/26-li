@@ -126,6 +126,7 @@ const CreateEvalModal = (props) => {
                 console.log(response.data);
                 if (response.data.success) {
                     toast.success("Evaluation created successfully");
+                    window.location.reload();
                     props.onHide();
                 } else {
                     toast.error(response.data.message ? response.data.message : "Error adding question for evaluation");

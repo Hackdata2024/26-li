@@ -110,7 +110,7 @@ const Evaluations = () => {
                 style={{
                     display: "flex",
                     justifyContent: "center",
-                    alignItems: "center",
+                    // alignItems: "center",
                     marginTop: "30px",
                     paddingBottom: "100px",
                     minHeight: "90vh",
