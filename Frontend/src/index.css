@@ -3,7 +3,7 @@
     --high: #37dea8;
     --sec: rgb(19, 31, 56);
     --tert: #3d6973;
-    --light: rgb(134, 184, 193);
+    --light: #86b8c1;
     --bg1: rgb(13, 15, 26);
     --gradient: linear-gradient(--sec, --tert, --light);
     --lighter: rgba(227, 243, 246);
