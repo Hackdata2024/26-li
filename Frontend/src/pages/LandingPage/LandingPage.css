@@ -2,14 +2,32 @@
     display: flex;
     flex-direction: column;
     justify-content: center;
-    background-color: var(--sec);
     font-family: "Open Sans";
 }
 
+.imageLand
+{
+    padding: -50px;
+    justify-content: center;
+}
 h1 {
     font-family: "Open Sans", sans-serif;
     justify-content: center;
 }
+
+@keyframes fadeIn {
+    from {
+      opacity: 0;
+    }
+    to {
+      opacity: 1;
+    }
+  }
+
+  h1 {
+    opacity: 0;
+    animation: fadeIn 1s ease-in forwards;
+  }
 
 .card-header,
 .card-footer {
@@ -45,6 +63,13 @@ h1 {
     }
 }
 
+@media screen and (max-width: 1200px)
+{
+    h1{
+    font-size: 50px !important;
+    }
+}
+
 @media screen and (max-width: 900px) {
     .registercollege {
         padding: 20px !important;
@@ -58,4 +83,12 @@ h1 {
         font-size: 18px !important;
         padding: 20px;
     }
+
+    h1
+    {
+        font-size: 30px !important;
+    }
+
 }
+
+

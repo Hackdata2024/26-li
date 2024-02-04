@@ -11,11 +11,38 @@ const LandingPage = () => {
     return (
         <>
             <NavBar />
-            <div
-                className="home-section"
-                style={{ display: "flex", flexDirection: "column", marginTop: "50px", paddingBottom: "100px" }}
-            >
-                <div className="home-section-1 " style={{ marginTop: "50px" }}>
+            <div className="home-section" style={{ display: "flex", marginTop: "50px", paddingBottom: "100px" }}>
+            <div className="divlanding" style={{ display: "flex", flexDirection: "row", flexWrap: "wrap"}}>
+                <div className="headingLand" style={{ flex: 1, padding: "0 20px" }}>
+                    <h1
+                    style={{
+                        fontFamily: "Open Sans",
+                        color: "rgba(227, 243, 246)",
+                        fontSize: "60px",
+                        margin: "80px 80px 80px 80px",
+                    }}
+                    >
+                    S i m p l i f y. <br />
+                    <br />
+                    A u t o m a t e.<i>
+                        <br />
+                        <br /> Excel.
+                    </i>
+                    <br />
+                    </h1>
+                </div>
+                <div className="imageLand" 
+                style={{ flex: 1, 
+                backgroundImage: "url('/assets/images/LOGO.png')", 
+                backgroundSize: "contain", 
+                backgroundPosition: "center center", 
+                maxWidth: "1200px", 
+                margin: "0 auto",
+                marginTop: "30px",
+                backgroundRepeat: "no-repeat"}}></div>
+            </div>
+
+                <div className="home-section-1">
                     <LandingPageCard
                         width="44%"
                         marginTop="28px"

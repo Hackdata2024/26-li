@@ -53,16 +53,17 @@ const Assignments = () => {
             <div>
                 <h1
                     style={{
-                        color: "white",
+                        color: "var(--lighter)",
                         textAlign: "center",
                         padding: "20px",
-                        backgroundColor: "rgba(36,36,36,1)",
+                        backgroundColor: "var(--sec)",
+                        fontFamily: "Open Sans"
                     }}
                 >
-                    Assignments
+                    ASSIGNMENTS
                 </h1>
 
-                <div style={{ backgroundColor: "white", marginTop: "-9px" }}>
+                <div style={{ backgroundColor: "var(--bg1)", marginTop: "-9px" }}>
                     <Tabs
                         defaultActiveKey="todo"
                         id="justify-tab-example"
@@ -104,7 +105,7 @@ const Assignments = () => {
                             ) : todoAssignments.length != 0 ? (
                                 <Todo Assignments={todoAssignments} />
                             ) : (
-                                <div style={{ paddingBottom: "10px", fontSize: "20px", textAlign: "center" }}>
+                                <div style={{ paddingBottom: "10px", fontSize: "20px", textAlign: "center", color: "var(--lighter)"}}>
                                     No Pending assignments
                                 </div>
                             )}
@@ -138,7 +139,7 @@ const Assignments = () => {
                             ) : missingAssignments.length != 0 ? (
                                 <Missing Assignments={missingAssignments} />
                             ) : (
-                                <div style={{ paddingBottom: "10px", fontSize: "20px", textAlign: "center" }}>
+                                <div style={{ paddingBottom: "10px", fontSize: "20px", textAlign: "center", color: "var(--lighter)" }}>
                                     No missed assignments
                                 </div>
                             )}
@@ -172,7 +173,7 @@ const Assignments = () => {
                             ) : submittedAssignments.length != 0 ? (
                                 <Submitted Assignments={submittedAssignments} />
                             ) : (
-                                <div style={{ paddingBottom: "10px", fontSize: "20px", textAlign: "center" }}>
+                                <div style={{ paddingBottom: "10px", fontSize: "20px", textAlign: "center",color: "var(--lighter)" }}>
                                     No submitted assignments
                                 </div>
                             )}
