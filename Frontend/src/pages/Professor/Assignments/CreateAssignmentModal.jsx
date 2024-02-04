@@ -19,29 +19,7 @@ const CreateAssignmentModal = (props) => {
         DueTimestamp: "",
         AssignmentName: "",
     });
-    const [loading, setLoading] = useState(true);
-
-    useEffect(() => {
-        const fetchData = async () => {
-            try {
-                // Simulate loading delay
-                await new Promise((resolve) => setTimeout(resolve, 1000));
-
-                const response = await ApiCall("/professors/myQuestions", "GET", {});
-                console.log(response.data.data);
-                setFormData((prevData) => ({
-                    ...prevData,
-                    Questions: response.data.data.map((question) => question._id),
-                }));
-            } catch (error) {
-                console.error("Error during fetching questions:", error);
-            } finally {
-                setLoading(false);
-            }
-        };
-
-        fetchData();
-    }, []);
+    const [loading, setLoading] = useState(false);
 
     const handleChange = (e) => {
         const { name, value, type, checked } = e.target;
@@ -110,13 +88,13 @@ const CreateAssignmentModal = (props) => {
             return;
         }
 
-        // props.onHide();
         const postAssignment = async () => {
             try {
                 const response = await ApiCall("/professors/addAssignment", "POST", formData);
                 console.log(response.data);
                 if (response.data.success) {
                     toast.success("Assignment created successfully");
+                    props.onHide();
                 } else {
                     toast.error(response.data.message ? response.data.message : "Error adding question");
                 }
@@ -124,6 +102,7 @@ const CreateAssignmentModal = (props) => {
                 toast.error(error);
             }
         };
+        console.log("data going: ", formData);
         postAssignment();
     };
 

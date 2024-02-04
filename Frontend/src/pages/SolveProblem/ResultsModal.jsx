@@ -1,37 +1,56 @@
 import Button from "react-bootstrap/Button";
 import Modal from "react-bootstrap/Modal";
-import React from "react";
+import React, { useState } from "react";
 import ApiCall from "../../util/ApiCall";
-import { Spinner } from "react-bootstrap";
+import Badge from "react-bootstrap/Badge";
+import { toast } from "react-toastify";
+import Tab from "react-bootstrap/Tab";
+import Tabs from "react-bootstrap/Tabs";
+import AiSuggestion from "./AiSuggestion";
 
-function MyVerticallyCenteredModal({ questionData, testCasesStatus, ...props }) {
-    console.log("testCasesStatus", testCasesStatus);
+function MyVerticallyCenteredModal({ result, questionData, testCasesStatus, ...props }) {
     return (
         <Modal {...props} size="lg" aria-labelledby="contained-modal-title-vcenter" centered>
             <Modal.Header closeButton>
-                <Modal.Title id="contained-modal-title-vcenter">Results &nbsp;&nbsp; Accepted</Modal.Title>
+                <Modal.Title id="contained-modal-title-vcenter">Results &nbsp;&nbsp; {result}</Modal.Title>
             </Modal.Header>
             <Modal.Body>
-                <div
-                    style={{
-                        display: "flex",
-                        flexDirection: "column",
-                    }}
-                >
-                    {questionData.TestCases.map((testCase, index) => (
-                        <div key={index} style={{ display: "flex", alignItems: "center" }}>
-                            <div style={{ fontSize: "20px", fontWeight: "400" }}>{`Test Case ${index + 1}`}</div>
-                            <div style={{ alignItems: "center", marginLeft: "4%" }}>
-                                {" "}
-                                {testCasesStatus[index] ? (
-                                    <div style={{ color: "green" }}>Accepted</div>
-                                ) : (
-                                    <div style={{ color: "red" }}>Rejected</div>
-                                )}
-                            </div>
+                <Tabs defaultActiveKey="Testcases" id="justify-tab-example" className="mb-3" justify>
+                    <Tab eventKey="Testcases" title="Testcases">
+                        <div
+                            style={{
+                                display: "flex",
+                                flexDirection: "column",
+                            }}
+                        >
+                            {testCasesStatus.map((testCase, index) => {
+                                let content;
+                                if (testCase === "AC") content = <Badge bg="success">AC</Badge>;
+                                else if (testCase === "WA") {
+                                    content = <Badge bg="danger">WA</Badge>;
+                                } else if (testCase === "CE") {
+                                    content = <Badge bg="danger">CE</Badge>;
+                                } else if (testCase === "TLE") {
+                                    content = <Badge bg="danger">TLE</Badge>;
+                                } else if (testCase === "Error in Solution Code!") {
+                                    content = <Badge bg="danger">Error in Solution Code!</Badge>;
+                                }
+                                return (
+                                    <div key={index} style={{ display: "flex", alignItems: "center" }}>
+                                        <div
+                                            className="mx-4"
+                                            style={{ fontSize: "20px", fontWeight: "400" }}
+                                        >{`Test Case ${index + 1}`}</div>
+                                        {content}
+                                    </div>
+                                );
+                            })}
                         </div>
-                    ))}
-                </div>
+                    </Tab>
+                    <Tab eventKey="aiSuggestion" title="AI Suggestion">
+                        <AiSuggestion result={result} questionData={questionData} />
+                    </Tab>
+                </Tabs>
             </Modal.Body>
             <Modal.Footer>
                 <Button onClick={props.onHide}>Close</Button>
@@ -41,35 +60,75 @@ function MyVerticallyCenteredModal({ questionData, testCasesStatus, ...props }) 
 }
 
 function ResultModal({ questionData, ...props }) {
-    const [modalShow, setModalShow] = React.useState("pending");
-    const [testCasesStatus, setTestCasesStatus] = React.useState(Array(questionData.TestCases.length).fill(false));
-    console.log(questionData);
+    const [modalShow, setModalShow] = React.useState(false);
+    const [testCasesStatus, setTestCasesStatus] = React.useState([]);
+    const [result, setResult] = useState("Pending");
     const handleRunCode = async () => {
         const getTestCasesRunned = async (index) => {
             try {
                 const data = {
-                    code: questionData.Code,
+                    Code: questionData.Code,
                     QuestionId: questionData._id,
                     TestCaseIndex: index,
                 };
-                console.log(data);
                 const response = await ApiCall("/RunTests", "POST", data);
-                console.log("response", response.data);
+                console.log(response.data);
                 if (response.data.success) {
-                    let updatedTestCasesStatus = [...testCasesStatus];
-                    updatedTestCasesStatus[index] = true;
-                    setTestCasesStatus(updatedTestCasesStatus);
+                    setTestCasesStatus((prevTestCasesStatus) => {
+                        return [...prevTestCasesStatus, "AC"];
+                    });
+                } else {
+                    if (response.data.message === "Error in Solution Code!") {
+                        setTestCasesStatus((prevTestCasesStatus) => {
+                            return [...prevTestCasesStatus, "Error in Solution Code!"];
+                        });
+                    } else if (
+                        response.data.message === "Compilation Error!" ||
+                        response.data.message === "Error While Writing!"
+                    ) {
+                        setTestCasesStatus((prevTestCasesStatus) => {
+                            return [...prevTestCasesStatus, "CE"];
+                        });
+                    } else if (response.data.message === "Execution Timeout!") {
+                        setTestCasesStatus((prevTestCasesStatus) => {
+                            return [...prevTestCasesStatus, "TLE"];
+                        });
+                    } else {
+                        setTestCasesStatus((prevTestCasesStatus) => {
+                            console.log(questionData);
+                            if (questionData.TestCases[index].sampleTestCase) {
+                                toast.info(`Your output : ${response.data.YourOutput}`);
+                                toast.info(`Expected Output : ${response.data.ExpectedOutput}`);
+                            }
+                            return [...prevTestCasesStatus, "WA"];
+                        });
+                    }
                 }
             } catch (err) {
                 console.log(err);
             }
         };
+
         setModalShow(true);
-        console.log(testCasesStatus);
+        setTestCasesStatus([]);
+        setResult("Pending");
+        console.log("testCasesStatus", testCasesStatus);
+
         for (let i = 0; i < questionData.TestCases.length; i++) {
             await getTestCasesRunned(i);
-            console.log(i);
         }
+
+        let flag = true;
+
+        for (let i = 0; i < questionData.TestCases.length; i++) {
+            if (testCasesStatus[i] === "rejected") {
+                flag = false;
+                break; // Exiting the loop since we have found a rejected test case
+            }
+        }
+
+        if (flag) setResult("Accepted");
+        else setResult("Rejected");
     };
     return (
         <>
@@ -81,6 +140,7 @@ function ResultModal({ questionData, ...props }) {
                 questionData={questionData}
                 testCasesStatus={testCasesStatus}
                 show={modalShow}
+                result={result}
                 onHide={() => setModalShow(false)}
             />
         </>

@@ -204,6 +204,7 @@ const AddQuestions = () => {
                 console.log(response.data);
                 if (response.data.success === true) {
                     toast.success("Question added successfully");
+                    window.location.href = "/professor/assignments";
                 } else {
                     toast.error(response.data.message ? response.data.message : "Error adding question");
                 }
@@ -279,7 +280,7 @@ const AddQuestions = () => {
                     <br />
 
                     <Form.Group className="mb-3" controlId={`RandomTestCaseCode`}>
-                        <Form.Label>Random Test Code Generator</Form.Label>
+                        <Form.Label>Random Test Case Generator Code</Form.Label>
                         {/* <Form.Control
                             className="placeholder-color"
                             as="textarea"
@@ -434,7 +435,7 @@ const AddQuestions = () => {
                     marginBottom: "60px",
                     backgroundColor: "var(--sec)",
                     display: "flex",
-                    justifyContent: "end",
+                    justifyContent: "center",
                 }}
             >
                 <Button

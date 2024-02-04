@@ -61,6 +61,28 @@ const LandingPage = () => {
                         btnLink={typeof professorToken != "undefined" ? "/professor/assignments" : "/login/professors"}
                     />
                 </div>
+                {/* <div className="heading d-flex" style={{ justifyContent: "space-between" }}>
+                    <div>
+                        <h1
+                            style={{
+                                fontFamily: "Open Sans",
+                                color: "rgba(227, 243, 246)",
+                                fontSize: "60px",
+                                margin: "80px 0 80px 80px",
+                            }}
+                        >
+                            {" "}
+                            S i m p l i f y. <br />
+                            <br />A u t o m a t e.
+                            <i>
+                                <br />
+                                <br /> Excel.
+                            </i>
+                            <br />
+                        </h1>
+                    </div>
+                </div> */}
+
                 <div className="home-section-2">
                     <LandingPageCard
                         width="44%"
@@ -72,15 +94,30 @@ const LandingPage = () => {
                         btnLink="/registerCollege"
                     />
                 </div>
-                <div className="info" style={{ backgroundColor: "rgba(134, 184, 193, 0.2)", marginTop: "60px", alignItems: "center", width: "100vw", alignSelf: "center" }}>
-                    <h2 style={{fontFamily: "Open Sans",
+                <div
+                    className="info"
+                    style={{
+                        backgroundColor: "rgba(134, 184, 193, 0.2)",
+                        marginTop: "60px",
+                        alignItems: "center",
+                        width: "100vw",
+                        alignSelf: "center",
+                    }}
+                >
+                    <h2
+                        style={{
+                            fontFamily: "Open Sans",
                             color: "var(--light)",
                             fontSize: "40px",
                             width: "100vw",
                             textAlign: "center",
                             paddingTop: "40px",
                             paddingBottom: "40px",
-                            padding: "20px",}}>CodeSphere</h2>
+                            padding: "20px",
+                        }}
+                    >
+                        CodeSphere
+                    </h2>
                     <p
                         style={{
                             fontFamily: "Fira Code",
@@ -92,12 +129,12 @@ const LandingPage = () => {
                             paddingBottom: "40px",
                             padding: "20px",
 
-                            '@media (maxWidth: 400px)': {
+                            "@media (maxWidth: 400px)": {
                                 fontSize: "12px",
-                                padding: '20px !important',
-                                borderRadius: '10px !important',
+                                padding: "20px !important",
+                                borderRadius: "10px !important",
                                 width: "80vw !important",
-                                }
+                            },
                         }}
                     >
                         {" "}
