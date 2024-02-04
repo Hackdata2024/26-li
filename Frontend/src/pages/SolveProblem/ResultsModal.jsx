@@ -169,14 +169,14 @@ function ResultModal({ questionData, ...props }) {
         let flag = true;
 
         for (let i = 0; i < questionData.TestCases.length; i++) {
-            if (testCasesStatus[i] === "rejected") {
+            if (testCasesStatus[i] !== "AC" || testCasesStatus[i] !== "RAC") {
                 flag = false;
                 break; // Exiting the loop since we have found a rejected test case
             }
         }
 
         if (flag) setResult("Accepted");
-        else setResult("Rejected");
+        else setResult("Wrong Answer");
     };
     return (
         <>
