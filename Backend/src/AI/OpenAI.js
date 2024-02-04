@@ -4,7 +4,7 @@ const client = new OpenAI({ apiKey: process.env.OPENAI_API_KEY });
 
 module.exports = (app) => {
 
-    app.get("/GetErrorSuggestions", async (req, res) => {
+    app.post("/GetErrorSuggestions", async (req, res) => {
 
         console.log(`recieved GPT Assistance Request. CODE : ${req.body.code} PROBLEM : ${req.body.problem}`)
 
@@ -45,7 +45,7 @@ module.exports = (app) => {
 
     })
 
-    app.get("/GetCodeSuggestions", async (req, res) => {
+    app.post("/GetCodeSuggestions", async (req, res) => {
 
         console.log(`recieved GPT Assistance Request. CODE : ${req.body.code} PROBLEM : ${req.body.problem}`)
 
