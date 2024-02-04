@@ -28,26 +28,29 @@ const LandingPageCard = ({ width, marginTop, title, content, btntext, btnLink })
         <Card className="text-center" style={cardStyle}>
             <Card.Header></Card.Header>
             <Card.Body>
-                <Card.Title>{title}</Card.Title>
+                <Card.Title style={{ fontSize: "2rem", fontWeight: "500" }}>{title}</Card.Title>
                 <Card.Text>{content}</Card.Text>
                 <Link to={btnLink}>
-                <Button variant="primary" style={{ 
-                        font: "Fira Code",
-                        paddingLeft: "20px", 
-                        paddingRight: "20px",
-                        color: "var(--sec)",
-                        backgroundColor: "var(--light)",
-                        borderColor: "var(--light)",
-                        transition: "box-shadow 0.3s ease-in-out",                        
-                    }}
+                    <Button
+                        variant="primary"
+                        style={{
+                            font: "Fira Code",
+                            paddingLeft: "30px",
+                            paddingRight: "30px",
+                            color: "var(--sec)",
+                            backgroundColor: "var(--light)",
+                            borderColor: "var(--light)",
+                            transition: "box-shadow 0.3s ease-in-out",
+                        }}
                         onMouseOver={(e) => {
                             e.target.style.boxShadow = "0 0 10px rgba(134, 184, 193, 1)";
-                          }}
-                          onMouseOut={(e) => {
+                        }}
+                        onMouseOut={(e) => {
                             e.target.style.boxShadow = "0 0 10px rgba(134, 184, 193, 0.3)";
-                          }}
-                        >
-                        {btntext}                   </Button>
+                        }}
+                    >
+                        {btntext}{" "}
+                    </Button>
                 </Link>
             </Card.Body>
             <Card.Footer className="text-muted"></Card.Footer>

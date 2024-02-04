@@ -169,18 +169,23 @@ function ResultModal({ questionData, ...props }) {
         let flag = true;
 
         for (let i = 0; i < questionData.TestCases.length; i++) {
-            if (testCasesStatus[i] === "rejected") {
+            if (testCasesStatus[i] !== "AC" || testCasesStatus[i] !== "RAC") {
                 flag = false;
                 break; // Exiting the loop since we have found a rejected test case
             }
         }
 
         if (flag) setResult("Accepted");
-        else setResult("Rejected");
+        else setResult("Wrong Answer");
     };
     return (
         <>
-            <Button variant="primary" onClick={() => handleRunCode()}>
+            <Button variant="primary" style ={{fontSize: "20px",
+                            fontWeight: "bold",
+                            backgroundColor: "var(--light)",
+                            border: "none",
+                            marginLeft: "2%",
+                            color: "var(--bg1)"}}onClick={() => handleRunCode()}>
                 Run Code
             </Button>
 

@@ -2,14 +2,38 @@
     display: flex;
     flex-direction: column;
     justify-content: center;
+    overflow: hidden;
     font-family: "Open Sans";
 }
 
-.imageLand
-{
-    padding: -50px;
+.divlanding {
+    margin-top: 40px;
+    display: flex;
+    justify-content: space-between;
+    /* background-color: aquamarine; */
+}
+.headingLand {
+    /* display: flex;
+    justify-content: space-evenly; */
+    /* background-color: yellow; */
+    padding-left: 100px;
+    height: 60%;
+    font-size: "80px";
+    width: 40%;
+}
+.headingLand2 {
+    display: none;
+}
+
+.imageLand {
+    /* background-color: beige; */
+    width: 50%;
+    /* margin-right: 75px; */
+    /* height: 40px; */
+    /* padding-right: 50px; */
     justify-content: center;
 }
+
 h1 {
     font-family: "Open Sans", sans-serif;
     justify-content: center;
@@ -17,17 +41,17 @@ h1 {
 
 @keyframes fadeIn {
     from {
-      opacity: 0;
+        opacity: 0;
     }
     to {
-      opacity: 1;
+        opacity: 1;
     }
-  }
+}
 
-  h1 {
+h1 {
     opacity: 0;
     animation: fadeIn 1s ease-in forwards;
-  }
+}
 
 .card-header,
 .card-footer {
@@ -63,10 +87,9 @@ h1 {
     }
 }
 
-@media screen and (max-width: 1200px)
-{
-    h1{
-    font-size: 50px !important;
+@media screen and (max-width: 1200px) {
+    h1 {
+        font-size: 50px !important;
     }
 }
 
@@ -84,11 +107,38 @@ h1 {
         padding: 20px;
     }
 
-    h1
-    {
+    h1 {
         font-size: 30px !important;
     }
-
 }
 
+@media screen and (max-aspect-ratio: 4/3) {
+    .divlanding {
+        flex-direction: column-reverse;
+    }
+    .imageLand {
+        height: 100px;
+        /* background-color: aquamarine; */
+        width: 100%;
+        display: none;
+    }
+    .headingLand {
+        /* padding-left: 0px;
 
+        font-size: "10px" !important;
+        width: 50%; */
+        display: none;
+    }
+    .headingLand2 {
+        margin-top: 25px;
+        display: block;
+        /* font-size: "10rem"; */
+        text-align: center;
+    }
+    .divlanding {
+        margin-top: 20px !important;
+        /* display: flex;
+        justify-content: space-between; */
+        /* background-color: aquamarine; */
+    }
+}

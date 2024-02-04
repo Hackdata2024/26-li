@@ -5,23 +5,32 @@ import { useState, useEffect } from "react";
 import { Button } from "react-bootstrap";
 import ApiCall from "../../util/ApiCall";
 import { toast } from "react-toastify";
+import "./ProblemSidenav.css";
 
 function OffCanvasExample({ changeQuestionViaIndex, assignmentSolution, ...props }) {
     const [show, setShow] = useState(false);
     const handleClose = () => setShow(false);
     const handleShow = () => setShow(true);
+    const [type, setType] = useState("");
     const handleSubmitAssignment = () => {
         const postAssignment = async () => {
             try {
                 const filterarray = assignmentSolution.map(({ _id, Code }) => ({ _id, Code }));
-                const response = await ApiCall("./submitAssignment/", "POST", {
-                    AssigmentID: props.id,
-                    Questions: filterarray,
+                const transformedArray = filterarray.map(({ _id, Code }) => ({ QuestionId: _id, SubmittedCode: Code }));
+
+                const url = type === "Assignment" ? "/submitAssignment/" : "/submitEvaluation/";
+                const response = await ApiCall(url, "POST", {
+                    [props.type === "Assignment" ? "AssigmentID" : "EvaluationID"]: props.id,
+                    Questions: transformedArray,
                 });
                 console.log(response.data);
                 if (response.data.success) {
                     toast.success("Assignment Submitted Successfully");
-                    window.location.href = "/submittedPage";
+                    if (type === "Assignment") {
+                        window.location.href = `/student/assignments`;
+                    } else {
+                        window.location.href = `/student/assignments`;
+                    }
                 } else {
                     toast.error("Assignment Submission Failed");
                 }
@@ -31,6 +40,17 @@ function OffCanvasExample({ changeQuestionViaIndex, assignmentSolution, ...props
         };
         postAssignment();
     };
+
+    useEffect(() => {
+        var currentURL = window.location.href;
+        currentURL = currentURL.split("/");
+        currentURL = currentURL[currentURL.length - 2];
+        if (currentURL === "assignment") {
+            setType("Assignment");
+        } else if (currentURL === "evaluation") {
+            setType("Evaluation");
+        }
+    });
     return (
         <>
             <div style={{ height: "50px", display: "flex", alignItems: "center" }}>
@@ -51,12 +71,13 @@ function OffCanvasExample({ changeQuestionViaIndex, assignmentSolution, ...props
                     </Button>
                 </div>
                 <div style={{ width: "50%" }}>
-                    <Button style={{ float: "right", marginRight: "4%",
+                    <Button className="submitAss" style={{ float: "right", marginRight: "4%",
                                     font: "Fira Code",
                                     paddingLeft: "20px", 
                                     paddingRight: "20px",
                                     color: "var(--sec)",
-                                    backgroundColor: "var(--light)",
+                                    fontSize: "20px",
+                                    backgroundColor: "var(--high)",
                                     borderColor: "var(--light)",
                                     transition: "box-shadow 0.3s ease-in-out",                        
                                 }}
@@ -64,18 +85,18 @@ function OffCanvasExample({ changeQuestionViaIndex, assignmentSolution, ...props
                                         e.target.style.color = "var(--bg1)";
                                     }}
                                     onMouseOut={(e) => {
-                                        e.target.style.boxShadow = "var(--light)";
+                                        e.target.style.boxShadow = "var(--sec)";
                                     }}
                                      onClick={handleSubmitAssignment}>
-                        Submit Assignment
+                        SUBMIT ASSIGNMENT
                     </Button>
                 </div>
             </div>
             <Offcanvas show={show} onHide={handleClose} {...props}>
-                <Offcanvas.Header closeButton>
-                    <Offcanvas.Title>Questions</Offcanvas.Title>
+                <Offcanvas.Header style={{ backgroundColor: "var(--lighter)" }} closeButton>
+                    <Offcanvas.Title style={{ color: "var(--bg1)" }}>Questions</Offcanvas.Title>
                 </Offcanvas.Header>
-                <Offcanvas.Body>
+                <Offcanvas.Body className="solveNav" style={{ backgroundColor: "var(--bg1)", color: "var(--lighter)" }}>
                     {props.questions.map((question, index) => (
                         <div
                             key={index}
@@ -83,9 +104,8 @@ function OffCanvasExample({ changeQuestionViaIndex, assignmentSolution, ...props
                                 changeQuestionViaIndex(index);
                                 handleClose();
                             }}
-                            style={{ cursor: "pointer" }}
+                            className="solveNavSections"
                         >
-                            <hr />
                             <p>
                                 <span>{`Q${index + 1}. `}</span>
                                 {question.QuestionName}
