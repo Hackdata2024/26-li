@@ -1,0 +1,18 @@
+.solveNav
+{
+    background-color:var(--bg1);
+    color: var(--lighter);
+}
+
+.solveNavSections
+{
+    cursor: pointer;
+    margin: 0px;
+    padding: 7px;
+    transition: 0.3s ease-in-out;
+}
+
+.solveNavSections:hover
+{
+    background-color: var(--light);
+}
