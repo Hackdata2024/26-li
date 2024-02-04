@@ -37,6 +37,16 @@ module.exports = (app) => {
 
         if (req.body.TestCaseIndex < TestCases.length) {
             RunCode(SolCode, TestCases[req.body.TestCaseIndex].input, (SolCodeResponse) => {
+
+                console.log("--")
+                console.log("Running SolCode -> ")
+                console.log(SolCodeResponse);
+                console.log("on testcase -> ")
+                console.log(TestCases[req.body.TestCaseIndex].input);
+                console.log("--")
+                console.log("response on running sol code = ")
+                console.log(SolCodeResponse);
+
                 if (SolCodeResponse.success) {
                     RunCode(submittedCode, TestCases[req.body.TestCaseIndex].input, (submittedCodeResponse) => {
 

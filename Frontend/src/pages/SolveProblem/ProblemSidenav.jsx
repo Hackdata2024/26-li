@@ -61,37 +61,33 @@ function OffCanvasExample({ changeQuestionViaIndex, assignmentSolution, ...props
                         style={{
                             fontSize: "20px",
                             fontWeight: "bold",
-                            backgroundColor: "var(--light)",
+                            backgroundColor: "var(--sec)",
                             border: "none",
                             marginLeft: "2%",
-                            color: "var(--bg1)",
+                            color: "var(--lighter)",
                         }}
                     >
                         &#9776;
                     </Button>
                 </div>
                 <div style={{ width: "50%" }}>
-                    <Button
-                        className="submitAss"
-                        style={{
-                            float: "right",
-                            marginRight: "4%",
-                            font: "Fira Code",
-                            paddingLeft: "20px",
-                            color: "var(--sec)",
-                            fontSize: "20px",
-                            backgroundColor: "var(--high)",
-                            borderColor: "var(--light)",
-                            transition: "box-shadow 0.3s ease-in-out",
-                        }}
-                        onMouseOver={(e) => {
-                            e.target.style.color = "var(--bg1)";
-                        }}
-                        onMouseOut={(e) => {
-                            e.target.style.boxShadow = "var(--sec)";
-                        }}
-                        onClick={handleSubmitAssignment}
-                    >
+                    <Button className="submitAss" style={{ float: "right", marginRight: "4%",
+                                    font: "Fira Code",
+                                    paddingLeft: "20px", 
+                                    paddingRight: "20px",
+                                    color: "var(--sec)",
+                                    fontSize: "20px",
+                                    backgroundColor: "var(--high)",
+                                    borderColor: "var(--light)",
+                                    transition: "box-shadow 0.3s ease-in-out",                        
+                                }}
+                                    onMouseOver={(e) => {
+                                        e.target.style.color = "var(--bg1)";
+                                    }}
+                                    onMouseOut={(e) => {
+                                        e.target.style.boxShadow = "var(--sec)";
+                                    }}
+                                     onClick={handleSubmitAssignment}>
                         SUBMIT ASSIGNMENT
                     </Button>
                 </div>
