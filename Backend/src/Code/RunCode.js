@@ -18,8 +18,8 @@ function EraseScriptFile(executablePath) {
 function RunCode(Code, input, callback) {
     const scriptName = "script.cpp";
     const executableName = "script.exe";
-    const scriptPath = path.join(__dirname, '..', '..', 'public', scriptName);
-    const executablePath = path.join(__dirname, '..', '..', 'public', executableName);
+    const scriptPath = "./" + scriptName;
+    const executablePath = "./" + executableName;
 
     let callbackExecuted = false;
 
