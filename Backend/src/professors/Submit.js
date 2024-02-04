@@ -1,6 +1,6 @@
 const { hasAccess, isStudent } = require("../Middleware/Auth");
 const { writeDB, updateDB } = require("../db/mongoOperations");
-const { assignmentSchema, SubmitAssignmentsSchema } = require("../db/schema");
+const { assignmentSchema, SubmitAssignmentsSchema, EvaluationSchema, SubmitEvaluationSchema } = require("../db/schema");
 
 module.exports = (app) => {
 
@@ -53,12 +53,33 @@ module.exports = (app) => {
         console.log(req.body);
 
         let Evaluation = {
-            AssignmentId: req.body.AssigmentID,
+            EvaluationId: req.body.EvaluationID,
             StudentId: req.decoded._id,
             SubmittedOn: new Date(),
             Submission: req.body.Questions
         }
 
+        updateDB("Evaluations", req.decoded.institution, { _id: req.body.EvaluationID }, { $push: { SubmittedBy: req.decoded._id } }, EvaluationSchema).then((result) => {
 
+            writeDB("EvaluationSubmissions", req.decoded.institution, Evaluation, SubmitEvaluationSchema).then((result) => {
+                res.json({
+                    success: true,
+                    message: "Evaluation Submitted Successfully!"
+                })
+            }).catch((err) => {
+                console.log(err);
+                res.json({
+                    success: false,
+                    message: `Error while writing the Evaluation, Error: ${err}`
+                })
+            })
+        }
+        ).catch((err) => {
+            console.log(err);
+            res.json({
+                success: false,
+                message: `Error while updating the Evaluation, Error: ${err}`
+            })
+        })
     })
 }

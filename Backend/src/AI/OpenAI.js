@@ -18,7 +18,7 @@ module.exports = (app) => {
         const messages = [
             {
                 role: 'system',
-                content: `Code Analysis. You will be given a code along with its problem statement. Use concise language that is suitable for students.
+                content: `C++ Code Analysis. You will be given a code along with its problem statement. Use concise language that is suitable for students.
                             Questions:
                             1. Identify any syntax errors or logical issues in the code.
                             2. Instructions on how to correct the errors and run the code successfully.`,
@@ -59,7 +59,7 @@ module.exports = (app) => {
         const messages = [
             {
                 role: 'system',
-                content: `Code Analysis. You will be given a code along with its problem statement. Use concise language that is suitable for students.
+                content: `C++ Code Analysis. You will be given a code along with its problem statement. Use concise language that is suitable for students.
                             Questions:
                             1. Provide suggestions for improving the code with regard to complexity, readability, etc.
                             2. Suggest alternative approaches for solving the problem.`,
