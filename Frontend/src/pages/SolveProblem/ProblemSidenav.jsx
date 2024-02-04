@@ -61,10 +61,10 @@ function OffCanvasExample({ changeQuestionViaIndex, assignmentSolution, ...props
                         style={{
                             fontSize: "20px",
                             fontWeight: "bold",
-                            backgroundColor: "var(--light)",
+                            backgroundColor: "var(--sec)",
                             border: "none",
                             marginLeft: "2%",
-                            color: "var(--bg1)",
+                            color: "var(--lighter)",
                         }}
                     >
                         &#9776;
@@ -75,9 +75,9 @@ function OffCanvasExample({ changeQuestionViaIndex, assignmentSolution, ...props
                                     font: "Fira Code",
                                     paddingLeft: "20px", 
                                     paddingRight: "20px",
-                                    color: "var(--sec)",
+                                    color: "white",
                                     fontSize: "20px",
-                                    backgroundColor: "var(--high)",
+                                    backgroundColor: "#41ab45",
                                     borderColor: "var(--light)",
                                     transition: "box-shadow 0.3s ease-in-out",                        
                                 }}
